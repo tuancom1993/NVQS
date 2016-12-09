@@ -1,0 +1,7 @@
+.wrap-btn-add-people{
+	text-align: center;
+}
+
+.table-all-congdan tbody tr:nth-child(odd){
+	background-color: rgba(0,0,0,0.05);
+}

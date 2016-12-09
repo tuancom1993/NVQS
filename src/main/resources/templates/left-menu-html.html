@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Trang Chủ</title>
+	<link rel="stylesheet" href="../static/css/common.css" th:href="@{css/common.css}"/></head>
+<body>
+<section class="wrap-menu-article">
+	<div  th:fragment="fra-left-menu">
+		<span class="icon-hidden"></span>
+		<div class="wrap-menu">
+			<h3 class="title-menu"> Menu</h3>
+			<ul class="menu">
+				<li><a  href="#" th:href="@{/home}"> Trang Chủ </a></li>
+				<li><a href="#"> DS Công Dân Quá Tuổi Nghĩa Vụ </a>
+				</li>
+				<li><a class="menu-active has-sub-menu" href="#"> Contact</a>
+					<ul class="sub-menu">
+						<li><a href="#"> Contract 1 </a></li>
+						<li><a href="#"> Contract 2 </a></li>
+						<li><a href="#"> Contract 3 </a></li>	
+					</ul>
+				</li>
+				<li><a href="#"> About </a></li>
+				<li><a href="#"> Quit </a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+</body>
+</html>

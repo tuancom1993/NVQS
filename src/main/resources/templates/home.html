@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Trang Chủ</title>
+	<link rel="stylesheet" href="../static/css/common.css" th:href="@{css/common.css}"/>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans"/>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+	<link rel="stylesheet" href="../static/css/home.css" th:href="@{css/home.css}"/>
+	<link rel="stylesheet" href="../static/lib/datatable/jquery.dataTables.min.css" th:href="@{lib/datatable/jquery.dataTables.min.css}">
+</head>
+<body>
+	<!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
+	<section class="wrap-menu-article">
+		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
+		<div class="wrap-article">
+			<div class="wrap-btn-add-people">
+				<a href="#" th:href="@{/themcongdan}"><button class="btn btn-style"> Thêm Công Dân </button></a>
+			</div>
+			<div class="wrap-table-all-congdan">
+				<h3>Danh Sách Toàn Bộ Công Dân</h3>
+				<table class="table-all-congdan" th:objet="${listCongdan}">
+					<thead>
+						<tr>
+							<th>Số Thứ Tự</th>
+							<th>Họ Tên</th>
+							<th>Ngày Sinh</th>
+							<th>Tên Cha</th>
+							<th>Tổ Dân Phố</th>
+							<th>Trình Độ Học Vấn</th>
+							<th>Sức Khỏe</th>
+							<th>Loại Nghĩa Vụ</th>
+							<th>Lý Do</th>
+							<th>Ghi Chú</th>
+							<th>Ghi Chú Cá Nhân</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="congdan : ${listCongdan}">
+							<td>1</td>
+							<td th:text="${congdan.hoten}"></td>
+							<td th:text="${congdan.ngaysinh}"></td>
+							<td th:text="${congdan.hotencha}"></td>
+							<td th:text="${congdan.todanpho}"></td>
+							<td th:text="${congdan.trinhdohocvan}"></td>
+							<td th:text="${congdan.tinhtrangsuckhoe}"></td>
+							<td th:text="${congdan.lydo.loainghiavu.mota}"></td>
+							<td th:text="${congdan.lydo.mota}"></td>
+							<td th:text="${congdan.ghichu}"></td>
+							<td th:text="${congdan.ghichucanhan}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div> <!-- /wrap-article -->
+	</section>
+</body>
+<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{js/jquery-3.1.1.min.js}"></script>
+<script type="text/javascript" src="../static/js/common.js" th:src="@{js/common.js}"></script>
+<script type="text/javascript" src="../static/lib/datatable/jquery.dataTables.min.js" th:src="@{lib/datatable/jquery.dataTables.min.js}"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".table-all-congdan").DataTable();
+	});
+</script>
+</html>
