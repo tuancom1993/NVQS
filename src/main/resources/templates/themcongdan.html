@@ -25,7 +25,7 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input type="text" required="" th:field="${congdan.hoten}" />
+								<input type="text" required="" placeholder="Trần Văn A" th:field="${congdan.hoten}" />
 								<span class="mandatory-text"> Họ và Tên Công Dân</span>
 							</div>
 						</td>
@@ -33,8 +33,8 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input class="date-picker" type="text" required="" th:field="${congdan.ngaysinh}"/>
-								<span class="mandatory-text"> Ngày tháng năm sinh (dd/mm/yyyy)</span>
+								<input class="date-picker" type="text" required="" placeholder="Vd: 21/12/1993" th:field="${congdan.ngaysinh}"/>
+								<span class="mandatory-text"> Ngày tháng năm sinh</span>
 							</div>
 						</td>
 					</tr>
@@ -55,7 +55,7 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input type="text" required="" th:field="${congdan.diachi}"/>
+								<input type="text" required="" placeholder="199 Đống Đa" th:field="${congdan.diachi}"/>
 								<span> Địa Chỉ </span>
 							</div>
 						</td>
@@ -67,7 +67,7 @@
 						</td>
 						<td>
 							<div class="wrap-input-style">
-								<input class="text-disable" type="text" name	="phuong" required="" value="Thạch Thang"/>
+								<input class="text-disable" type="text" name="phuong" required="" value="Thạch Thang"/>
 								<span> Phường </span>
 							</div>
 						</td>

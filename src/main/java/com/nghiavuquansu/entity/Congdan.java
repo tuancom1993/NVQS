@@ -47,7 +47,7 @@ public class Congdan implements Serializable {
 	private String nganhhoc;
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="dd-mm-yyyy")
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date ngaysinh;
 
 	private String nienkhoa;

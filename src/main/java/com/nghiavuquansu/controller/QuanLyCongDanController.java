@@ -45,10 +45,11 @@ public class QuanLyCongDanController {
 	@RequestMapping(value="/themcongdan", method=RequestMethod.POST)
 	public String doThemCongDan(@ModelAttribute Congdan congdan){
 		try {
+			System.out.println(congdan.getNgaysinh().toString());
 			congDanService.saveCongDan(congdan);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "home";
+		return "redirect:/home";
 	}
 }
