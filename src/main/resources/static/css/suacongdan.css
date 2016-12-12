@@ -1,0 +1,40 @@
+.title-page{
+	text-align: center;
+}
+
+table tr td{
+	padding: 0 30px;
+}
+
+tr.row-nghia-vu{
+	
+}
+tr.row-nghia-vu td{
+	vertical-align: top;
+}
+
+.text-disable{
+	pointer: none;
+}
+
+.title-input{
+	color: black;
+}
+
+.se-capdaotao{
+	width: 100px;
+}
+
+textarea{
+	font-family: 
+}
+
+#p-lnv, #p-ld, #p-plld{
+	line-height: 150%;
+	margin-top: 10px;
+	width: 200px;
+}
+
+.group-infor{
+	margin-top: 30px;
+}

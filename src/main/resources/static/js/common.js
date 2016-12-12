@@ -17,4 +17,8 @@
 			$("ul.menu .menu-active").removeClass('menu-active');
 			$("ul.sub-menu .sub-menu-active").removeClass('sub-menu-active');
 		}
+
+		/*****************************DATA TABLE************************************/
+		
 	});
+

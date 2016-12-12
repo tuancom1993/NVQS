@@ -28,10 +28,10 @@ public class LoaiNghiaVuService {
 
 	public List<Loainghiavu> getListLoaiNghiaVu() {
 		ArrayList<Loainghiavu> listLoaiNgiaVu = (ArrayList<Loainghiavu>) loaiNghiaVuRepoInterface.findAll();
-		for (Loainghiavu loainghiavu : listLoaiNgiaVu) {
+/*		for (Loainghiavu loainghiavu : listLoaiNgiaVu) {
 			ArrayList<Lydo> listLyDo = getListLyDoByLoaiNghiaVu(loainghiavu);
 			loainghiavu.setLydos(listLyDo);
-		}
+		}*/
 		return listLoaiNgiaVu;
 	}
 

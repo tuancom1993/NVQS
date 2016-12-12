@@ -61,7 +61,7 @@ $(document).ready(function(){
 function loadAjaxLoaiNghiaVu(){
 	var json;
 	$.ajaxSetup({async: false});
-	$.get("getlistjsonloainghiavu", function(data, status){
+	$.get("/getlistjsonloainghiavu", function(data, status){
         json = data;
     });
     return json;

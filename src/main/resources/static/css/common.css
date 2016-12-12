@@ -384,9 +384,9 @@ section.wrap-menu-article div.wrap-article p{
 }
 
 .tooltip-inline:hover:before, .tooltip-inline:hover:after{
-	-webkit-transition: visibility 0ms, opacity 0.5s, transform 0.5s;
-	-o-transition: visibility 0ms, opacity 0.5s, transform 0.5s;
-	transition: visibility 0ms, opacity 0.5s, transform 0.5s;
+	-webkit-transition: visibility 0ms, opacity 0.5s 1s, transform 0.5s 1s;
+	-o-transition: visibility 0ms, opacity 0.5s 1s, transform 0.5s 1s;
+	transition: visibility 0ms, opacity 0.5s 1s, transform 0.5s 1s;
 	visibility: visible;
 	opacity: 1;
 	transform: translateY(0);
@@ -996,4 +996,13 @@ sup{
 	content:  "(*)";
 	color: red;
 	margin-left: 5px;
+}
+
+/********************************DATA TABLE***************************************/
+.dataTables_length select {
+	width: 60px;
+}
+
+.dataTables_filter input[type="search"]{
+	padding: 5px;
 }

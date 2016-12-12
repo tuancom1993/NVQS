@@ -6,10 +6,10 @@
 	<title>Trang Chủ</title>
 	<link rel="stylesheet" href="../static/css/common.css" th:href="@{css/common.css}"/>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
-	<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans"/>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
 	<link rel="stylesheet" href="../static/css/home.css" th:href="@{css/home.css}"/>
-	<link rel="stylesheet" href="../static/lib/datatable/jquery.dataTables.min.css" th:href="@{lib/datatable/jquery.dataTables.min.css}">
+	<link rel="stylesheet" href="../static/lib/datatable/css/jquery.dataTables.min.css" th:href="@{lib/datatable/css/jquery.dataTables.min.css}">
+
 </head>
 <body>
 	<!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
@@ -17,11 +17,11 @@
 		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
 		<div class="wrap-article">
 			<div class="wrap-btn-add-people">
-				<a href="#" th:href="@{/themcongdan}"><button class="btn btn-style"> Thêm Công Dân </button></a>
+				<a href="#" th:href="@{/quan-ly-cong-dan/themcongdan}"><button class="btn btn-style"> Thêm Công Dân </button></a>
 			</div>
 			<div class="wrap-table-all-congdan">
 				<h3>Danh Sách Toàn Bộ Công Dân</h3>
-				<table class="table-all-congdan" th:objet="${listCongdan}">
+				<table class="table-all-congdan table-datatable" th:objet="${listCongdan}">
 					<thead>
 						<tr>
 							<th>Số Thứ Tự</th>
@@ -34,12 +34,14 @@
 							<th>Loại Nghĩa Vụ</th>
 							<th>Lý Do</th>
 							<th>Ghi Chú</th>
-							<th>Ghi Chú Cá Nhân</th>
+							<th>Ghi Chú Cá Nhân<	/th>
+							<th>Sua</th> 
+							<th>Xoa</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="congdan : ${listCongdan}">
-							<td>1</td>
+						<tr th:each="congdan, i : ${listCongdan}">
+							<td th:text="${i.index + 1}"></td>
 							<td th:text="${congdan.hoten}"></td>
 							<td th:text="${congdan.ngaysinh}"></td>
 							<td th:text="${congdan.hotencha}"></td>
@@ -50,6 +52,13 @@
 							<td th:text="${congdan.lydo.mota}"></td>
 							<td th:text="${congdan.ghichu}"></td>
 							<td th:text="${congdan.ghichucanhan}"></td>
+							<td><a class="sua-congdan tooltip-inline" 
+									data-tooltip="Sua" 
+									href="#"
+									th:href="@{/quan-ly-cong-dan/sua-cong-dan(id=${congdan.idcongdan})}">
+								</a>
+							</td>
+							<td><a href="#" class="xoa-congdan tooltip-inline" data-tooltip="Xoa"></a></td>
 						</tr>
 					</tbody>
 				</table>
@@ -57,12 +66,8 @@
 		</div> <!-- /wrap-article -->
 	</section>
 </body>
-<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{js/jquery-3.1.1.min.js}"></script>
-<script type="text/javascript" src="../static/js/common.js" th:src="@{js/common.js}"></script>
-<script type="text/javascript" src="../static/lib/datatable/jquery.dataTables.min.js" th:src="@{lib/datatable/jquery.dataTables.min.js}"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$(".table-all-congdan").DataTable();
-	});
-</script>
+<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+<script type="text/javascript" src="../static/lib/datatable/js/jquery.dataTables.min.js" th:src="@{/lib/datatable/js/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" src="../static/js/home.js" th:src="@{/js/home.js}"></script>
 </html>

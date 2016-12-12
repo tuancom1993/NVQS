@@ -17,7 +17,7 @@
 		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
 		<div class="wrap-article">
 			<h2 class="title-page">Thêm Công Dân</h2>
-			<form class="form-them-cong-dan" thLaction="@{/themcongdan}" method="post" th:object="${congdan}">
+			<form class="form-them-cong-dan" th:action="@{/quan-ly-cong-dan/themcongdan}" method="post" th:object="${congdan}">
 				<table>
 					<tr>
 						<td><h3 class="group-infor">Thông tin cá nhân</h3></td>
@@ -192,9 +192,9 @@
 	</section>
 </body>
 <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
-<script type="text/javascript" src="../static/js/common.js" th:src="@{js/common.js}"></script>
+<script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
 <script type="text/javascript" src="../static/lib/datetimepicker/jquery.datetimepicker.full.js" th:src="@{/lib/datetimepicker/jquery.datetimepicker.full.js}"></script> 
-<script type="text/javascript" src="../static/js/themcongdan.js" th:src="@{js/themcongdan.js}"></script>
+<script type="text/javascript" src="../static/js/themcongdan.js" th:src="@{/js/themcongdan.js}"></script>
 <script type="text/javascript" th:inline="javascript">
 
 </script>

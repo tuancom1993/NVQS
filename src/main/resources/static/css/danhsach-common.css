@@ -1,0 +1,7 @@
+.dataTables_length select {
+	width: 60px;
+}
+
+.dataTables_filter input[type="search"]{
+	padding: 5px;
+}

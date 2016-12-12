@@ -3,5 +3,19 @@
 }
 
 .table-all-congdan tbody tr:nth-child(odd){
-	background-color: rgba(0,0,0,0.05);
+	background-color: #E2E4FF;
+}
+
+table .sua-congdan{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url("../images/icons/edit-black.svg") center center no-repeat;
+}
+
+table .xoa-congdan{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url("../images/icons/delete-black.svg") center center no-repeat;
 }

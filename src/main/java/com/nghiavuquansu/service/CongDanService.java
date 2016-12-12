@@ -18,4 +18,8 @@ public class CongDanService {
 	public ArrayList<Congdan> getAllCongDan(){
 		return (ArrayList<Congdan>) congDanRepoInterface.findAll();
 	}
+	
+	public Congdan getCongDan(int idcongdan) throws Exception{
+		return congDanRepoInterface.findOne(idcongdan);
+	}
 }
