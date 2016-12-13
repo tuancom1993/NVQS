@@ -2,6 +2,10 @@
 	text-align: center;
 }
 
+.title-danhsachcongdan{
+	margin: 30px 0;
+}
+
 .table-all-congdan tbody tr:nth-child(odd){
 	background-color: #E2E4FF;
 }
@@ -18,4 +22,22 @@ table .xoa-congdan{
 	width: 25px;
 	height: 25px;
 	background: url("../images/icons/delete-black.svg") center center no-repeat;
+	cursor: pointer;
+}
+
+.modal .modal-content{
+	
+}
+
+.modal .modal-content img{
+	width: 50px;
+	height: 50px;
+}
+
+.modal .modal-content p{
+	text-align: center;
+}
+
+.modal .modal-content .modal-hoten{
+	font-weight: bold;
 }

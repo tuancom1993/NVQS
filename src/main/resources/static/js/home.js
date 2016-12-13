@@ -26,4 +26,25 @@ $(document).ready(function() {
         }
 		});
 
+	$(".xoa-congdan").click(function(event) {
+		var idcongdan = $(this).attr('data-idcongdan');
+		var hoten = $(this).attr('data-hoten');
+		$(".modal .modal-hoten").text(hoten);
+		showModal();
+	});
+
+	$(".btn-huybo").click(function(event) {
+		hideModal();
+	});
+
 });
+
+function showModal(){
+	$(".cover").fadeIn(300);
+	$(".modal").slideDown(400);
+}
+
+function hideModal(){
+	$(".cover").fadeOut(300);
+	$(".modal").slideUp(300);
+}

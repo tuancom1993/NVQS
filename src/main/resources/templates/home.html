@@ -17,10 +17,10 @@
 		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
 		<div class="wrap-article">
 			<div class="wrap-btn-add-people">
-				<a href="#" th:href="@{/quan-ly-cong-dan/themcongdan}"><button class="btn btn-style"> Thêm Công Dân </button></a>
+				<a href="#" th:href="@{/quanlycongdan/themcongdan}"><button class="btn btn-style"> Thêm Công Dân </button></a>
 			</div>
 			<div class="wrap-table-all-congdan">
-				<h3>Danh Sách Toàn Bộ Công Dân</h3>
+				<h3 class="title-danhsachcongdan">Danh Sách Toàn Bộ Công Dân</h3>
 				<table class="table-all-congdan table-datatable" th:objet="${listCongdan}">
 					<thead>
 						<tr>
@@ -34,9 +34,9 @@
 							<th>Loại Nghĩa Vụ</th>
 							<th>Lý Do</th>
 							<th>Ghi Chú</th>
-							<th>Ghi Chú Cá Nhân<	/th>
-							<th>Sua</th> 
-							<th>Xoa</th>
+							<th>Ghi Chú Cá Nhân</th>
+							<th>Sửa</th> 
+							<th>Xóa</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,18 +53,40 @@
 							<td th:text="${congdan.ghichu}"></td>
 							<td th:text="${congdan.ghichucanhan}"></td>
 							<td><a class="sua-congdan tooltip-inline" 
-									data-tooltip="Sua" 
+									data-tooltip="Sửa Thông Tin Công Dân" 
 									href="#"
-									th:href="@{/quan-ly-cong-dan/sua-cong-dan(id=${congdan.idcongdan})}">
+									th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}">
 								</a>
 							</td>
-							<td><a href="#" class="xoa-congdan tooltip-inline" data-tooltip="Xoa"></a></td>
+							<td>
+								<span class="xoa-congdan tooltip-inline" data-tooltip="Xóa"
+										th:attr="data-idcongdan=${congdan.idcongdan},
+												 data-hoten=${congdan.hoten}">
+								</span>
+							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div> <!-- /wrap-article -->
 	</section>
+
+	<aside class="modal modal-remove-congdan">
+		<p class="title-modal">Xóa Công Dân</p>
+		<div class="modal-content flex-box-center">
+			<img src="../static/images/icons/alert.png" th:src="@{/images/icons/alert.png}">
+			<div>
+				<p> Bạn có chắc muốn xóa công dân </p>
+				<p class="modal-hoten"> Vu Xuan Tuan Anh </p>	
+			</div>
+			
+		</div>
+		<div class="modal-buttons">
+			<button class="btn btn-style bgWhite btn-huybo"> Hủy Bỏ </button>
+			<button class="btn btn-style btn-xacnhanxoa"> Có </button>
+		</div>
+	</aside>
+	<div class="cover"></div>
 </body>
 <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
 <script type="text/javascript" src="../static/lib/datatable/js/jquery.dataTables.min.js" th:src="@{/lib/datatable/js/jquery.dataTables.min.js}"></script>

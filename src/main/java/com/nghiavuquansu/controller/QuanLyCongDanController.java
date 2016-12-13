@@ -32,7 +32,7 @@ public class QuanLyCongDanController {
 	@Autowired LyDoRepoInterface lyDoRepoInterface;
 	@Autowired CongDanService congDanService;
 	
-	@RequestMapping(value="/quan-ly-cong-dan/themcongdan", method=RequestMethod.GET)
+	@RequestMapping(value="/quanlycongdan/themcongdan", method=RequestMethod.GET)
 	public String showThemCongDan(Model model) throws JsonProcessingException{
 		List<Capdaotao> listCapdaotao = capDaoTaoService.getListCapDaoTao();
 		List<Loainghiavu> loainghiavus = loaiNghiaVuService.getListLoaiNghiaVu();
@@ -43,7 +43,7 @@ public class QuanLyCongDanController {
 		return "themcongdan";
 	}
 	
-	@RequestMapping(value="/quan-ly-cong-dan/themcongdan", method=RequestMethod.POST)
+	@RequestMapping(value="/quanlycongdan/themcongdan", method=RequestMethod.POST)
 	public String doThemCongDan(@ModelAttribute Congdan congdan){
 		try {
 			System.out.println(congdan.getNgaysinh().toString());
@@ -51,25 +51,27 @@ public class QuanLyCongDanController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/home";
+		return "redirect:/trangchu";
 	}
 	
-	@GetMapping(value="/quan-ly-cong-dan/sua-cong-dan")
+	@GetMapping(value="/quanlycongdan/suacongdan")
 	public String showSuaCongDan(@RequestParam("id") int idcongdan, Model model){
 		try {
 			Congdan congdan = congDanService.getCongDan(idcongdan);
 			List<Capdaotao> listCapdaotao = capDaoTaoService.getListCapDaoTao();
 			List<Lydo> listLydo = congdan.getLydo().getLoainghiavu().getLydos();
+			List<Loainghiavu> loainghiavus = loaiNghiaVuService.getListLoaiNghiaVu();
 			System.out.println("Size lydo: "+listLydo.size());
 			model.addAttribute("congdan", congdan);
 			model.addAttribute("listCapdaotao", listCapdaotao);
+			model.addAttribute("listLoainghiavu", loainghiavus);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "suacongdan";
 	}
 	
-	@PostMapping(value="/quan-ly-cong-dan/sua-cong-dan")
+	@PostMapping(value="/quanlycongdan/suacongdan")
 	public String doSuaCongDan(@ModelAttribute Congdan congdan){
 		try {
 			System.out.println(congdan.getNgaysinh().toString());
@@ -77,6 +79,6 @@ public class QuanLyCongDanController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "redirect:/home";
+		return "redirect:/trangchu";
 	}
 }

@@ -17,7 +17,8 @@
 		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
 		<div class="wrap-article">
 			<h2 class="title-page">Sửa Công Dân</h2>
-			<form class="form-them-cong-dan" th:action="@{/quan-ly-cong-dan/sua-cong-dan}" method="post" th:object="${congdan}">
+			<form class="form-them-cong-dan" th:action="@{/quanlycongdan/suacongdan}" method="post" th:object="${congdan}">
+				<input type="hidden" th:field="${congdan.idcongdan}">
 				<table>
 					<tr>
 						<td><h3 class="group-infor">Thông tin cá nhân</h3></td>
@@ -149,7 +150,10 @@
 							<select id="se-ld" th:field="${congdan.lydo.idlydo}"
 									th:attr="data-idlydo=${congdan.lydo.idlydo},
 											 data-idloainghiavu=${congdan.lydo.loainghiavu.idloainghiavu}">
-								<option value="1"> Khác 
+								<option value="1"
+										th:each="lydo : ${congdan.lydo.loainghiavu.lydos}"
+										th:value = "${lydo.idlydo}"
+										th:text="${lydo.mota}"> Khác
 								</option>
 							</select>
 							<p id="p-ld"></p>
@@ -158,7 +162,11 @@
 							<p> Phân Loại Lý Do </p>
 							<select id="se-plld" name="idphanloailydo"
 									th:attr="data-idphanloailydo=${congdan.idphanloailydo}">
-								
+								<option value="0"
+										th:each="phanloailydo : ${congdan.lydo.phanloailydos}"
+										th:value="${phanloailydo.idphanloailydo}"
+										th:text="${phanloailydo.mota}">
+								</option>
 							</select>
 							<p id="p-plld"></p>
 						</td>
@@ -185,8 +193,10 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<button type="button" class="btn btn-style comfirm"> Xác Nhận Thêm </button>
+						<td colspan="3">
+							<button type="button" class="btn btn-style comfirm"> Xác Nhận Sửa </button>
+							<a href="#"><button class="btn btn-style bgOrange">Tải Lại</button></a>
+							<a href="#" th:href="@{/trangchu}"><button class="btn btn-style bgGreen">Quay Lại Trang Chủ</button></a>
 						</td>
 					</tr>
 				</table>	

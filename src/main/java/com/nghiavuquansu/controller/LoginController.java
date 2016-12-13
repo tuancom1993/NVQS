@@ -24,10 +24,10 @@ public class LoginController {
 	@RequestMapping("/loginsuccess")
 	public String goHomePage() {
 
-		return "redirect:/home";
+		return "redirect:/trangchu";
 	}
 
-	@RequestMapping("/home")
+	@RequestMapping("/trangchu")
 	public String showHomePage(Model model) {
 		User userLogin = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();

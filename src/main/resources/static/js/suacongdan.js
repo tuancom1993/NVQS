@@ -1,3 +1,7 @@
+var listLoaiNghiaVu;
+var listLyDo_Current;
+
+
 $(document).ready(function(){
 
 		$.datetimepicker.setLocale('vi');
@@ -13,52 +17,49 @@ $(document).ready(function(){
 		$(".form-them-cong-dan").submit();
 	});
 
-	var listLoaiNghiaVu = JSON.parse(loadAjaxLoaiNghiaVu());
-	var listLyDo_Current;
+	listLoaiNghiaVu = JSON.parse(loadAjaxLoaiNghiaVu());
 
-	setLoaiNghiaVuDefault(listLoaiNghiaVu);
+	setLoaiNghiaVuDefault();
+	setLyDoDefault();
+	setPhanLoaiLyDoDefault();
 
-	$("#se-lnv").change(function(){
-		$("#se-ld").html("");
-		$("#se-plld").html("");
-		var idLoaiNghiaVu = $(this).val();
-		$("#p-lnv").text($("#se-lnv option:selected").text());
-		$(listLoaiNghiaVu).each(function(index, loaiNghiaVu){
-			if(idLoaiNghiaVu == loaiNghiaVu.idLoaiNghiaVu){
-				var listLyDo = loaiNghiaVu.lyDos;
-				listLyDo_Current = listLyDo;
-				$(listLyDo).each(function(index_lydo, lyDo){
-					$("#se-ld").append("<option value=' "+  lyDo.idLyDo +" '> "+ lyDo.moTa +" </option>");	
-				});
-				$("#p-ld").text($("#se-ld option:selected").text());
-				var lyDoFirst = listLyDo[0];
-				$(lyDoFirst.phanLoaiLyDos).each(function(index_PLLD, phanLoaiLyDo){
-					$("#se-plld").append("<option value=' "+  phanLoaiLyDo.idPhanLoaiLyDo +" '> "+ phanLoaiLyDo.moTa +" </option>");
-				});
-				$("#p-plld").text($("#se-plld option:selected").text());
-			}
-		});
+});
+
+$(document).on('change', '#se-lnv', function(event) {
+	$("#se-ld").html("");
+	$("#se-plld").html("");
+	var idLoaiNghiaVu = $(this).val();
+	$("#p-lnv").text($("#se-lnv option:selected").text());
+	$(listLoaiNghiaVu).each(function(index, loaiNghiaVu){
+		if(idLoaiNghiaVu == loaiNghiaVu.idLoaiNghiaVu){
+			var listLyDo = loaiNghiaVu.lyDos;
+			listLyDo_Current = listLyDo;
+			$(listLyDo).each(function(index_lydo, lyDo){
+				$("#se-ld").append("<option value='"+  lyDo.idLyDo +"'> "+ lyDo.moTa +" </option>");	
+			});
+			$("#se-ld").val($("#se-ld option:first").val()).trigger('change');
+		}
 	});
+});
 
-	$("#se-ld").change(function(){
-		$("#se-plld").html("");
-		var idLyDo = $(this).val();
-		$("#p-ld").text($("#se-ld option:selected").text());
-		console.log("123: "+idLyDo);
-		$(listLyDo_Current).each(function(index, lyDo){
-			if (idLyDo == lyDo.idLyDo){
-				var listPhanLoaiLyDo = lyDo.phanLoaiLyDos;
-				$(listPhanLoaiLyDo).each(function(index_PLLD,phanLoaiLyDo){
-					$("#se-plld").append("<option value=' "+  phanLoaiLyDo.idPhanLoaiLyDo +" '> "+ phanLoaiLyDo.moTa +" </option>");
-				});
-			}
-		});
+$(document).on('change', '#se-ld', function(event) {
+	$("#se-plld").html("");
+	var idLyDo = $(this).val();
+	$("#p-ld").text($("#se-ld option:selected").text());
+	$(listLyDo_Current).each(function(index, lyDo){
+		if (idLyDo == lyDo.idLyDo){
+			var listPhanLoaiLyDo = lyDo.phanLoaiLyDos;
+			$(listPhanLoaiLyDo).each(function(index_PLLD,phanLoaiLyDo){
+				$("#se-plld").append("<option value='"+  phanLoaiLyDo.idPhanLoaiLyDo +"'> "+ phanLoaiLyDo.moTa +" </option>");
+			});
+		}
 	});
+	$("#p-ld").text($("#se-ld option:selected").text());
+	$("#se-plld").val($("#se-plld option:first").val()).trigger('change');
+});
 
-	$("#se-plld").change(function(){
-		$("#p-plld").text($("#se-plld option:selected").text());
-	});
-
+$(document).on('change', '#se-plld', function(event) {
+	$("#p-plld").text($("#se-plld option:selected").text());
 });
 
 function loadAjaxLoaiNghiaVu(){
@@ -70,32 +71,22 @@ function loadAjaxLoaiNghiaVu(){
     return json;
 }
 
-function setLoaiNghiaVuDefault(listLoaiNghiaVu){
-	var idlydo = $("#se-ld").attr("data-idlydo");
+function setLoaiNghiaVuDefault(){
 	var idloainghiavu =  $("#se-ld").attr("data-idloainghiavu");
+	$("#se-lnv").val(idloainghiavu);
+	$("#p-lnv").text($("#se-lnv option:selected").text());
+}
+
+function setLyDoDefault(){
+	var idlydo = $("#se-ld").attr("data-idlydo");
+	$("#se-ld").val(idlydo);
+	$("#p-ld").text($("#se-ld option:selected").text());
+}
+
+function setPhanLoaiLyDoDefault(){
 	var idphanloailydo = $("#se-plld").attr("data-idphanloailydo");
-	$("#se-lnv").html("");
-	$("#se-ld").html("");
-	$("#se-plld").html("");
-	//load Loai Nghia Vu
-	$(listLoaiNghiaVu).each(function(index, loaiNghiaVu){
-		$("#se-lnv").append("<option value='"+  loaiNghiaVu.idLoaiNghiaVu +"'> "+ loaiNghiaVu.moTa +" </option>");
-		var listLyDo = loaiNghiaVu.lyDos;
-		if(includeIdLyDo(listLyDo, idlydo)){
-			$(listLyDo).each(function(index_lydo, lyDo){
-				$("#se-ld").append("<option value='"+  lyDo.idLyDo +"'> "+ lyDo.moTa +" </option>");	
-				var listPhanLoaiLyDo = lyDo.phanLoaiLyDos;
-				if(includeIdPhanLoaiLyDo(listPhanLoaiLyDo, idphanloailydo)){
-					$(listPhanLoaiLyDo).each(function(index, phanLoaiLyDo) {
-						$("#se-plld").append("<option value='"+  phanLoaiLyDo.idPhanLoaiLyDo +"'> "+ phanLoaiLyDo.moTa +" </option>");
-					});
-				}
-			});
-		}
-	});
-	$("#se-lnv").val(idloainghiavu).change();
-	$("#se-ld").val(idlydo).change();
-	$("#se-plld").val(idphanloailydo).change();
+	$("#se-plld").val(idphanloailydo);
+	$("#p-plld").text($("#se-plld option:selected").text());
 }
 
 

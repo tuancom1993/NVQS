@@ -340,6 +340,50 @@ section.wrap-menu-article div.wrap-article p{
 	line-height: 30px;
 }
 
+/********************************************FLEX BOX**************************/
+.flex-box{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+}
+
+.flex-box-center{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+}
+
+.flex-box-space-around{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-around;
+}
+
+.flex-box-space-between{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;	
+}
+
+.flex-wrap{
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+
 /*******************************************TOOL TIP**********************************************/
 
 .tooltip-inline{
@@ -397,6 +441,7 @@ section.wrap-menu-article div.wrap-article p{
 /******************************************INPUT STYLE********************************************/
 		.btn{
 			display: inline-block;
+			text-decoration: none;
 			background-color: #03A9F4;
 			color: white;
 			border: none;
@@ -1005,4 +1050,137 @@ sup{
 
 .dataTables_filter input[type="search"]{
 	padding: 5px;
+}
+
+/*******************************************Cover**********************************/
+.cover{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 999;
+	background-color: rgba(0,0,0,0.4);
+}
+
+/*******************************************Modal****************************/
+.modal{
+	display: none;
+	width: 300px;
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	margin-left: -150px;
+	background-color: white;
+	z-index: 1000;
+	box-shadow: 0 7px 15px -5px rgba(0,0,0,0.3), 0 10px 10px -8px rgba(0,0,0,0.4);
+}
+
+.modal .title-modal{
+	display: block;
+	text-align: center;
+	padding: 10px 0;
+	font-size: 20px;
+}
+
+.modal .modal-content{
+	align-items: center;
+}
+
+.modal .modal-buttons{
+	margin-top: 20px;
+	font-size: 0;
+}
+
+.modal .modal-buttons button{
+	width: 150px;
+}
+
+
+
+/**********************************Background Color*****************/ 
+.bgRed{
+	background-color: #F44336;
+}
+
+.bgPink{
+	background-color: #E91E63;
+}
+
+.bgPurple{
+	background-color: #9C27B0;
+}
+
+.bgDeepPurple{
+	background-color: #673AB7;
+}
+
+.bgIndigo{
+	background-color: #3F51B5;
+}
+
+.bgBlue{
+	background-color: #2196F3;
+}
+
+.bgLightBlue{
+	background-color: #03A9F4;
+}
+
+.bgCyan{
+	background: #00BCD4;
+}
+
+.bgTeal{
+	background-color: #009688;
+}
+
+.bgGreen{
+	background-color: #4CAF50;
+}
+
+.bgLightGreen{
+	background-color: #8BC34A;
+}
+
+.bgLime{
+	background-color: #CDDC39;
+}
+
+.bgYellow{
+	background-color: #FFEB3B;
+}
+
+.bgAmber{
+	background-color: #FFC107;
+}
+
+.bgOrange{
+	background: #FF9800;
+}
+
+.bgDeepOrange{
+	background-color: #FF5722;
+}
+
+.bgBrown{
+	background-color: #795548;
+}
+
+.bgGrey{
+	background-color: #9E9E9E;
+}
+
+.bgBlueGrey{
+	background-color: #607D8B;
+}
+
+.bgBlack{
+	background-color: #000000;
+}
+
+.bgWhite{
+	background-color: #ffffff;
+	color: black;
 }
