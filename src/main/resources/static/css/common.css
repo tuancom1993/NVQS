@@ -1,3 +1,13 @@
+@font-face {
+	font-family: 'Open Sans';
+	src:url("../fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src:url("../fonts/Roboto/Roboto-Regular.ttf");
+}
+
 *{
 	margin: 0;
 	padding: 0;
@@ -5,7 +15,7 @@
 }
 
 body{
-	font-family: 'Roboto' ,'Open Sans', 'Arial' ,sans-serif;
+	font-family: 'Roboto', 'Open Sans', 'Arial' ,'Times New Roman' ,sans-serif;
 	font-size: 13px;
 	color: #555;
 }
@@ -532,22 +542,22 @@ section.wrap-menu-article div.wrap-article p{
 		}
 		@-webkit-keyframes toa {
 			0% { width: 0px; height: 0px; margin-top: 0; margin-left: 0;}
-			100% {width: 100px; height: 100px; margin-top: -50px; margin-left: -50px; background-color: rgba(0,0,0,0)}
+			100% {width: 200px; height: 200px; margin-top: -100px; margin-left: -100px; background-color: rgba(0,0,0,0)}
 			/* 100% { width: 0px; height: 0px; margin-top: 0; margin-left: 0; } */
 		}
 		@-o-keyframes toa {
 			0% { width: 0px; height: 0px; margin-top: 0; margin-left: 0;}
-			100% {width: 100px; height: 100px; margin-top: -50px; margin-left: -50px; background-color: rgba(0,0,0,0)}
+			100% {width: 200px; height: 200px; margin-top: -100px; margin-left: -100px; background-color: rgba(0,0,0,0)}
 			/* 100% { width: 0px; height: 0px; margin-top: 0; margin-left: 0; } */
 		}
 		@-moz-keyframes toa {
 			0% { width: 0px; height: 0px; margin-top: 0; margin-left: 0;}
-			100% {width: 100px; height: 100px; margin-top: -50px; margin-left: -50px; background-color: rgba(0,0,0,0)}
+			100% {width: 200px; height: 200px; margin-top: -100px; margin-left: -100px; background-color: rgba(0,0,0,0)}
 			/* 100% { width: 0px; height: 0px; margin-top: 0; margin-left: 0; } */
 		}
 		@keyframes toa {
 			0% { width: 0px; height: 0px; margin-top: 0; margin-left: 0;}
-			100% {width: 100px; height: 100px; margin-top: -50px; margin-left: -50px; background-color: rgba(0,0,0,0)}
+			100% {width: 200px; height: 200px; margin-top: -100px; margin-left: -100px; background-color: rgba(0,0,0,0)}
 			/* 100% { width: 0px; height: 0px; margin-top: 0; margin-left: 0; } */
 		}
 		@-webkit-keyframes nhapnhay {
