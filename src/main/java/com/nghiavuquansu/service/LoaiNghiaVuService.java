@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nghiavuquansu.entity.Loainghiavu;
 import com.nghiavuquansu.entity.Lydo;
 import com.nghiavuquansu.entity.Phanloailydo;
@@ -28,10 +30,6 @@ public class LoaiNghiaVuService {
 
 	public List<Loainghiavu> getListLoaiNghiaVu() {
 		ArrayList<Loainghiavu> listLoaiNgiaVu = (ArrayList<Loainghiavu>) loaiNghiaVuRepoInterface.findAll();
-/*		for (Loainghiavu loainghiavu : listLoaiNgiaVu) {
-			ArrayList<Lydo> listLyDo = getListLyDoByLoaiNghiaVu(loainghiavu);
-			loainghiavu.setLydos(listLyDo);
-		}*/
 		return listLoaiNgiaVu;
 	}
 

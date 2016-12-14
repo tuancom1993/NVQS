@@ -2,6 +2,11 @@ package com.nghiavuquansu.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.util.List;
 
 
@@ -11,6 +16,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Loainghiavu.findAll", query="SELECT l FROM Loainghiavu l")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="idloainghiavu")
 public class Loainghiavu implements Serializable {
 	private static final long serialVersionUID = 1L;
 

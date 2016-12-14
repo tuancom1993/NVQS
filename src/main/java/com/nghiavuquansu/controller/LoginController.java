@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.nghiavuquansu.configurate.CustomUserDetail;
 import com.nghiavuquansu.entity.User;
 import com.nghiavuquansu.service.CongDanService;
+import com.nghiavuquansu.service.LoaiNghiaVuService;
 
 @Controller
 public class LoginController {
 	@Autowired CongDanService congDanService;
+	@Autowired LoaiNghiaVuService loaiNghiaVuService;
 
 	@RequestMapping("/dangnhap")
 	public String showLoginPage() {
@@ -37,6 +39,7 @@ public class LoginController {
 		}
 		System.out.println("hoten: " + userLogin.getHoten());
 		model.addAttribute("listCongdan", congDanService.getAllCongDan());
+		model.addAttribute("listLoainghiavu", loaiNghiaVuService.getListLoaiNghiaVu());
 		return "home";
 	}
 }

@@ -3,6 +3,9 @@ package com.nghiavuquansu.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 /**
  * The persistent class for the phanloailydo database table.
@@ -10,6 +13,7 @@ import javax.persistence.*;
  */
 @Entity
 @NamedQuery(name="Phanloailydo.findAll", query="SELECT p FROM Phanloailydo p")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="idphanloailydo")
 public class Phanloailydo implements Serializable {
 	private static final long serialVersionUID = 1L;
 

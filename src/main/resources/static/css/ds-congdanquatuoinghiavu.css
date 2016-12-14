@@ -1,0 +1,39 @@
+.table-datatable{
+	width: 100% !important;
+}
+
+table thead th{
+	text-align: left;
+}
+
+table .sua-congdan{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url("../images/icons/edit-black.svg") center center no-repeat;
+}
+
+table .xoa-congdan{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url("../images/icons/delete-black.svg") center center no-repeat;
+	cursor: pointer;
+}
+
+.modal .modal-content{
+	
+}
+
+.modal .modal-content img{
+	width: 50px;
+	height: 50px;
+}
+
+.modal .modal-content p{
+	text-align: center;
+}
+
+.modal .modal-content .modal-hoten{
+	font-weight: bold;
+}

@@ -4,17 +4,21 @@ var listLyDo_Current;
 
 $(document).ready(function(){
 
-		$.datetimepicker.setLocale('vi');
-	    $('.date-picker').datetimepicker({
-			timepicker:false,
-			dayOfWeekStart : 1,
-			format:'d/m/Y',
-			formatDate:'Y/m/d',
-			minDate:'1870/01/02', // yesterday is minimum date
-			maxDate:'2100/01/02' // and tommorow is maximum date calendar
-		});
+	$.datetimepicker.setLocale('vi');
+    $('.date-picker').datetimepicker({
+		timepicker:false,
+		dayOfWeekStart : 1,
+		format:'d/m/Y',
+		formatDate:'Y/m/d',
+		minDate:'1870/01/02', // yesterday is minimum date
+		maxDate:'2100/01/02' // and tommorow is maximum date calendar
+	});
 	$(".comfirm").click(function(){
 		$(".form-them-cong-dan").submit();
+	});
+
+	$(".back").click(function(event) {
+		 window.history.go(-2);
 	});
 
 	listLoaiNghiaVu = JSON.parse(loadAjaxLoaiNghiaVu());

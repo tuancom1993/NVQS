@@ -2,6 +2,11 @@ package com.nghiavuquansu.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import java.util.List;
 
 
@@ -11,6 +16,7 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Lydo.findAll", query="SELECT l FROM Lydo l")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="idlydo")
 public class Lydo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,6 +28,7 @@ public class Lydo implements Serializable {
 	private String mota;
 
 	//bi-directional many-to-one association to Congdan
+	@JsonIgnore
 	@OneToMany(mappedBy="lydo")
 	private List<Congdan> congdans;
 
