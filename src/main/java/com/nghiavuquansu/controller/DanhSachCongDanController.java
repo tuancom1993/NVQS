@@ -9,13 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nghiavuquansu.entity.Congdan;
+import com.nghiavuquansu.repository.LyDoRepoInterface;
+import com.nghiavuquansu.repository.PhanLoaiLyDoRepoInterface;
 import com.nghiavuquansu.service.CongDanService;
 import com.nghiavuquansu.service.LoaiNghiaVuService;
+import com.nghiavuquansu.service.LyDoService;
+import com.nghiavuquansu.service.PhanLoaiLyDoService;
 
 @Controller
 public class DanhSachCongDanController {
 	@Autowired CongDanService congDanService;
 	@Autowired LoaiNghiaVuService loaiNghiaVuService;
+	@Autowired LyDoService lyDoService;
+	@Autowired PhanLoaiLyDoService phanLoaiLyDoService;
 	
 	@GetMapping("/danhsachcongdan/danhsachquatuoinghiavu")
 	public String showDanhSachCongDanQuaTuoiNghiaVu(Model model){
@@ -30,9 +36,11 @@ public class DanhSachCongDanController {
 			List<Congdan> listCongDan = congDanService.getListCongDanTheoLyDo(idlydo);
 			model.addAttribute("listCongdan", listCongDan);
 			model.addAttribute("listLoainghiavu", loaiNghiaVuService.getListLoaiNghiaVu());
+			model.addAttribute("lydoOfCongdan", lyDoService.findLyDo(idlydo));
+			model.addAttribute("sizeOfListPhanloailydo", phanLoaiLyDoService.countPhanLoaiLyDoByIdlydo(idlydo));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "home";
+		return "danhsachnghiavu";
 	}
 }

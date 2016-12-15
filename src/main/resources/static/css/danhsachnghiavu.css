@@ -1,0 +1,69 @@
+.wrap-btn-add-people{
+	text-align: center;
+}
+
+
+.wrap-se{
+	margin: 10px 20px;
+}
+.btn-xemds{
+	margin-top: 30px;
+}
+
+.title-loainghiavu{
+	margin: 30px 0 10px 0;
+	text-align: center;
+}
+
+.title-lydo{
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+.wrap-table-condition{
+	margin: 20px 0;
+}
+
+.table-all-congdan tbody tr:nth-child(odd){
+	background-color: #E2E4FF;
+}
+
+.title-phanloailydo{
+	padding: 20px 0 10px 0;
+}
+
+.table-datatable{
+	width: 100% !important;
+}
+
+table .sua-congdan{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url("../images/icons/edit-black.svg") center center no-repeat;
+}
+
+table .xoa-congdan{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url("../images/icons/delete-black.svg") center center no-repeat;
+	cursor: pointer;
+}
+
+.modal .modal-content{
+	
+}
+
+.modal .modal-content img{
+	width: 50px;
+	height: 50px;
+}
+
+.modal .modal-content p{
+	text-align: center;
+}
+
+.modal .modal-content .modal-hoten{
+	font-weight: bold;
+}

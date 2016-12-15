@@ -9,4 +9,5 @@ import com.nghiavuquansu.entity.Phanloailydo;
 
 public interface PhanLoaiLyDoRepoInterface extends CrudRepository<Phanloailydo, Integer> {
 	ArrayList<Phanloailydo> findPhanloailydoByLydo(Lydo lydo);
+	int countByLydo(Lydo lydo);
 }

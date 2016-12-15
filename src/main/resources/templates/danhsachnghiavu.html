@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Danh Sach</title>
+	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}"/>
+	<link rel="stylesheet" href="../static/css/danhsachnghiavu.css" th:href="@{/css/danhsachnghiavu.css}"/>
+	<link rel="stylesheet" href="../static/lib/datatable/css/jquery.dataTables.min.css" th:href="@{/lib/datatable/css/jquery.dataTables.min.css}">
+
+</head>
+<body>
+	<!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
+	<section class="wrap-menu-article">
+		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
+		<div class="wrap-article">
+			<div class="wrap-btn-add-people">
+				<a href="#" th:href="@{/quanlycongdan/themcongdan}"><button class="btn btn-style"> Thêm Công Dân </button></a>
+			</div>
+			<div class="select-danhsach flex-box-center">
+				<div class="wrap-se wrap-se-llv">
+					<p>Loại Nghĩa Vụ</p>
+					<select id="se-lnv" name="">
+						<option th:each="loainghiavu : ${listLoainghiavu}"
+								th:value = "${loainghiavu.idloainghiavu}"
+								th:text="${loainghiavu.mota}"
+								th:selected="${loainghiavu.idloainghiavu ==  lydoOfCongdan.Loainghiavu.idloainghiavu}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
+						</option>
+					</select>
+				</div>
+				<div class="wrap-se wrap-se-ld">
+					<p> Lý Do </p>
+					<select id="se-ld" name="">
+						<option th:each="lydo : ${lydoOfCongdan.Loainghiavu.lydos}"
+								th:value="${lydo.idlydo}"
+								th:text="${lydo.mota}"
+								th:selected="${lydoOfCongdan.idlydo == lydo.idlydo}"> Khác </option>
+					</select>
+				</div>
+				<div class="wrap-se"> <button class="btn-xemds btn btn-style bgGreen"> Xem </button> </div>
+			</div>
+			<div class="wrap-all-table">
+				<h2 class="title-loainghiavu" th:text="${lydoOfCongdan.Loainghiavu.mota}"></h2>
+				<h3 class="title-lydo" th:text="${lydoOfCongdan.mota}"></h3>
+				<div class="wrap-table-condition" th:if="${sizeOfListPhanloailydo} == 0">
+					<table class="table-all-congdan table-datatable display compact" th:objet="${listCongdan}">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th>Họ Tên</th>
+								<th>Ngày Sinh</th>
+								<th>Tên Cha</th>
+								<th>Tổ Dân Phố</th>
+								<th>Trình Độ Học Vấn</th>
+								<th>Sức Khỏe</th>
+								<th>Loại Nghĩa Vụ</th>
+								<th>Lý Do</th>
+								<th>Ghi Chú</th>
+								<th>Ghi Chú Cá Nhân</th>
+								<th>Sửa</th> 
+								<th>Xóa</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="congdan, i : ${listCongdan}">
+								<td th:text="${i.index + 1}"></td>
+								<td th:text="${congdan.hoten}"></td>
+								<td th:text="${congdan.ngaysinh}"></td>
+								<td th:text="${congdan.hotencha}"></td>
+								<td th:text="${congdan.todanpho}"></td>
+								<td th:text="${congdan.trinhdohocvan}"></td>
+								<td th:text="${congdan.tinhtrangsuckhoe}"></td>
+								<td th:text="${congdan.lydo.loainghiavu.mota}"></td>
+								<td th:text="${congdan.lydo.mota}"></td>
+								<td th:text="${congdan.ghichu}"></td>
+								<td th:text="${congdan.ghichucanhan}"></td>
+								<td><a class="sua-congdan tooltip-inline" 
+										data-tooltip="Sửa Thông Tin Công Dân" 
+										href="#"
+										th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}">
+									</a>
+								</td>
+								<td>
+									<span class="xoa-congdan tooltip-inline" data-tooltip="Xóa"
+											th:attr="data-idcongdan=${congdan.idcongdan},
+													 data-hoten=${congdan.hoten}">
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div> <!-- /wrap-table-condition -->
+				<div class="wrap-table-condition" 
+					 th:if="${sizeOfListPhanloailydo} > 0"
+					 th:each="phanloailydo : ${lydoOfCongdan.phanloailydos}">
+					<h4 class="title-phanloailydo" th:text="${phanloailydo.mota}"></h4>
+					<table class="table-all-congdan table-datatable display compact" th:objet="${listCongdan}">
+						<thead>
+							<tr>
+								<th>Ma CD</th>
+								<th>Họ Tên</th>
+								<th>Ngày Sinh</th>
+								<th>Tên Cha</th>
+								<th class="tooltip-inline fast" data-tooltip="Tổ Dân Phố">TDP</th>
+								<th>Trình Độ Học Vấn</th>
+								<th>Sức Khỏe</th>
+<!-- 								<th>Loại Nghĩa Vụ</th>
+								<th>Lý Do</th> -->
+								<th>Ghi Chú</th>
+								<th>Ghi Chú Cá Nhân</th>
+								<th>Sửa</th> 
+								<th>Xóa</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="congdan, i : ${listCongdan}"
+								th:if="${phanloailydo.idphanloailydo == congdan.idphanloailydo}">
+								<td th:text="${congdan.idcongdan}"></td>
+								<td th:text="${congdan.hoten}"></td>
+								<td th:text="${congdan.ngaysinh}"></td>
+								<td th:text="${congdan.hotencha}"></td>
+								<td th:text="${congdan.todanpho}"></td>
+								<td th:text="${congdan.trinhdohocvan}"></td>
+								<td th:text="${congdan.tinhtrangsuckhoe}"></td>
+<!-- 								<td th:text="${congdan.lydo.loainghiavu.mota}"></td>
+								<td th:text="${congdan.lydo.mota}"></td> -->
+								<td th:text="${congdan.ghichu}"></td>
+								<td th:text="${congdan.ghichucanhan}"></td>
+								<td><a class="sua-congdan tooltip-inline" 
+										data-tooltip="Sửa Thông Tin Công Dân" 
+										href="#"
+										th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}">
+									</a>
+								</td>
+								<td>
+									<span class="xoa-congdan tooltip-inline" data-tooltip="Xóa"
+											th:attr="data-idcongdan=${congdan.idcongdan},
+													 data-hoten=${congdan.hoten}">
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div> <!-- /wrap-table-condition -->
+			</div>
+		</div> <!-- /wrap-article -->
+	</section>
+
+	<aside class="modal modal-remove-congdan">
+		<p class="title-modal">Xóa Công Dân</p>
+		<div class="modal-content flex-box-center">
+			<img src="../static/images/icons/alert.png" th:src="@{/images/icons/alert.png}">
+			<div>
+				<p> Bạn có chắc muốn xóa công dân </p>
+				<p class="modal-hoten"> Vu Xuan Tuan Anh </p>	
+			</div>
+		</div>
+		<p class="mess"></p>
+		<div class="modal-buttons">
+			<button class="btn btn-style bgWhite btn-huybo"> Hủy Bỏ </button>
+			<button class="btn btn-style btn-xacnhanxoa"> Có </button>
+		</div>
+	</aside>
+	<div class="cover"></div>
+</body>
+<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+<script type="text/javascript" src="../static/lib/datatable/js/jquery.dataTables.min.js" th:src="@{/lib/datatable/js/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" src="../static/js/danhsachnghiavu.js" th:src="@{/js/danhsachnghiavu.js}"></script>
+</html>

@@ -446,6 +446,10 @@ section.wrap-menu-article div.wrap-article p{
 	transform: translateY(0);
 }
 
+.tooltip-inline.fast:hover:before, .tooltip-inline.fast:hover:after{
+	transition-delay: 100ms;
+}
+
 
 
 /******************************************INPUT STYLE********************************************/
