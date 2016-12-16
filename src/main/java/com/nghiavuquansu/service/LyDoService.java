@@ -15,4 +15,8 @@ public class LyDoService {
 	public Lydo findLyDo(int idlydo){
 		return lyDoRepoInterface.findOne(idlydo);
 	}
+	
+	public boolean isExists(int idlydo){
+		return lyDoRepoInterface.exists(idlydo);
+	}
 }

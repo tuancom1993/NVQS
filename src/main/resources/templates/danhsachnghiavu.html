@@ -16,7 +16,7 @@
 		<div class="wrap-article">
 			<div class="wrap-btn-add-people">
 				<a href="#" th:href="@{/quanlycongdan/themcongdan}"><button class="btn btn-style"> Thêm Công Dân </button></a>
-			</div>
+			</div> <!-- /wrap-btn-add-people -->
 			<div class="select-danhsach flex-box-center">
 				<div class="wrap-se wrap-se-llv">
 					<p>Loại Nghĩa Vụ</p>
@@ -34,14 +34,16 @@
 						<option th:each="lydo : ${lydoOfCongdan.Loainghiavu.lydos}"
 								th:value="${lydo.idlydo}"
 								th:text="${lydo.mota}"
-								th:selected="${lydoOfCongdan.idlydo == lydo.idlydo}"> Khác </option>
+								th:selected="${lydoOfCongdan.idlydo == lydo.idlydo}"> 
+						</option>
 					</select>
 				</div>
 				<div class="wrap-se"> <button class="btn-xemds btn btn-style bgGreen"> Xem </button> </div>
 			</div>
 			<div class="wrap-all-table">
-				<h2 class="title-loainghiavu" th:text="${lydoOfCongdan.Loainghiavu.mota}"></h2>
+				<h2 class="title-loainghiavu"> Danh sách công dân <span th:text="${lydoOfCongdan.Loainghiavu.mota}" th:remove="tag"></span> </h2>
 				<h3 class="title-lydo" th:text="${lydoOfCongdan.mota}"></h3>
+
 				<div class="wrap-table-condition" th:if="${sizeOfListPhanloailydo} == 0">
 					<table class="table-all-congdan table-datatable display compact" th:objet="${listCongdan}">
 						<thead>
@@ -90,6 +92,7 @@
 						</tbody>
 					</table>
 				</div> <!-- /wrap-table-condition -->
+
 				<div class="wrap-table-condition" 
 					 th:if="${sizeOfListPhanloailydo} > 0"
 					 th:each="phanloailydo : ${lydoOfCongdan.phanloailydos}">
@@ -104,8 +107,7 @@
 								<th class="tooltip-inline fast" data-tooltip="Tổ Dân Phố">TDP</th>
 								<th>Trình Độ Học Vấn</th>
 								<th>Sức Khỏe</th>
-<!-- 								<th>Loại Nghĩa Vụ</th>
-								<th>Lý Do</th> -->
+
 								<th>Ghi Chú</th>
 								<th>Ghi Chú Cá Nhân</th>
 								<th>Sửa</th> 
@@ -122,8 +124,6 @@
 								<td th:text="${congdan.todanpho}"></td>
 								<td th:text="${congdan.trinhdohocvan}"></td>
 								<td th:text="${congdan.tinhtrangsuckhoe}"></td>
-<!-- 								<td th:text="${congdan.lydo.loainghiavu.mota}"></td>
-								<td th:text="${congdan.lydo.mota}"></td> -->
 								<td th:text="${congdan.ghichu}"></td>
 								<td th:text="${congdan.ghichucanhan}"></td>
 								<td><a class="sua-congdan tooltip-inline" 
@@ -142,7 +142,7 @@
 						</tbody>
 					</table>
 				</div> <!-- /wrap-table-condition -->
-			</div>
+			</div>  <!-- /wrap-all-table -->
 		</div> <!-- /wrap-article -->
 	</section>
 

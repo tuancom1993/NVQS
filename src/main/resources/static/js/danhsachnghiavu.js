@@ -66,7 +66,7 @@ $(document).ready(function() {
 					$(".mess").text('Xóa công dân thất bại. Vui lòng thử lại..!').show(1);
 				}
 			},
-			err : function(){
+			error : function(){
 				$(".mess").text('Xóa công dân thất bại. Vui lòng thử lại..!').show(1);
 			}
 		});
@@ -77,7 +77,23 @@ $(document).ready(function() {
 
 	$(".btn-xemds").click(function(event) {
 		var idLydo = $("#se-ld").val();
-		window.location.href = "/danhsachcongdan/danhsach?id="+idLydo;
+		$.ajax({
+			// contentType: 'application/text; charset=utf-8',
+			type: 'POST',
+			url: '/checklydoisexists',
+			data: { idlydo : idLydo},
+			success : function(data) {
+				if(data == "OK") {
+					window.location.href = "/danhsachcongdan/danhsach?id="+idLydo;
+				}
+				else if (data == "NOK") {
+					console.log("Khong tim thay ly do voi ma "+idLydo);
+				}
+			},
+			error : function(){
+				console.log("Khong tim thay ly do voi ma "+idLydo);
+			}
+		});
 	});
 });
 

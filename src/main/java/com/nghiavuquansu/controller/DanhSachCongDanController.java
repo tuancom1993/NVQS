@@ -38,6 +38,7 @@ public class DanhSachCongDanController {
 			model.addAttribute("listLoainghiavu", loaiNghiaVuService.getListLoaiNghiaVu());
 			model.addAttribute("lydoOfCongdan", lyDoService.findLyDo(idlydo));
 			model.addAttribute("sizeOfListPhanloailydo", phanLoaiLyDoService.countPhanLoaiLyDoByIdlydo(idlydo));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
