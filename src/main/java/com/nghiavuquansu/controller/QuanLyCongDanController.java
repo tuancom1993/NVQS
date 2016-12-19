@@ -23,6 +23,7 @@ import com.nghiavuquansu.entity.Capdaotao;
 import com.nghiavuquansu.entity.Congdan;
 import com.nghiavuquansu.entity.Loainghiavu;
 import com.nghiavuquansu.entity.Lydo;
+import com.nghiavuquansu.model.ErrorPageUtil;
 import com.nghiavuquansu.repository.CongDanRepoInterface;
 import com.nghiavuquansu.repository.LyDoRepoInterface;
 import com.nghiavuquansu.service.CapDaoTaoService;
@@ -62,6 +63,7 @@ public class QuanLyCongDanController {
 	public String showSuaCongDan(@RequestParam("id") int idcongdan, Model model){
 		try {
 			Congdan congdan = congDanService.getCongDan(idcongdan);
+			if(congdan==null) return ErrorPageUtil.showErrorPage(model, "Xin lỗi chúng tôi không tìm thấy công dân với mã công dân là "+idcongdan);
 			List<Capdaotao> listCapdaotao = capDaoTaoService.getListCapDaoTao();
 			List<Lydo> listLydo = congdan.getLydo().getLoainghiavu().getLydos();
 			List<Loainghiavu> loainghiavus = loaiNghiaVuService.getListLoaiNghiaVu();

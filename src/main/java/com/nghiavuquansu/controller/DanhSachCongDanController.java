@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nghiavuquansu.entity.Congdan;
+import com.nghiavuquansu.model.ErrorPageUtil;
 import com.nghiavuquansu.repository.LyDoRepoInterface;
 import com.nghiavuquansu.repository.PhanLoaiLyDoRepoInterface;
 import com.nghiavuquansu.service.CongDanService;
@@ -31,17 +32,21 @@ public class DanhSachCongDanController {
 	}
 	
 	@GetMapping("/danhsachcongdan/danhsach")
-	public String showDanhSachCongDanTheoLyDo(@RequestParam("id") int idlydo ,Model model){
+	public String showDanhSachCongDanTheoLyDo(@RequestParam("id") int idlydo, Model model){
 		try {
+			if(!lyDoService.isExists(idlydo)){
+				return ErrorPageUtil.showErrorPage(model ,"Chúng tôi không tìm thấy danh sách công dân với mã là "+idlydo);
+			}
 			List<Congdan> listCongDan = congDanService.getListCongDanTheoLyDo(idlydo);
 			model.addAttribute("listCongdan", listCongDan);
 			model.addAttribute("listLoainghiavu", loaiNghiaVuService.getListLoaiNghiaVu());
 			model.addAttribute("lydoOfCongdan", lyDoService.findLyDo(idlydo));
 			model.addAttribute("sizeOfListPhanloailydo", phanLoaiLyDoService.countPhanLoaiLyDoByIdlydo(idlydo));
-			
+			return "danhsachnghiavu";
 		} catch (Exception e) {
 			e.printStackTrace();
+			return ErrorPageUtil.showErrorPage(model ,e.getMessage());
 		}
-		return "danhsachnghiavu";
+		
 	}
 }

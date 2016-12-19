@@ -1,0 +1,22 @@
+.wrap-err{
+	width: 500px;
+	margin: 50px auto;
+}
+
+.wrap-err img{
+	display: block;
+	margin: auto;
+	width: 150px;
+	height: 150px;
+}
+
+.wrap-err .title{
+	text-align: center;
+	font-size: 30px;
+	margin: 10px 0;
+}
+
+.wrap-err .err-content{
+	text-align: center;
+	font-size: 16px;
+}

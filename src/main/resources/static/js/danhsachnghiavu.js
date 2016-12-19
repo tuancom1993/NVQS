@@ -77,7 +77,8 @@ $(document).ready(function() {
 
 	$(".btn-xemds").click(function(event) {
 		var idLydo = $("#se-ld").val();
-		$.ajax({
+		window.location.href = "/danhsachcongdan/danhsach?id="+idLydo;
+		/*$.ajax({
 			// contentType: 'application/text; charset=utf-8',
 			type: 'POST',
 			url: '/checklydoisexists',
@@ -93,7 +94,7 @@ $(document).ready(function() {
 			error : function(){
 				console.log("Khong tim thay ly do voi ma "+idLydo);
 			}
-		});
+		});*/
 	});
 });
 
