@@ -21,6 +21,20 @@ public class AgeUtil {
         }
         return year;
     }
+	
+	public static int getAge(Date currentDate ,Date birdate) {
+        Calendar cNow = Calendar.getInstance();
+        cNow.setTime(currentDate);
+        Calendar cBirthday = Calendar.getInstance();
+        cBirthday.setTime(birdate);
+        int year = cNow.get(Calendar.YEAR) - cBirthday.get(Calendar.YEAR);
+        int m = cNow.get(Calendar.MONTH) - cBirthday.get(Calendar.MONTH);
+        int d = cNow.get(Calendar.DAY_OF_MONTH) - cBirthday.get(Calendar.DAY_OF_MONTH);
+        if (m < 0 || (m == 0 && d < 0)) {
+            year--;
+        }
+        return year;
+    }
 
     public static boolean isBetween(Date birdate, int from, int to) {
         boolean result = true;

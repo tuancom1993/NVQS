@@ -13,7 +13,7 @@
 	<section class="wrap-menu-article">
 		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
 		<div class="wrap-article">
-			<h3 class="page-title"> Danh Sach Cong Dan Qua Do Tuoi Nghia Vu</h3>
+			<h3 class="page-title"> Danh Sách Công Dân Quá Độ Tuổi Nghĩa Vụ</h3>
 			<div class="wrap-table">
 				<table class="table-datatable display compact">
 					<thead>
@@ -33,7 +33,7 @@
 						<tr th:each="congdan, i : ${listCongDanQuaTuoiNghiaVu}">
 							<td th:text="${i.index + 1}"></td>
 							<td th:text="${congdan.hoten}"></td>
-							<td th:text="${congdan.ngaysinh}"></td>
+							<td th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
 							<td th:text="${congdan.hotencha}"></td>
 							<td th:text="${congdan.todanpho}"></td>
 							<td th:text="${congdan.lydo.loainghiavu.mota}"></td>

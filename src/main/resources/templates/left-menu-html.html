@@ -11,30 +11,47 @@
 		<div class="wrap-menu">
 			<h3 class="title-menu"> Menu</h3>
 			<ul class="menu">
-				<li><a  href="#" th:href="@{/trangchu}"> Trang chủ </a></li>
-				<li><a href="#" th:href="@{/danhsachcongdan/danhsachquatuoinghiavu}"> DSCD quá tuổi nghĩa vụ </a>
+				<li><a class="trangchu"  th:href="@{/trangchu}"> Trang chủ </a></li>
+				<li><a class="quatuoi"  th:href="@{/danhsachcongdan/danhsachquatuoinghiavu}"> DSCD quá tuổi nghĩa vụ </a>
 				</li>
-				<li><a class="menu-active has-sub-menu" href="#"> DSCD đề nghị tạm hoãn gọi nhập ngũ</a>
+				<li><a class="menu-ds" > DSCD đề nghị tạm hoãn gọi nhập ngũ</a>
 					<ul class="sub-menu">
-						<li><a href="#"> Chưa đủ sức khỏe phục vụ tại ngũ theo kết luận của Hội đồng khám sức khỏe </a></li>
-						<li><a href="#"> Là lao động duy nhất phải trực tiếp nuôi người khác trong gia đình không còn sức lao động hoặc chưa đến tuổi lao động </a></li>
-						<li><a href="#"> Một con của bệnh binh, người nhiễm chất độc da cam suy giảm khả năng lao động từ 61 - 80% </a></li>	
-						<li><a href="#"> Có anh, chị hoặc em ruột là HSQ-BS đang phục vụ tại ngũ; HSQ chiến sĩ thực hiện nghĩa vụ tham gia Công an nhân dân </a></li>
-						<li><a href="#">Người thuộc diện di dân, giãn dân trong 3 năm đầu đến các xã đặc biệt khó khắn theo dự án phát triển kinh té - xã hôi</a></li>
-						<li><a href="#">Cán bộ, công chức, viên chức, TNXP được điều động đến công tác, làm việc ở vùng có điều kiện kinh tế - xã hội đặc biệt khó khăn theo quy định của pháp luật</a></li>
-						<li><a href="#">Đang học tại cơ sở giáo dục phổ thông, đang được đào tạo trình độ đại học chính quy, cao đẳng chính quy</a></li>
+						<li><a  data-idlydo="2"> Chưa đủ sức khỏe phục vụ tại ngũ theo kết luận của Hội đồng khám sức khỏe </a></li>
+						<li><a  data-idlydo="3"> Là lao động duy nhất phải trực tiếp nuôi người khác trong gia đình không còn sức lao động hoặc chưa đến tuổi lao động </a></li>
+						<li><a  data-idlydo="4"> Một con của bệnh binh, người nhiễm chất độc da cam suy giảm khả năng lao động từ 61 - 80% </a></li>	
+						<li><a  data-idlydo="5"> Có anh, chị hoặc em ruột là HSQ-BS đang phục vụ tại ngũ; HSQ chiến sĩ thực hiện nghĩa vụ tham gia Công an nhân dân </a></li>
+						<li><a  data-idlydo="6">Người thuộc diện di dân, giãn dân trong 3 năm đầu đến các xã đặc biệt khó khắn theo dự án phát triển kinh té - xã hôi</a></li>
+						<li><a  data-idlydo="7">Cán bộ, công chức, viên chức, TNXP được điều động đến công tác, làm việc ở vùng có điều kiện kinh tế - xã hội đặc biệt khó khăn theo quy định của pháp luật</a></li>
+						<li><a  data-idlydo="8">Đang học tại cơ sở giáo dục phổ thông, đang được đào tạo trình độ đại học chính quy, cao đẳng chính quy</a></li>
 					</ul>
 				</li>
-				<li><a href="#"> DSCD đề nghị miễn gọi nhập ngũ </a>
+				<li><a  class="menu-ds"> DSCD đề nghị miễn gọi nhập ngũ </a>
 					<ul class="sub-menu">
-						<li><a href="#">Con liệt sĩ, con Thương binh hạng 1</a></li>
-						<li><a href="#">Một anh hoặc một em trai của liệt sĩ</a></li>
-						<li><a href="#">Một con của thương binh hạng 2, một con của bệnh binh từ 81% trở lên, một con của người nhiễm chất độc da cam từ 81% trở lên</a></li>
-						<li><a href="#">Người làm công tác cơ yếu không phải là quân nhân, công an nhân dân</a></li>
-						<li><a href="#">Cán bộ, công chức, viên chức, thanh niên xong phong được điều động đến công tác, làm việc ở vùng có điều kiện KT-XH đặc biệt khó khăn từ 24 tháng trở lên</a></li>
+						<li><a  data-idlydo="9">Con liệt sĩ, con Thương binh hạng 1</a></li>
+						<li><a  data-idlydo="10">Một anh hoặc một em trai của liệt sĩ</a></li>
+						<li><a  data-idlydo="11">Một con của thương binh hạng 2, một con của bệnh binh từ 81% trở lên, một con của người nhiễm chất độc da cam từ 81% trở lên</a></li>
+						<li><a  data-idlydo="12">Người làm công tác cơ yếu không phải là quân nhân, công an nhân dân</a></li>
+						<li><a  data-idlydo="13">Cán bộ, công chức, viên chức, thanh niên xong phong được điều động đến công tác, làm việc ở vùng có điều kiện KT-XH đặc biệt khó khăn từ 24 tháng trở lên</a></li>
 					</ul>
 				</li>
-				<li><a href="#"> Quit </a></li>
+				<li><a  class="menu-ds"> DSCD đề nghị không gọi nhập ngũ, chưa gọi nhập ngũ </a>
+					<ul class="sub-menu">
+						<li><a  data-idlydo="14">Vi phạm tiêu chuẩn chính trị theo Thông tư 50/TTLT-BQP-BCA</a></li>
+					</ul>
+				</li>
+				<li><a  class="menu-ds"> DSCD đề nghị chưa gọi nhập ngũ </a>
+					<ul class="sub-menu">
+						<li><a  data-idlydo="15">Chưa đủ tiêu chuẩn nhập ngũ, trình độ văn hóa thấp</a></li>
+						<li><a  data-idlydo="16">Đang thực hiện nghĩa vụ Dân quân - Tự vệ</a></li>
+					</ul>
+				</li>
+				<li><a  class="menu-ds"> DSCD đủ điều kiện gọi khám sức khỏe</a>
+					<ul class="sub-menu">
+						<li><a  data-idlydo="17">Có mặt tại địa phương</a></li>
+						<li><a  data-idlydo="18">(Đề nghị Hội Đồng NVQS xem xét chưa gọi khám sức khỏe đợt này</a></li>
+						<li><a  data-idlydo="19">(Thực hiện nghĩa vụ tham gia Công an nhân dân)</a></li>
+					</ul>
+				</li>
 			</ul>
 		</div>
 	</div>

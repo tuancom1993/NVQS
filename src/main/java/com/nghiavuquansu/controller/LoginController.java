@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nghiavuquansu.configurate.CustomUserDetail;
 import com.nghiavuquansu.entity.User;
+import com.nghiavuquansu.model.PasswordEncoderUtil;
 import com.nghiavuquansu.service.CongDanService;
 import com.nghiavuquansu.service.LoaiNghiaVuService;
 
@@ -20,6 +21,7 @@ public class LoginController {
 
 	@RequestMapping("/dangnhap")
 	public String showLoginPage() {
+		System.err.println(PasswordEncoderUtil.getPasswordEncoder().encode("admin"));
 		return "login";
 	}
 

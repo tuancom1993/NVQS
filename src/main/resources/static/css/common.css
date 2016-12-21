@@ -29,6 +29,10 @@ ul li a {
 	text-decoration: none;
 }
 
+a{
+	cursor: pointer;
+}
+
 header.header{
 	width: 100%;
 	height: 70px;
@@ -320,9 +324,9 @@ section.wrap-menu-article div.wrap-menu ul.menu li ul.sub-menu li a:hover{
 }
 
 
-section.wrap-menu-article div.wrap-menu ul.menu > li > a:hover ~ ul.sub-menu{
+/*section.wrap-menu-article div.wrap-menu ul.menu > li > a:hover ~ ul.sub-menu{
 	max-height: 500px;
-}
+}*/
 
 
 section.wrap-menu-article div.wrap-menu ul.menu > li > a.menu-active ~ ul.sub-menu{
@@ -743,6 +747,11 @@ section.wrap-menu-article div.wrap-article p{
 			100% { width: 50px; height: 50px; margin-top: -25px; margin-left: -25px; background-color: rgba(50,50,50,0.1)}
 		}
 		/***********************************INPUT TEXT********************************************/
+		input{
+			padding: 5px;
+			margin-left: 5px;
+		}
+
 		div.wrap-input-style{
 			display: inline-block;
 			position: relative;
@@ -751,6 +760,7 @@ section.wrap-menu-article div.wrap-article p{
 		}
 		div.wrap-input-style input{
 			padding: 0 2px;
+			margin-left: 0;
 			border: none;
 			border-bottom: 1px solid rgba(0,0,0,0.3);
 			-webkit-transition: all 1s;

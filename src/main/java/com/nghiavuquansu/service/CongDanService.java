@@ -34,9 +34,15 @@ public class CongDanService {
 		for(Congdan congdan : congdans){
 			int idcapdaotao = congdan.getCapdaotao().getIdcapdaotao();
 			Date ngaysinh = congdan.getNgaysinh();
-			if(((idcapdaotao == 2 || idcapdaotao ==3) && AgeUtil.getAge(ngaysinh) > 25) || 
-					((idcapdaotao != 2 || idcapdaotao != 3) && AgeUtil.getAge(ngaysinh) > 23)){
+			int age = AgeUtil.getAge(ngaysinh);
+			if((idcapdaotao == 3 || idcapdaotao == 4) && age > 27){
 				congDanQuaTuoiNghiaVus.add(congdan);
+//				System.err.println("Age of congdan added [1]: "+AgeUtil.getAge(ngaysinh) + " idcapdaotao: "+idcapdaotao);
+//				System.err.println("Cap dao tao [1]: "+congdan.getCapdaotao().getMota() + " | id: "+congdan.getCapdaotao().getIdcapdaotao());
+			} else if ((idcapdaotao != 4 && idcapdaotao != 3) && age > 25 ){
+				congDanQuaTuoiNghiaVus.add(congdan);
+//				System.err.println("Age of congdan added [2]: "+AgeUtil.getAge(ngaysinh) + " idcapdaotao: "+idcapdaotao);
+//				System.err.println("Cap dao tao [2]: "+congdan.getCapdaotao().getMota() + " | id: "+congdan.getCapdaotao().getIdcapdaotao());
 			}
 		}
 		return congDanQuaTuoiNghiaVus;

@@ -2,6 +2,9 @@ var listLoaiNghiaVu;
 var listLyDo_Current;
 
 $(document).ready(function() {
+	clearClassMenuActive();
+	$(".menu li a.trangchu").addClass('menu-active');
+
 		var dttable = $(".table-datatable").DataTable({
 			"language": {
 	            "decimal":        "",
@@ -28,7 +31,7 @@ $(document).ready(function() {
 			    }
         },
         "columnDefs": [
-		    { "width": "100px", "targets": 1 }
+		    { "width": "100px", "targets": 1 }, {"width": "100px", "targets": 2}
 		  ],
 		});
 

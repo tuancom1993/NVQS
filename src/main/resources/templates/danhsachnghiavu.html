@@ -67,7 +67,7 @@
 							<tr th:each="congdan, i : ${listCongdan}">
 								<td th:text="${i.index + 1}"></td>
 								<td th:text="${congdan.hoten}"></td>
-								<td th:text="${congdan.ngaysinh}"></td>
+								<td th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
 								<td th:text="${congdan.hotencha}"></td>
 								<td th:text="${congdan.todanpho}"></td>
 								<td th:text="${congdan.trinhdohocvan}"></td>
@@ -92,7 +92,11 @@
 						</tbody>
 					</table>
 				</div> <!-- /wrap-table-condition -->
-
+				
+				<div class="search-all" th:if="${sizeOfListPhanloailydo} > 0">
+					<span>Tim kiem tat ca</span>
+					<input type="text" class="input-search-all">
+				</div>
 				<div class="wrap-table-condition" 
 					 th:if="${sizeOfListPhanloailydo} > 0"
 					 th:each="phanloailydo : ${lydoOfCongdan.phanloailydos}">
@@ -119,7 +123,7 @@
 								th:if="${phanloailydo.idphanloailydo == congdan.idphanloailydo}">
 								<td th:text="${congdan.idcongdan}"></td>
 								<td th:text="${congdan.hoten}"></td>
-								<td th:text="${congdan.ngaysinh}"></td>
+								<td th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
 								<td th:text="${congdan.hotencha}"></td>
 								<td th:text="${congdan.todanpho}"></td>
 								<td th:text="${congdan.trinhdohocvan}"></td>

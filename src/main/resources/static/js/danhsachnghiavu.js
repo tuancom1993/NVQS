@@ -1,7 +1,9 @@
-var listLoaiNghiaVu;
+	var listLoaiNghiaVu;
 var listLyDo_Current;
 
 $(document).ready(function() {
+
+	setMenu();
 		var dttable = $(".table-datatable").DataTable({
 			"language": {
 	            "decimal":        "",
@@ -70,6 +72,10 @@ $(document).ready(function() {
 				$(".mess").text('Xóa công dân thất bại. Vui lòng thử lại..!').show(1);
 			}
 		});
+	});
+
+	$(".input-search-all").on("keyup", function(){
+		dttable.search($(this).val()).draw();
 	});
 
 	/************************************LIST LOAI NGHIA VU*************************************/
@@ -155,3 +161,34 @@ function loadAjaxLoaiNghiaVu(){
     });
     return json;
 }
+
+
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+}
+
+
+function setMenu(){
+		clearClassMenuActive();
+		var p_idlydo = getUrlParameter("id");
+		console.log(p_idlydo);
+		var a_ds = $(".menu-ds ~ ul.sub-menu li a");
+		a_ds.each(function(index, el) {
+			if($(el).attr('data-idlydo') == p_idlydo){
+				console.log("Co roi");
+				$(el).closest("ul.sub-menu").parents("li").find("a.menu-ds").addClass('menu-active');
+				$(el).addClass('sub-menu-active');
+			}
+		});	
+	}

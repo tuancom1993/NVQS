@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	clearClassMenuActive();
+	$(".menu li a.quatuoi").addClass('menu-active');
+
 		var dttable = $(".table-datatable").DataTable({
 			"language": {
 	            "decimal":        "",

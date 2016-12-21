@@ -1,4 +1,6 @@
 	$(document).ready(function($) {
+		console.log("Path: "+window.location.pathname);
+
 		$(".icon-hidden").click(function(event) {
 			$(this).toggleClass("menu-hiddened");
 			$(".wrap-menu").toggleClass('menu-hidden');
@@ -13,12 +15,16 @@
 			$(this).toggleClass('sub-menu-active');
 			$(this).parent().parent().parent().find(' > a').toggleClass('menu-active');
 		});
-		function clearClassMenuActive(){
-			$("ul.menu .menu-active").removeClass('menu-active');
-			$("ul.sub-menu .sub-menu-active").removeClass('sub-menu-active');
-		}
 
-		/*****************************DATA TABLE************************************/
-		
+
+		/*****************************Menu click show danh sach cd********************************/
+
+		$(".menu-ds ~ ul.sub-menu li a").click(function(event) {
+		 	window.location.href = "/danhsachcongdan/danhsach?id="+$(this).attr('data-idlydo');
+		});
 	});
 
+function clearClassMenuActive(){
+	$("ul.menu .menu-active").removeClass('menu-active');
+	$("ul.sub-menu .sub-menu-active").removeClass('sub-menu-active');
+}

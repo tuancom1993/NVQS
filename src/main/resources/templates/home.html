@@ -59,7 +59,7 @@
 						<tr th:each="congdan, i : ${listCongdan}">
 							<td th:text="${i.index + 1}"></td>
 							<td th:text="${congdan.hoten}"></td>
-							<td th:text="${congdan.ngaysinh}"></td>
+							<td th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
 							<td th:text="${congdan.hotencha}"></td>
 							<td th:text="${congdan.todanpho}"></td>
 							<td th:text="${congdan.trinhdohocvan}"></td>
