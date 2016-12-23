@@ -2,6 +2,10 @@
 	margin: 20px 0;
 }
 
+.wrap-table{
+	margin-top: 30px;
+}
+
 .table-datatable{
 	width: 100% !important;
 }

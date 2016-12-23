@@ -1,5 +1,8 @@
 package com.nghiavuquansu.service;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,13 +31,22 @@ public class CongDanService {
 		return congDanRepoInterface.findOne(idcongdan);
 	}
 	
-	public List<Congdan> getListCongDanQuaTuoiNghiaVu(){
+	public List<Congdan> getListCongDanQuaTuoiNghiaVu(String date, String month, String year) throws ParseException{
 		ArrayList<Congdan> congdans = (ArrayList<Congdan>) congDanRepoInterface.findAll();
 		ArrayList<Congdan> congDanQuaTuoiNghiaVus = new ArrayList<>();
 		for(Congdan congdan : congdans){
 			int idcapdaotao = congdan.getCapdaotao().getIdcapdaotao();
 			Date ngaysinh = congdan.getNgaysinh();
-			int age = AgeUtil.getAge(ngaysinh);
+			int age = 0;
+			if ("0".equals(date) && "0".equals(month) && "0".equals(year)){
+				age = AgeUtil.getAge(ngaysinh);
+			} else {
+				String dateString = date+"/"+month+"/"+year;
+				DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+				Date dateFrom = dateFormat.parse(dateString);
+				age = AgeUtil.getAge(dateFrom, ngaysinh);
+			}
+				
 			if((idcapdaotao == 3 || idcapdaotao == 4) && age > 27){
 				congDanQuaTuoiNghiaVus.add(congdan);
 //				System.err.println("Age of congdan added [1]: "+AgeUtil.getAge(ngaysinh) + " idcapdaotao: "+idcapdaotao);

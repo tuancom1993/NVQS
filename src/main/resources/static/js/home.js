@@ -29,11 +29,42 @@ $(document).ready(function() {
 			        "sortAscending":  ": activate to sort column ascending",
 			        "sortDescending": ": activate to sort column descending"
 			    }
-        },
-        "columnDefs": [
-		    { "width": "100px", "targets": 1 }, {"width": "100px", "targets": 2}
-		  ],
+        	},
+	        "columnDefs": [
+			    { "width": "100px", "targets": 1 }, {"width": "100px", "targets": 2}
+			],
+			"sScrollY": "400px",
+        	"bPaginate": false,
+        	"bAutoWidth" : false,
+        	"sScrollX" : false,
 		});
+
+		// $('.table-datatable').dataTable( {
+		//   	"autoWidth": false
+		// } );
+
+		$(window).on('resize', function () {
+   			 dttable.columns.adjust().draw(); 
+  		});
+
+		// $(".wrap-article").on('resize', function () {
+  //  			 dttable.columns.adjust().draw(); 
+  // 		});
+  		
+
+  		$(".icon-hidden").click(function myLoop(){
+  			setTimeout(
+			  function() 
+			  {
+			  	if( $(".wrap-menu ").width() == 0 || $(".wrap-menu ").width() == 230 ){
+  					dttable.columns.adjust().draw(); 
+  					return;
+  				} else {
+  					myLoop();
+  				}
+			    //dttable.columns.adjust().draw(); 
+			  }, 100);
+  		});
 
 	var rowCongDanClickedXoa_Current;
 	$(".xoa-congdan").click(function(event) {

@@ -15,11 +15,11 @@
 }
 
 .table-all-congdan tbody tr:nth-child(odd){
-	background-color: #E2E4FF;
+	/*background-color: #E2E4FF;*/
 }
 
 .table-datatable{
-	width: 100% !important;
+	/*width: 100% !important;*/
 }
 
 table thead th{

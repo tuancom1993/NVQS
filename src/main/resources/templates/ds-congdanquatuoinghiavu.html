@@ -6,6 +6,7 @@
 	<title>Danh Sach Cong Dan Qua Do Tuoi Nghia Vu</title>
 	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}"/>
 	<link rel="stylesheet" href="../static/lib/datatable/css/jquery.dataTables.min.css" th:href="@{/lib/datatable/css/jquery.dataTables.min.css}">
+	<link rel="stylesheet" href="../static/lib/datetimepicker/jquery.datetimepicker.css" th:href="@{/lib/datetimepicker/jquery.datetimepicker.css}"/>
 	<link rel="stylesheet" href="../static/css/ds-congdanquatuoinghiavu.css" th:href="@{/css/ds-congdanquatuoinghiavu.css}">
 </head>
 <body>
@@ -14,6 +15,11 @@
 		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
 		<div class="wrap-article">
 			<h3 class="page-title"> Danh Sách Công Dân Quá Độ Tuổi Nghĩa Vụ</h3>
+			<div class="wrap-from-date">
+				<span>Tính từ ngày:</span>
+				<input class="from-date" type="text" th:value="${dateFrom == '0/0/0'} ? ${#dates.format(#dates.createNow(), 'dd/MM/yyyy')} : ${dateFrom}">
+				<button class="btn btn-style btn-xemdstungay"> Xem </button>
+			</div>
 			<div class="wrap-table">
 				<table class="table-datatable display compact">
 					<thead>
@@ -76,6 +82,7 @@
 <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
 <script type="text/javascript" src="../static/lib/datatable/js/jquery.dataTables.min.js" th:src="@{/lib/datatable/js/jquery.dataTables.min.js}"></script>
 <script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" src="../static/lib/datetimepicker/jquery.datetimepicker.full.js" th:src="@{/lib/datetimepicker/jquery.datetimepicker.full.js}"></script> 
 <script type="text/javascript" src="../static/js/ds-congdanquatuoinghiavu.js" th:src="@{/js/ds-congdanquatuoinghiavu.js}"></script>
 <script type="text/javascript">
 	$(document).ready(function() {

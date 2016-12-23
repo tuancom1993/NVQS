@@ -2,6 +2,16 @@ $(document).ready(function() {
 	clearClassMenuActive();
 	$(".menu li a.quatuoi").addClass('menu-active');
 
+	$.datetimepicker.setLocale('vi');
+	    $('.from-date').datetimepicker({
+			timepicker:false,
+			dayOfWeekStart : 1,
+			format:'d/m/Y',
+			formatDate:'Y/m/d',
+			minDate:'1870/01/02', // yesterday is minimum date
+			maxDate:'2100/01/02' // and tommorow is maximum date calendar
+		});
+
 		var dttable = $(".table-datatable").DataTable({
 			"language": {
 	            "decimal":        "",
@@ -72,6 +82,11 @@ $(document).ready(function() {
 		});
 	});
 
+	$(".btn-xemdstungay").click(function(event) {
+		var dateFrom = $(".from-date").val();
+		if(dateFrom == "") dateFrom = "0/0/0";
+		window.location.href = "/danhsachcongdan/danhsachquatuoinghiavu/"+dateFrom;
+	});
 });
 
 function removeRow(datatable, el){

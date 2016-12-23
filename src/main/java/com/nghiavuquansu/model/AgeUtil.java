@@ -22,9 +22,9 @@ public class AgeUtil {
         return year;
     }
 	
-	public static int getAge(Date currentDate ,Date birdate) {
+	public static int getAge(Date dateFrom ,Date birdate) {
         Calendar cNow = Calendar.getInstance();
-        cNow.setTime(currentDate);
+        cNow.setTime(dateFrom);
         Calendar cBirthday = Calendar.getInstance();
         cBirthday.setTime(birdate);
         int year = cNow.get(Calendar.YEAR) - cBirthday.get(Calendar.YEAR);

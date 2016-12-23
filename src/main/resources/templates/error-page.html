@@ -14,7 +14,7 @@
 		<div class="wrap-article">
 			<div class="wrap-err">
 				<img src="../static/images/icons/not-found.png" th:src="@{/images/icons/not-found.png}">
-				<div class="title">Xin lỗi, đã xảy ra vấn đề....!</div>
+				<div class="title" th:text="${title == null} ? 'Xin lỗi, đã xảy ra vấn đề....!' : ${title}">Xin lỗi, đã xảy ra vấn đề....!</div>
 				<p class="err-content" th:text="${content}">Chung toi khong tim  thay danh sach ma ban muon tim kiem</p>
 			</div>
 		</div> <!-- /wrap-article -->
