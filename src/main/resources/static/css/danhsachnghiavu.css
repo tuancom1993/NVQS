@@ -24,6 +24,11 @@
 	margin: 20px 0;
 }
 
+.table-all-congdan {
+	padding-top: 15px;
+}
+
+
 .table-all-congdan tbody tr:nth-child(odd){
 	background-color: #E2E4FF;
 }

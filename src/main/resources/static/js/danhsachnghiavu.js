@@ -1,4 +1,4 @@
-	var listLoaiNghiaVu;
+var listLoaiNghiaVu;
 var listLyDo_Current;
 
 $(document).ready(function() {
@@ -7,22 +7,22 @@ $(document).ready(function() {
 		var dttable = $(".table-datatable").DataTable({
 			"language": {
 	            "decimal":        "",
-			    "emptyTable":     "Khong tim thay ket qua (khong co du lieu)",
-			    "info":           "Hien thi _START_ den _END_ cua _TOTAL_ ket qua",
-			    "infoEmpty":      "Hien thi 0 den 0 cua 0 ket qua",
+			    "emptyTable":     "Không tìm thấy kết quả (không có dữ liệu)",
+			    "info":           "Hiển thị _START_ đến _END_ của _TOTAL_ kết quả",
+			    "infoEmpty":      "Hiển thị 0 đến 0 của 0 kết quả",
 			    "infoFiltered":   "(filtered from _MAX_ total entries)",
 			    "infoPostFix":    "",
 			    "thousands":      ",",
-			    "lengthMenu":     "Hien thi _MENU_ ket qua",
+			    "lengthMenu":     "Hiển thị _MENU_ kết quả",
 			    "loadingRecords": "Loading...",
 			    "processing":     "Processing...",
-			    "search":         "Tim Kiem:",
-			    "zeroRecords":    "Khong tim thay ket qua",
+			    "search":         "Tìm Kiếm:",
+			    "zeroRecords":    "Không tìm thấy kết quả",
 			    "paginate": {
-			        "first":      "Trang dau",
-			        "last":       "Trang cuoi",
-			        "next":       "Tiep",
-			        "previous":   "Truoc"
+			        "first":      "Trang đầu",
+			        "last":       "Trang cuối",
+			        "next":       "Tiếp",
+			        "previous":   "Trước"
 			    },
 			    "aria": {
 			        "sortAscending":  ": activate to sort column ascending",
@@ -178,7 +178,7 @@ function getUrlParameter(sParam) {
     }
 }
 
-
+	
 function setMenu(){
 		clearClassMenuActive();
 		var p_idlydo = getUrlParameter("id");

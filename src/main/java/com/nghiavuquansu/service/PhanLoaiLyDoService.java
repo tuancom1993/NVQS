@@ -10,7 +10,7 @@ import com.nghiavuquansu.repository.PhanLoaiLyDoRepoInterface;
 public class PhanLoaiLyDoService {
 	@Autowired PhanLoaiLyDoRepoInterface phanLoaiLyDoRepoInterface;
 	
-	public int countPhanLoaiLyDoByIdlydo(int idlydo){
+	public int countPhanLoaiLyDoByIdLydo(int idlydo){
 		Lydo lydo = new Lydo();
 		lydo.setIdlydo(idlydo);
 		return phanLoaiLyDoRepoInterface.countByLydo(lydo);

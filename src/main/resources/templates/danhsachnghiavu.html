@@ -52,11 +52,11 @@
 								<th>Họ Tên</th>
 								<th>Ngày Sinh</th>
 								<th>Tên Cha</th>
-								<th>Tổ Dân Phố</th>
+								<th class="tooltip-inline fast" data-tooltip="Tổ Dân Phố">TDP</th>
 								<th>Trình Độ Học Vấn</th>
 								<th>Sức Khỏe</th>
-								<th>Loại Nghĩa Vụ</th>
-								<th>Lý Do</th>
+								<!-- <th>Loại Nghĩa Vụ</th>
+								<th>Lý Do</th> -->
 								<th>Ghi Chú</th>
 								<th>Ghi Chú Cá Nhân</th>
 								<th>Sửa</th> 
@@ -72,8 +72,8 @@
 								<td th:text="${congdan.todanpho}"></td>
 								<td th:text="${congdan.trinhdohocvan}"></td>
 								<td th:text="${congdan.tinhtrangsuckhoe}"></td>
-								<td th:text="${congdan.lydo.loainghiavu.mota}"></td>
-								<td th:text="${congdan.lydo.mota}"></td>
+								<!-- <td th:text="${congdan.lydo.loainghiavu.mota}"></td>
+								<td th:text="${congdan.lydo.mota}"></td> -->
 								<td th:text="${congdan.ghichu}"></td>
 								<td th:text="${congdan.ghichucanhan}"></td>
 								<td><a class="sua-congdan tooltip-inline" 
@@ -111,7 +111,6 @@
 								<th class="tooltip-inline fast" data-tooltip="Tổ Dân Phố">TDP</th>
 								<th>Trình Độ Học Vấn</th>
 								<th>Sức Khỏe</th>
-
 								<th>Ghi Chú</th>
 								<th>Ghi Chú Cá Nhân</th>
 								<th>Sửa</th> 

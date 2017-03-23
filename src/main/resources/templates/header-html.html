@@ -15,11 +15,12 @@
 				</ul>
 				<div class="account-login">
 					<img class="avatar" src="../static/images/icons/admin.png" th:src="@{/images/icons/admin.png}" alt=""/>
-					<span class="information"> Vu Xuan Tuan Anh 22 </span>
+					<span class="information" sec:authentication="principal.user.hoten"> Vu Xuan Tuan Anh </span>
+
 					<ul class="menu-acount">
-						<li><a href="#">Thong tin ca nhan</a></li>
-						<li><a href="#"> Doi mat khau</a></li>
-						<li><a href="#" th:href="@{/thoat}"> Thoat</a></li>
+						<li><a href="#">Thông tin cá nhân</a></li>
+						<li><a href="#"> Đổi mật khẩu</a></li>
+						<li><a href="#" th:href="@{/thoat}"> Thoát</a></li>
 					</ul>
 				</div>
 			</div>

@@ -52,7 +52,7 @@ public class DanhSachCongDanController {
 			model.addAttribute("listCongdan", listCongDan);
 			model.addAttribute("listLoainghiavu", loaiNghiaVuService.getListLoaiNghiaVu());
 			model.addAttribute("lydoOfCongdan", lyDoService.findLyDo(idlydo));
-			model.addAttribute("sizeOfListPhanloailydo", phanLoaiLyDoService.countPhanLoaiLyDoByIdlydo(idlydo));
+			model.addAttribute("sizeOfListPhanloailydo", phanLoaiLyDoService.countPhanLoaiLyDoByIdLydo(idlydo));
 
 			return "danhsachnghiavu";
 		} catch (Exception e) {

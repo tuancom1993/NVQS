@@ -73,6 +73,7 @@ public class QuanLyCongDanController {
 			model.addAttribute("listLoainghiavu", loainghiavus);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return ErrorPageUtil.showErrorPage(model, e.toString());
 		}
 		return "suacongdan"; 
 	}
