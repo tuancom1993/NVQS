@@ -18,7 +18,7 @@ $(document).ready(function(){
 	});
 
 	$(".back").click(function(event) {
-		 window.history.go(-2);
+		 window.history.go(-1);
 	});
 
 	listLoaiNghiaVu = JSON.parse(loadAjaxLoaiNghiaVu());

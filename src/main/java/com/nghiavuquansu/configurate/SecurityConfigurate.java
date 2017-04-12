@@ -24,10 +24,12 @@ public class SecurityConfigurate extends WebSecurityConfigurerAdapter {
 		.successForwardUrl("/loginsuccess")
 		.and()
 		.authorizeRequests()
-		.antMatchers("/dangnhap").permitAll() 
+		.antMatchers("/dangnhap").permitAll()
+		.antMatchers("/css/**").permitAll() 
 		.antMatchers("/quanlycongdan/xoacongdan", "/setdatecalculate").hasRole("ADMIN") 
 		.antMatchers("/trangchu","/loginsuccess", "/getlistjsonloainghiavu",
-					"/quanlycongdan/**").hasAnyRole("ADMIN", "USER");
+					"/quanlycongdan/**").hasAnyRole("ADMIN", "USER")
+		.anyRequest().authenticated();
 	}
 	
 	@Override
