@@ -1,13 +1,25 @@
 package com.nghiavuquansu.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
 public class AgeUtil {
-	
-	public static int getAge(Date birdate) {
+    
+    private static Date dateCalculateAge = new Date();
+
+	public static Date getDateCalculateAge() {
+        return dateCalculateAge;
+    }
+
+    public static void setDateCalculateAge(Date dateCalculateAge) {
+        AgeUtil.dateCalculateAge = dateCalculateAge;
+    }
+
+    public static int getAge(Date birdate) {
         Date now = new Date();
         Calendar cNow = Calendar.getInstance();
         cNow.setTime(now);
@@ -22,7 +34,7 @@ public class AgeUtil {
         return year;
     }
 	
-	public static int getAge(Date dateFrom ,Date birdate) {
+	public static int getAge(Date dateFrom, Date birdate) {
         Calendar cNow = Calendar.getInstance();
         cNow.setTime(dateFrom);
         Calendar cBirthday = Calendar.getInstance();
@@ -44,5 +56,19 @@ public class AgeUtil {
         else
             result = false;
         return result;
+    }
+    
+    public static String getStringFromDate(Date date){
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(date);
+    }
+    public static Date getDateFromString(String str){
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            return dateFormat.parse(str);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Date();
+        }
     }
 }

@@ -17,8 +17,9 @@
 			<h3 class="page-title"> Danh Sách Công Dân Quá Độ Tuổi Nghĩa Vụ</h3>
 			<div class="wrap-from-date">
 				<span>Tính từ ngày:</span>
-				<input class="from-date" type="text" th:value="${dateFrom == '0/0/0'} ? ${#dates.format(#dates.createNow(), 'dd/MM/yyyy')} : ${dateFrom}">
-				<button class="btn btn-style btn-xemdstungay"> Xem </button>
+				<!-- <input class="from-date" type="text" th:value="${dateFrom == '0/0/0'} ? ${#dates.format(#dates.createNow(), 'dd/MM/yyyy')} : ${dateFrom}"> -->
+				<input class="from-date" type="text" th:value="${dateFrom}">
+				<button sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-style btn-xemdstungay"> Lưu lại ngày </button>
 			</div>
 			<div class="wrap-table">
 				<table class=" table-all-congdan table-datatable display compact">

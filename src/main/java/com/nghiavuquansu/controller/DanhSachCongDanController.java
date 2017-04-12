@@ -2,6 +2,7 @@ package com.nghiavuquansu.controller;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nghiavuquansu.entity.Congdan;
+import com.nghiavuquansu.model.AgeUtil;
 import com.nghiavuquansu.model.ErrorPageUtil;
 import com.nghiavuquansu.repository.LyDoRepoInterface;
 import com.nghiavuquansu.repository.PhanLoaiLyDoRepoInterface;
@@ -27,18 +29,17 @@ public class DanhSachCongDanController {
 	@Autowired LyDoService lyDoService;
 	@Autowired PhanLoaiLyDoService phanLoaiLyDoService;
 	
-	@GetMapping("/danhsachcongdan/danhsachquatuoinghiavu/{date}/{month}/{year}")
-	public String showDanhSachCongDanQuaTuoiNghiaVu(Model model, @PathVariable("date") String date, 
-			@PathVariable("month") String month, @PathVariable("year") String year){
+	@GetMapping("/danhsachcongdan/danhsachquatuoinghiavu")
+	public String showDanhSachCongDanQuaTuoiNghiaVu(Model model){
 		List<Congdan> listCongDanQuaTuoiNghiaVu = new ArrayList<>();
 		try {
-			listCongDanQuaTuoiNghiaVu = congDanService.getListCongDanQuaTuoiNghiaVu(date, month, year);
+			listCongDanQuaTuoiNghiaVu = congDanService.getListCongDanQuaTuoiNghiaVu(AgeUtil.getDateCalculateAge());
 		} catch (ParseException e) {
 			e.printStackTrace();
-			return ErrorPageUtil.showErrorPage(model, "Không thể tải danh sách với ngày "+date+"/"+month+"/"+year);
+			return ErrorPageUtil.showErrorPage(model, "Không thể tải danh sách với ngày: "+AgeUtil.getDateCalculateAge().toString());
 		}
 		model.addAttribute("listCongDanQuaTuoiNghiaVu", listCongDanQuaTuoiNghiaVu);
-		model.addAttribute("dateFrom", date+"/"+month+"/"+year);
+		model.addAttribute("dateFrom", AgeUtil.getStringFromDate(AgeUtil.getDateCalculateAge()));
 		return "ds-congdanquatuoinghiavu";
 	}
 	

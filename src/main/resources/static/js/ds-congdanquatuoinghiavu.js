@@ -84,8 +84,25 @@ $(document).ready(function() {
 
 	$(".btn-xemdstungay").click(function(event) {
 		var dateFrom = $(".from-date").val();
-		if(dateFrom == "") dateFrom = "0/0/0";
-		window.location.href = "/danhsachcongdan/danhsachquatuoinghiavu/"+dateFrom;
+		// window.location.href = "/danhsachcongdan/danhsachquatuoinghiavu/"+dateFrom;
+		$.ajax({
+			contentType: 'application/json; charset=utf-8',
+			type: 'POST',
+			url: '/setdatecalculate',
+			data: dateFrom,
+			success : function(data) {
+				if(data == "OK") {
+					console.log("Luu ngay thanh cong");
+					window.location.href = "/danhsachcongdan/danhsachquatuoinghiavu";
+				}
+				else if (data == "NOK") {
+					console.log("Luu ngay khong thanh cong");
+				}
+			},
+			err : function(){
+				console.log("Luu ngay khong thanh cong");	
+			}
+		});
 	});
 });
 

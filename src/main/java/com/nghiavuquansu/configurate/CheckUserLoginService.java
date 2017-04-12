@@ -16,7 +16,7 @@ public class CheckUserLoginService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User user = userRepoInterface.findOne(username);
-		if (user == null) throw new UsernameNotFoundException("Deo tim thay user");
+		if (user == null) throw new UsernameNotFoundException("Khong tim thay user voi username: "+username);
 		return new CustomUserDetail(user);
 	}
 

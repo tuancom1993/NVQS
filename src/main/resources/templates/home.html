@@ -45,14 +45,14 @@
 							<th>Ngày Sinh</th>
 							<th>Tên Cha</th>
 							<th class="tooltip-inline fast" data-tooltip="Tổ Dân Phố">TDP</th>
-							<th>Trình Độ Học Vấn</th>
+							<th class="tooltip-inline fast" data-tooltip="Trình Độ Học Vấn">TĐHV</th>
 							<th>Sức Khỏe</th>
 							<th>Loại Nghĩa Vụ</th>
 							<th>Lý Do</th>
 							<th>Ghi Chú</th>
 							<th>Ghi Chú Cá Nhân</th>
 							<th>Sửa</th> 
-							<th>Xóa</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Xóa</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -74,7 +74,7 @@
 									th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}">
 								</a>
 							</td>
-							<td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')">
 								<span class="xoa-congdan tooltip-inline" data-tooltip="Xóa"
 										th:attr="data-idcongdan=${congdan.idcongdan},
 												 data-hoten=${congdan.hoten}">

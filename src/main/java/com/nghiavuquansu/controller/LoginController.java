@@ -21,7 +21,8 @@ public class LoginController {
 
 	@RequestMapping("/dangnhap")
 	public String showLoginPage() {
-		System.err.println(PasswordEncoderUtil.getPasswordEncoder().encode("admin"));
+		System.err.println("admin: "+PasswordEncoderUtil.getPasswordEncoder().encode("admin"));
+		System.err.println("user: "+PasswordEncoderUtil.getPasswordEncoder().encode("user"));
 		return "login";
 	}
 

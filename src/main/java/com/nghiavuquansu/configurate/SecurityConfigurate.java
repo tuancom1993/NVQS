@@ -25,8 +25,9 @@ public class SecurityConfigurate extends WebSecurityConfigurerAdapter {
 		.and()
 		.authorizeRequests()
 		.antMatchers("/dangnhap").permitAll() 
+		.antMatchers("/quanlycongdan/xoacongdan", "/setdatecalculate").hasRole("ADMIN") 
 		.antMatchers("/trangchu","/loginsuccess", "/getlistjsonloainghiavu",
-					"/quanlycongdan/**").hasRole("ADMIN");
+					"/quanlycongdan/**").hasAnyRole("ADMIN", "USER");
 	}
 	
 	@Override

@@ -10,8 +10,8 @@
 			<div class="logo"> Quân Sự </div>
 			<div class="wrap-navigation">
 				<ul class="nav">
-					<li><a href="#">Danh Sách Quân Sự</a></li>
-					<li><a href="#">Quản Lý Loại Nghĩa Vụ</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/trangchu}">Danh Sách Quân Sự</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#">Quản Lý Loại Nghĩa Vụ</a></li>
 				</ul>
 				<div class="account-login">
 					<img class="avatar" src="../static/images/icons/admin.png" th:src="@{/images/icons/admin.png}" alt=""/>
