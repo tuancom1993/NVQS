@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nghiavuquansu.common.ErrorPageUtil;
 import com.nghiavuquansu.entity.Capdaotao;
 import com.nghiavuquansu.entity.Congdan;
 import com.nghiavuquansu.entity.Loainghiavu;
 import com.nghiavuquansu.entity.Lydo;
-import com.nghiavuquansu.model.ErrorPageUtil;
 import com.nghiavuquansu.repository.CongDanRepoInterface;
 import com.nghiavuquansu.repository.LyDoRepoInterface;
 import com.nghiavuquansu.service.CapDaoTaoService;

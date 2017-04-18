@@ -11,9 +11,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nghiavuquansu.common.AgeUtil;
 import com.nghiavuquansu.entity.Congdan;
 import com.nghiavuquansu.entity.Lydo;
-import com.nghiavuquansu.model.AgeUtil;
 import com.nghiavuquansu.repository.CongDanRepoInterface;
 
 

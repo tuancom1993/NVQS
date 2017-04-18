@@ -1,4 +1,4 @@
-package com.nghiavuquansu.model;
+package com.nghiavuquansu.common;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

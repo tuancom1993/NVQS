@@ -65,7 +65,7 @@ header.header{
 
 .header .wrap-navigation ul.nav li {
 	display: inline-block;	
-	padding: 15px 15px;
+	/*padding: 15px 15px;*/
 	border-radius: 5px;
 	-webkit-transition: all 0.3s;
 	-o-transition:  all 0.3s;
@@ -74,6 +74,7 @@ header.header{
 
 .header .wrap-navigation ul.nav li:hover{
 	box-shadow: 0 -5px 10px -5px rgba(0,0,0,0.1), 0 -5px 10px -3px rgba(0,0,0,0.2), 0 0 10px -3px rgba(0,0,0,0.25);
+	/*background-color: #039BE5;*/
 }
 
 .header .wrap-navigation ul.nav li:active{
@@ -91,6 +92,9 @@ header.header{
 	text-decoration: none;
 	font-size: 14px;
 	color: #f4f4f4;
+	display: block;
+	margin: 0 15px;
+	line-height: 44px;
 }
 
 .header .wrap-navigation .account-login{
@@ -317,7 +321,7 @@ section.wrap-menu-article div.wrap-menu ul.menu li ul.sub-menu li {
 
 section.wrap-menu-article div.wrap-menu ul.menu li ul.sub-menu li a {
 	font-size: 11px;
-	color: #aaa;
+	color: #444;
 	padding: 3px 0 3px 0px;
 	display: block;
 }
@@ -758,7 +762,7 @@ section.wrap-menu-article div.wrap-article p{
 		div.wrap-input-style{
 			display: inline-block;
 			position: relative;
-			padding: 15px 0;
+			padding: 17px 0;
 			width: 200px;
 		}
 		div.wrap-input-style input{
@@ -797,7 +801,7 @@ section.wrap-menu-article div.wrap-article p{
 		div.wrap-input-style input:valid ~ span{
 			top: -2px;
 			left: 2px;
-			font-size: 11px;
+			font-size: 13px;
 			color: green;
 			margin-top: 0;
 			z-index: 1;
@@ -805,7 +809,7 @@ section.wrap-menu-article div.wrap-article p{
 		div.wrap-input-style input:focus ~ span{
 			top: -2px;
 			left: 2px;
-			font-size: 11px;
+			font-size: 13px;
 			color:  #f44336;
 			margin-top: 0;
 			z-index: 1;

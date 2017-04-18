@@ -1,4 +1,4 @@
-package com.nghiavuquansu.model;
+package com.nghiavuquansu.common;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

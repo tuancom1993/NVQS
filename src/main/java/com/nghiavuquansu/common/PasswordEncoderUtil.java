@@ -1,4 +1,4 @@
-package com.nghiavuquansu.model;
+package com.nghiavuquansu.common;
 
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
