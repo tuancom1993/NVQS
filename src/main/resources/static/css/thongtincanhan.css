@@ -1,0 +1,36 @@
+.form-thongtincanhan{
+	margin-top: 20px;
+}
+
+.table-thongtincanhan{
+
+}
+
+.table-thongtincanhan tr{
+	display: block;
+	margin: 10px 0;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+}
+
+.table-thongtincanhan tr td{
+	display: block;
+	margin-left: 10px;
+}
+
+.table-thongtincanhan tr td:first-child{
+	width: 80px;
+}
+
+.table-thongtincanhan tr td select, .table-thongtincanhan tr td span{
+	width: 100px;
+	margin-left: 5px;
+}
+
+.wrap-button{
+	margin: 20px 13px;
+}

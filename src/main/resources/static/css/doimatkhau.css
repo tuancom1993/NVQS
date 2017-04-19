@@ -1,0 +1,36 @@
+.form-doimatkhau{
+	margin-top: 20px;
+}
+
+.table-doimatkhau{
+
+}
+
+.table-doimatkhau tr{
+	display: block;
+	margin: 10px 0;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+}
+
+.table-doimatkhau tr td{
+	display: block;
+	margin-left: 10px;
+}
+
+.table-doimatkhau tr td:first-child{
+	width: 150px;
+}
+
+.wrap-button{
+	margin: 20px 12px;
+}
+
+.mess-err{
+	color: red;
+	margin-left: 12px;
+}
