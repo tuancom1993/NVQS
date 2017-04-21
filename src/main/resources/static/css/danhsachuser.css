@@ -1,0 +1,26 @@
+h3.title{
+	margin: 20px 0;
+}
+
+table.table-datatable{
+	padding-top: 15px;
+}
+
+table thead th{
+	text-align: left;
+}
+
+table .sua-user{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url("../images/icons/edit-black.svg") center center no-repeat;
+}
+
+table .xoa-user{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	background: url("../images/icons/delete-black.svg") center center no-repeat;
+	cursor: pointer;
+}

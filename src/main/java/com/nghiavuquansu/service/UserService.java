@@ -43,4 +43,9 @@ public class UserService {
         matKhauModel.setMess("Đổi mật khẩu thành công");
         return matKhauModel;
     }
+
+    public Object getUsers() {
+        // TODO Auto-generated method stub
+        return userRepoInterface.findAll();
+    }
 }

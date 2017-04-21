@@ -2,12 +2,14 @@ package com.nghiavuquansu.configurate;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.mysql.fabric.xmlrpc.base.Data;
 import com.nghiavuquansu.entity.User;
 
 public class CustomUserDetail implements UserDetails {
@@ -56,8 +58,8 @@ public class CustomUserDetail implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return true;
+	    if(user.getQuyen() == 1) return true;
+		return user.getIsBlocked() == 0 ? true : false;
 	}
 
 	@Override

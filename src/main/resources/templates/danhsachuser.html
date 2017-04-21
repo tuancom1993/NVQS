@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Danh Sách Tài Khoản Người Dùng</title>
+	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}"/>
+	<link rel="stylesheet" href="../static/css/danhsachuser.css" th:href="@{/css/danhsachuser.css}"/>
+	<link rel="stylesheet" href="../static/lib/datatable/css/jquery.dataTables.min.css" th:href="@{/lib/datatable/css/jquery.dataTables.min.css}">
+</head>
+<body>
+	<!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
+	<section class="wrap-menu-article">
+		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
+		<div class="wrap-article">
+		<div class="flex-box-center">
+			<a href="#" class="btn btn-style"> Thêm Tài Khoản</a>
+		</div>
+		<h3 class="title">Danh Sách Tài Khoản Người Dùng</h3>
+			<table class="table-datatable display compact" th:object="${users}">
+				<thead>
+					<tr>
+						<th>STT</th>
+						<th>Username</th>
+						<th>Họ Tên</th>
+						<th>Quyền Hạn</th>
+						<th>Trạng Thái Tài Khoản</th>
+						<th>Ghi Chú</th>
+						<th>Sửa</th>
+						<th>Xóa</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user, i : ${users}">
+						<td th:text="${i.index + 1}"></td>
+						<td th:text="${user.username}"></td>
+						<td th:text="${user.hoten}"></td>
+						<td th:text="${user.quyen == 1 ? 'Admin' : 'User'}"></td>
+						<td th:text="${user.isBlocked == 0 ? 'Hoạt Động' : 'Bị Khóa'}"></td>
+						<td th:text="${user.ghiChu}"></td>
+						<td><a class="sua-user tooltip-inline" 
+									data-tooltip="Sửa Thông Tin Tài Khoản" 
+									href="#"
+									th:href="@{/quanlytaikhoan/suathongtin(usn=${user.username})}">
+								</a>
+						</td>
+						<td sec:authorize="hasRole('ROLE_ADMIN')">
+								<span class="xoa-user tooltip-inline" data-tooltip="Xóa"
+										th:attr="data-username=${user.username},
+												 data-hoten=${user.hoten}">
+								</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div> <!-- /wrap-article -->
+	</section>
+</body>
+<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+<script type="text/javascript" src="../static/lib/datatable/js/jquery.dataTables.min.js" th:src="@{/lib/datatable/js/jquery.dataTables.min.js}"></script>
+<script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" src="../static/js/danhsachuser.js" th:src="@{/js/danhsachuser.js}"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	});
+</script>
+</html>
