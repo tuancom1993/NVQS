@@ -7,15 +7,22 @@
 <body>
 	<div  th:fragment="fra-header">
 		<header class="header">
-			<div class="logo"> Quân Sự </div>
+			<div class="logo">  
+				<img src="../static/images/icons/logo.png" th:src="@{/images/icons/logo.png}">
+				<div class="text-logo">
+					<p>Nghĩa Vụ Quân Sự</p>
+					<!-- <p class="text-logo-detail">Ban chỉ huy quân sự phường Thạch Thang</p> -->
+				</div>
+			</div>
 			<div class="wrap-navigation">
 				<ul class="nav">
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/trangchu}">Danh Sách Quân Sự</a></li>
-					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#">Quản Lý Loại Nghĩa Vụ</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/trangchu}">Danh Sách Nghĩa Vụ Quân Sự</a></li>
+					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#">Quản Lý Loại Nghĩa Vụ Quân Sự</a></li>
 					<li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/quanlytaikhoan}">Quản Lý Tài Khoản</a></li>
 				</ul>
 				<div class="account-login">
-					<img class="avatar" src="../static/images/icons/admin.png" th:src="@{/images/icons/admin.png}" alt=""/>
+					<img sec:authorize="hasRole('ROLE_ADMIN')" class="avatar" src="../static/images/icons/admin.png" th:src="@{/images/icons/admin.png}" alt=""/>
+					<img sec:authorize="hasRole('ROLE_USER')" class="avatar" src="../static/images/icons/user.png" th:src="@{/images/icons/user.png}" alt=""/>
 					<span class="information" sec:authentication="principal.user.hoten"> Vu Xuan Tuan Anh </span>
 
 					<ul class="menu-acount">
