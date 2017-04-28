@@ -14,6 +14,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.CellUtil;
+import org.apache.poi.ss.util.RegionUtil;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -214,11 +216,18 @@ public class ExportDanhSachCongDanService {
         } else {
             int i = 1;
             for (Phanloailydo phanloailydo : phanloailydos){
+                CellRangeAddress ranger = new CellRangeAddress(rowIndex, rowIndex, 0, 7);
+                sheet.addMergedRegion(ranger);
                 
-                sheet.addMergedRegion(new CellRangeAddress(rowIndex, rowIndex, 0, 7));
                 Row rowPLDL = sheet.createRow(rowIndex);
-                rowPLDL.createCell(0).setCellValue("     "+i + ". "+phanloailydo.getMota());
+                rowPLDL.createCell(0).setCellValue(new StringBuffer().append("         ").append(i).append(". ").append(phanloailydo.getMota()).toString());
                 rowPLDL.getCell(0).setCellStyle(getCellStylePLLD());
+
+                RegionUtil.setBorderTop(CellStyle.BORDER_THIN, ranger, sheet, this.workbook);
+                RegionUtil.setBorderRight(CellStyle.BORDER_THIN, ranger, sheet, this.workbook);
+                RegionUtil.setBorderBottom(CellStyle.BORDER_THIN, ranger, sheet, this.workbook);
+                RegionUtil.setBorderLeft(CellStyle.BORDER_THIN, ranger, sheet, this.workbook);
+
                 i++;
                 rowIndex++;
                 for(Congdan congdan : congdans){
@@ -245,9 +254,10 @@ public class ExportDanhSachCongDanService {
                     row.createCell(5).setCellValue(congdan.getTrinhdohocvan());
                     row.getCell(5).setCellStyle(getCellStyleForTableContent());
                     
-                    String hoTenChaMe = congdan.getHotencha();
-                    if(congdan.getHotencha() == null || "".equals(congdan.getHotencha())) hoTenChaMe = "" + congdan.getHotenme();
-                    row.createCell(6).setCellValue(hoTenChaMe);
+                    StringBuffer hoTenChaMe = new StringBuffer(congdan.getHotencha());
+                    if(hoTenChaMe.toString() == null || "".equals(hoTenChaMe.toString()))
+                        hoTenChaMe.append(congdan.getHotenme());
+                    row.createCell(6).setCellValue(hoTenChaMe.toString());
                     row.getCell(6).setCellStyle(getCellStyleForTableContent());
                     
                     row.createCell(7).setCellValue(congdan.getGhichu());
