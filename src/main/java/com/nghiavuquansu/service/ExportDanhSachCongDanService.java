@@ -88,6 +88,7 @@ public class ExportDanhSachCongDanService {
             List<Phanloailydo> phanloailydos, List<Congdan> congdans) {
         Sheet sheet = workbook.createSheet("Danh Sach Cong Dan");
         sheet.getPrintSetup().setLandscape(true);
+        sheet.setFitToPage(true);
         
         sheet.setColumnWidth(0, 1200);
         sheet.setColumnWidth(1, 6000);
