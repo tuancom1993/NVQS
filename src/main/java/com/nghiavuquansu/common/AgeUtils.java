@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 public class AgeUtils {
     
+    private static final String STRING_FORMAT_DATE_DD_MM_YYYY = "dd/MM/yyyy";
+    
     private static Date dateCalculateAge = new Date();
 
 	public static Date getDateCalculateAge() {
@@ -66,6 +68,25 @@ public class AgeUtils {
         try {
             DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             return dateFormat.parse(str);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Date();
+        }
+    }
+    
+    public static String getStringFromDate(Date date, String strFormat){
+        try {
+            DateFormat dateFormat = new SimpleDateFormat(strFormat);
+            return dateFormat.format(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+    public static Date getDateFromString(String strDate, String strFormat){
+        try {
+            DateFormat dateFormat = new SimpleDateFormat(strFormat);
+            return dateFormat.parse(strDate);
         } catch (Exception e) {
             e.printStackTrace();
             return new Date();

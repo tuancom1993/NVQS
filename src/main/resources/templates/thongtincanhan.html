@@ -35,20 +35,34 @@
 					</tr>
 				</table>
 				<div class="wrap-button">
-					<button class="btn btn-slyle bgGreen"> Sửa Thông Tin </button>
+					<button type="button" class="btn btn-slyle bgGreen btn-edit-account"> Sửa Thông Tin </button>
 					<button type="button" class="btn bn-style btn-goToDMK"> Đổi Mật Khẩu </button>
 				</div>
 			</form>
 		</div> <!-- /wrap-article -->
 	</section>
+
+	<aside class="modal modal-edit-account">
+		<p class="title-modal">Sửa Thông Tin Tài Khoản</p>
+		<div class="modal-content flex-box-center">
+			<img src="../static/images/icons/alert.png" th:src="@{/images/icons/alert.png}">
+			<div>
+				<p> Bạn có chắc muốn sửa thông tin tài khoản? </p>
+			</div>
+		</div>
+		<p class="note"> Lưu ý: Hãy chắc chắn trong việc sửa quyền cho tài khoản </p>	
+		<p class="mess"></p>
+		<div class="modal-buttons">
+			<button class="btn btn-style bgWhite btn-huybo"> Hủy Bỏ </button>
+			<button class="btn btn-style btn-xacnhan"> Có </button>
+		</div>
+	</aside>
+	<div class="cover"></div>
 </body>
 <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
 <script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" src="../static/js/thongtincanhan.js" th:src="@{/js/thongtincanhan.js}"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$(".btn-goToDMK").click(function(){
-			window.location.href = "/thongtincanhan/matkhau";
-		});
-	});
+	
 </script>
 </html>

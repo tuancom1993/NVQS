@@ -1,6 +1,13 @@
 package com.nghiavuquansu.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,12 +41,24 @@ public class ThongTinCaNhanController {
     @PostMapping("/thongtincanhan")
     public String suaThongTinCaNhan(Model model, @ModelAttribute User user){
         User userLogin = null;
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Object principal = auth.getPrincipal();
         if (principal instanceof CustomUserDetail) {
             CustomUserDetail customUserDetails = (CustomUserDetail) principal;
             userLogin = customUserDetails.getUser();
         }
         User userUpdated = userService.editUser(user, userLogin);
+        
+        Object newPricipal = new CustomUserDetail(userUpdated);
+        
+        List<GrantedAuthority> updatedAuthorities = new ArrayList<>();
+        String newRole = userUpdated.getQuyen() == 1 ? "ROLE_ADMIN" : "ROLE_USER";
+        updatedAuthorities.add(new SimpleGrantedAuthority(newRole));
+        
+        Authentication newAuth = new UsernamePasswordAuthenticationToken(newPricipal, auth.getCredentials(), updatedAuthorities);
+        SecurityContextHolder.getContext().setAuthentication(newAuth);
+        
         model.addAttribute("user", userUpdated);
         return "thongtincanhan";
     }

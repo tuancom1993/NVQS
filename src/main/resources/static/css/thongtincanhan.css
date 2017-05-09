@@ -34,3 +34,23 @@
 .wrap-button{
 	margin: 20px 13px;
 }
+
+.modal .modal-content{
+	padding: 0 15px;
+}
+
+.modal .modal-content img{
+	width: 50px;
+	height: 50px;
+}
+
+.modal .modal-content p{
+	text-align: center;
+}
+
+.modal .note{
+	text-align: center;
+	color: red;
+	font-size: 11px;
+	margin-top: 10px;
+}
