@@ -1,14 +1,12 @@
 package com.nghiavuquansu.controller;
 
-import java.security.Principal;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.nghiavuquansu.common.PasswordEncoderUtil;
+import com.nghiavuquansu.common.PasswordEncoderUtils;
 import com.nghiavuquansu.configurate.CustomUserDetail;
 import com.nghiavuquansu.entity.User;
 import com.nghiavuquansu.service.CongDanService;
@@ -21,8 +19,8 @@ public class LoginController {
 
 	@RequestMapping("/dangnhap")
 	public String showLoginPage() {
-		System.err.println("admin: "+PasswordEncoderUtil.getPasswordEncoder().encode("admin"));
-		System.err.println("user: "+PasswordEncoderUtil.getPasswordEncoder().encode("user"));
+		System.err.println("admin: "+PasswordEncoderUtils.getPasswordEncoder().encode("admin"));
+		System.err.println("user: "+PasswordEncoderUtils.getPasswordEncoder().encode("user"));
 		return "login";
 	}
 

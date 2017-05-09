@@ -5,7 +5,7 @@ import java.io.StringWriter;
 
 import org.springframework.ui.Model;
 
-public class ErrorPageUtil {
+public class ErrorPageUtils {
 	public static String showErrorPage(Model model, String title, String content){
 		model.addAttribute("title", title);
 		model.addAttribute("content", content);

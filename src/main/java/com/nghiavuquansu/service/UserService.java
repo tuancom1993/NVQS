@@ -3,7 +3,8 @@ package com.nghiavuquansu.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nghiavuquansu.common.PasswordEncoderUtil;
+import com.nghiavuquansu.common.MessageUtils;
+import com.nghiavuquansu.common.PasswordEncoderUtils;
 import com.nghiavuquansu.entity.User;
 import com.nghiavuquansu.model.MatKhauModel;
 import com.nghiavuquansu.repository.UserRepoInterface;
@@ -26,21 +27,21 @@ public class UserService {
     public MatKhauModel doiMatKhau(MatKhauModel matKhauModel, User userLogin){
         matKhauModel.setMess(null);
         
-        if (!PasswordEncoderUtil.equals(matKhauModel.getOldPassword(), userLogin.getPassword())){
-            matKhauModel.setMess("Mật khẩu không chính xác");
+        if (!PasswordEncoderUtils.equals(matKhauModel.getOldPassword(), userLogin.getPassword())){
+            matKhauModel.setMess(MessageUtils.PASSWORD_NOT_CORRECT);
             return matKhauModel;
         }
         if(!matKhauModel.getNewPassword().equals(matKhauModel.getReNewPassword())){
-            matKhauModel.setMess("Mật khẩu mới và Mật khẩu nhập lại không khớp");
+            matKhauModel.setMess(MessageUtils.NEW_PASSWORD_AND_RENEW_PASSWORD_NOT_CORRECT);
             return matKhauModel;
         }
         if(matKhauModel.getNewPassword() == null || matKhauModel.getNewPassword().length() == 0){
-            matKhauModel.setMess("Không được bỏ trống mật khẩu mới");
+            matKhauModel.setMess(MessageUtils.PASSWORD_CAN_NOT_EMPTY);
             return matKhauModel;
         }
-        userLogin.setPassword(PasswordEncoderUtil.encode(matKhauModel.getNewPassword()));
+        userLogin.setPassword(PasswordEncoderUtils.encode(matKhauModel.getNewPassword()));
         userRepoInterface.save(userLogin);
-        matKhauModel.setMess("Đổi mật khẩu thành công");
+        matKhauModel.setMess(MessageUtils.CHANGE_PASSWORD_SUCCESSFUL);
         return matKhauModel;
     }
 

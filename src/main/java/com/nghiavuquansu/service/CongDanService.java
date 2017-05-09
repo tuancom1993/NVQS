@@ -1,8 +1,6 @@
 package com.nghiavuquansu.service;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -11,7 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nghiavuquansu.common.AgeUtil;
+import com.nghiavuquansu.common.AgeUtils;
 import com.nghiavuquansu.entity.Congdan;
 import com.nghiavuquansu.entity.Lydo;
 import com.nghiavuquansu.repository.CongDanRepoInterface;
@@ -48,7 +46,7 @@ public class CongDanService {
 //				age = AgeUtil.getAge(dateFrom, ngaysinh);
 //			}
 			
-			age = AgeUtil.getAge(dateFrom, ngaysinh);
+			age = AgeUtils.getAge(dateFrom, ngaysinh);
 				
 //			if((idcapdaotao == 3 || idcapdaotao == 4) && age > 27){
 //				congDanQuaTuoiNghiaVus.add(congdan);
@@ -72,14 +70,14 @@ public class CongDanService {
 		Iterator<Congdan> it = list.iterator();
 		while(it.hasNext()){
 		    Congdan congdan = it.next();
-		    if (isQuaTuoiNghiaVu(congdan, AgeUtil.getDateCalculateAge()))
+		    if (isQuaTuoiNghiaVu(congdan, AgeUtils.getDateCalculateAge()))
 		        it.remove();
 		}
 		return list;
 	}
 	
 	private boolean isQuaTuoiNghiaVu(Congdan congdan, Date dateFrom){
-	    int age = AgeUtil.getAge(dateFrom, congdan.getNgaysinh());
+	    int age = AgeUtils.getAge(dateFrom, congdan.getNgaysinh());
 	    int idcapdaotao = congdan.getCapdaotao().getIdcapdaotao();
 	    
         if((idcapdaotao == 3 || idcapdaotao == 4) && age > 27){

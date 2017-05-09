@@ -2,21 +2,18 @@ package com.nghiavuquansu.controller;
 
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.nghiavuquansu.common.AgeUtil;
-import com.nghiavuquansu.common.ErrorPageUtil;
+import com.nghiavuquansu.common.AgeUtils;
+import com.nghiavuquansu.common.ErrorPageUtils;
+import com.nghiavuquansu.common.MessageUtils;
 import com.nghiavuquansu.entity.Congdan;
-import com.nghiavuquansu.repository.LyDoRepoInterface;
-import com.nghiavuquansu.repository.PhanLoaiLyDoRepoInterface;
 import com.nghiavuquansu.service.CongDanService;
 import com.nghiavuquansu.service.LoaiNghiaVuService;
 import com.nghiavuquansu.service.LyDoService;
@@ -37,14 +34,14 @@ public class DanhSachCongDanController {
     public String showDanhSachCongDanQuaTuoiNghiaVu(Model model) {
         List<Congdan> listCongDanQuaTuoiNghiaVu = new ArrayList<>();
         try {
-            listCongDanQuaTuoiNghiaVu = congDanService.getListCongDanQuaTuoiNghiaVu(AgeUtil.getDateCalculateAge());
+            listCongDanQuaTuoiNghiaVu = congDanService.getListCongDanQuaTuoiNghiaVu(AgeUtils.getDateCalculateAge());
         } catch (ParseException e) {
             e.printStackTrace();
-            return ErrorPageUtil.showErrorPage(model,
-                    "Không thể tải danh sách với ngày: " + AgeUtil.getDateCalculateAge().toString());
+            return ErrorPageUtils.showErrorPage(model,
+                    MessageUtils.CANOT_LOAD_DSCD_WITH_DATE + AgeUtils.getDateCalculateAge().toString());
         }
         model.addAttribute("listCongDanQuaTuoiNghiaVu", listCongDanQuaTuoiNghiaVu);
-        model.addAttribute("dateFrom", AgeUtil.getStringFromDate(AgeUtil.getDateCalculateAge()));
+        model.addAttribute("dateFrom", AgeUtils.getStringFromDate(AgeUtils.getDateCalculateAge()));
         return "ds-congdanquatuoinghiavu";
     }
 
@@ -52,8 +49,8 @@ public class DanhSachCongDanController {
     public String showDanhSachCongDanTheoLyDo(@RequestParam("id") int idlydo, Model model) {
         try {
             if (!lyDoService.isExists(idlydo)) {
-                return ErrorPageUtil.showErrorPage(model,
-                        "Chúng tôi không tìm thấy danh sách công dân với mã là " + idlydo);
+                return ErrorPageUtils.showErrorPage(model,
+                        MessageUtils.CANOT_LOAD_DSCD_WITH_ID + idlydo);
             }
             List<Congdan> listCongDan = congDanService.getListCongDanTheoLyDo(idlydo);
             model.addAttribute("listCongdan", listCongDan);
@@ -64,7 +61,7 @@ public class DanhSachCongDanController {
             return "danhsachnghiavu";
         } catch (Exception e) {
             e.printStackTrace();
-            return ErrorPageUtil.showErrorPage(model, ErrorPageUtil.getStackTrace(e));
+            return ErrorPageUtils.showErrorPage(model, ErrorPageUtils.getStackTrace(e));
         }
 
     }

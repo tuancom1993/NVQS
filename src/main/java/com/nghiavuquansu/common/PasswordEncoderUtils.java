@@ -4,7 +4,7 @@ package com.nghiavuquansu.common;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-public class PasswordEncoderUtil {
+public class PasswordEncoderUtils {
 	public static PasswordEncoder getPasswordEncoder(){
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder;

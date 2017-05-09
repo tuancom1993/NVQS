@@ -7,7 +7,7 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-public class AgeUtil {
+public class AgeUtils {
     
     private static Date dateCalculateAge = new Date();
 
@@ -16,11 +16,11 @@ public class AgeUtil {
     }
 
     public static void setDateCalculateAge(Date dateCalculateAge) {
-        AgeUtil.dateCalculateAge = dateCalculateAge;
+        AgeUtils.dateCalculateAge = dateCalculateAge;
     }
 
     public static int getAge(Date birdate) {
-        Date now = new Date();
+        Date now = dateCalculateAge;
         Calendar cNow = Calendar.getInstance();
         cNow.setTime(now);
         Calendar cBirthday = Calendar.getInstance();
