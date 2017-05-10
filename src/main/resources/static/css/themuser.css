@@ -1,0 +1,31 @@
+.title{
+	margin: 20px 0;
+}
+
+.table-thongtintaikhoan tr{
+	display: block;
+	margin: 10px 0;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	align-items: center;
+}
+
+.table-thongtintaikhoan tr td:first-child{
+	width: 140px;
+}
+
+.table-thongtintaikhoan tr td select{
+	width: 100px;
+	margin-left: 5px;
+}
+
+.wrap-button{
+	margin: 20px 0px;
+}
+
+.error-message{
+	color: red;
+}

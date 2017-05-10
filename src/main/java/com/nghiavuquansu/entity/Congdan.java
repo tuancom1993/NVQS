@@ -3,6 +3,7 @@ package com.nghiavuquansu.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -25,8 +26,6 @@ public class Congdan implements Serializable {
 
 	@Id
 	private int idcongdan;
-
-	private String congdancol1;
 
 	private String diachi;
 
@@ -73,6 +72,20 @@ public class Congdan implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idcapdaotao")
 	private Capdaotao capdaotao;
+	
+	@Column(name="created_by")
+	private String createdBy;
+	
+	@Column(name="updated_by")
+    private String updatedBy;
+	
+	
+	@Column(name="created_date")
+    private Date createdDate;
+	
+	
+    @Column(name="updated_date")
+    private Date updatedDate;
 
 	public Congdan() {
 	}
@@ -83,14 +96,6 @@ public class Congdan implements Serializable {
 
 	public void setIdcongdan(int idcongdan) {
 		this.idcongdan = idcongdan;
-	}
-
-	public String getCongdancol1() {
-		return this.congdancol1;
-	}
-
-	public void setCongdancol1(String congdancol1) {
-		this.congdancol1 = congdancol1;
 	}
 
 	public String getDiachi() {
@@ -244,5 +249,37 @@ public class Congdan implements Serializable {
 	public void setCapdaotao(Capdaotao capdaotao) {
 		this.capdaotao = capdaotao;
 	}
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(String updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
 
 }

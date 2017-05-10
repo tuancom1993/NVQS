@@ -35,6 +35,12 @@ public class User implements Serializable {
 	@Column(name="ghi_chu")
 	private String ghiChu;
 
+	@Transient
+	private String errorMessage;
+	
+	@Transient
+    private String rePassword;
+
 	public User() {
 	}
 
@@ -100,6 +106,22 @@ public class User implements Serializable {
 
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public String getRePassword() {
+        return rePassword;
+    }
+
+    public void setRePassword(String rePassword) {
+        this.rePassword = rePassword;
     }
 
 }

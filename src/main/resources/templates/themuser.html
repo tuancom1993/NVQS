@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Thêm Tài Khoản</title>
+	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}"/>
+	<link rel="stylesheet" href="../static/css/themuser.css" th:href="@{/css/themuser.css}"/>
+</head>
+<body>
+	<!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
+	<section class="wrap-menu-article">
+		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
+		<div class="wrap-article">
+			<h2 class="title">Thêm Tài Khoản</h2>
+			<form class="form-thongtintaikhoan" action="#" th:action="@{/quanlytaikhoan/themtaikhoan}" method="post" th:object="${user}">
+				<table class="table-thongtintaikhoan">
+					<tr>
+						<td> Họ và Tên: </td>
+						<td> <input type="text" th:field="${user.hoten}"/> </td>
+					</tr>
+					<tr>
+						<td> Tài Khoản: </td>
+						<td> <input type="text" th:field="${user.username}"/> </td>
+					</tr>
+					<tr>
+						<td> Mật Khẩu: </td>
+						<td> <input type="password" th:field="${user.password}"/> </td>
+					</tr>
+					<tr>
+						<td> Nhập Lại Mật Khẩu: </td>
+						<td> <input type="password" th:field="${user.rePassword}"/> </td>
+					</tr>
+					<tr>
+						<td> Quyền Hạn: </td>
+						<td> 
+							<select th:field=${user.quyen} sec:authorize="hasRole('ROLE_ADMIN')">
+								<option value="1"> Admin </option>
+								<option value="2"> User </option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<p class="error-message" th:text="${user.errorMessage}"></p>
+				<div class="wrap-button">
+					<button type="submit" class="btn btn-slyle bgGreen btn-edit-account"> Thêm Tài Khoản </button>
+				</div>
+			</form>
+		</div> <!-- /wrap-article -->
+	</section>
+</body>
+<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+<script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	});
+</script>
+</html>

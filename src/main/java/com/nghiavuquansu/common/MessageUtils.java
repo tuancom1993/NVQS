@@ -14,4 +14,11 @@ public class MessageUtils {
     
     //Message CongDan
     public final static String CANOT_LOAD_CONG_DAN_WITH_ID = "Xin lỗi chúng tôi không tìm thấy công dân với mã công dân là ";
+    
+    //Message User
+    public final static String CANOT_LOAD_USER_WITH_USERNAME = "Chúng tôi không tìm thấy tài khoản với mã là ";
+    public final static String EXIST_USERNAME = "Đã tồn tại một tài khoản có mã là ";
+    public final static String PASSWORD_AND_REPASSWORD_NOT_CORRECT = "Mật khẩu và Mật khẩu nhập lại không khớp";
+    public final static String FIELDS_CANNOT_EMPTY = "Các trường không được để trống";
+    public final static String ADD_NEW_USER_SUCCESSFUL = "Thêm mới tài khoản thành công";
 }

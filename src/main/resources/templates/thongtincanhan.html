@@ -50,7 +50,7 @@
 				<p> Bạn có chắc muốn sửa thông tin tài khoản? </p>
 			</div>
 		</div>
-		<p class="note"> Lưu ý: Hãy chắc chắn trong việc sửa quyền cho tài khoản </p>	
+		<p class="note" sec:authorize="hasRole('ROLE_ADMIN')"> Lưu ý: Hãy chắc chắn trong việc sửa quyền cho tài khoản </p>	
 		<p class="mess"></p>
 		<div class="modal-buttons">
 			<button class="btn btn-style bgWhite btn-huybo"> Hủy Bỏ </button>

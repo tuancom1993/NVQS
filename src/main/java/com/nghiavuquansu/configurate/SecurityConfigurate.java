@@ -24,10 +24,13 @@ public class SecurityConfigurate extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers("/dangnhap").permitAll()
 		.antMatchers("/css/**").permitAll() 
-		.antMatchers("/quanlycongdan/xoacongdan", "/setdatecalculate").hasRole("ADMIN") 
-		.antMatchers("/trangchu","/loginsuccess", "/getlistjsonloainghiavu",
-					"/quanlycongdan/**", "/thongtincanhan**").hasAnyRole("ADMIN", "USER")
-		.anyRequest().authenticated();
+		.antMatchers(getURLMatchersForAdmin()).hasRole("ADMIN")
+		
+//		.antMatchers("/trangchu","/loginsuccess", "/getlistjsonloainghiavu",
+//					"/quanlycongdan/**", "/thongtincanhan**").hasAnyRole("ADMIN", "USER")
+		.anyRequest().authenticated()
+		.and()
+		.logout().logoutUrl("/thoat").deleteCookies("JSESSIONID").logoutSuccessUrl("/dangnhap");
 	}
 	
 	@Override
@@ -36,5 +39,13 @@ public class SecurityConfigurate extends WebSecurityConfigurerAdapter {
 			.passwordEncoder(PasswordEncoderUtils.getPasswordEncoder());
 	}
 	
+	private String[] getURLMatchersForAdmin(){
+	    String[] urls = {"/quanlycongdan/xoacongdan", "/setdatecalculate", "/quanlytaikhoan*"};
+	    return urls;
+	}
 	
+	private String[] getURLMatchersForUser(){
+        String[] urls = {};
+        return urls;
+    }
 }

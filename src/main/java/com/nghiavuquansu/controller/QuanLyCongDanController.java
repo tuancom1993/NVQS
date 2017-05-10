@@ -1,10 +1,12 @@
 package com.nghiavuquansu.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,10 +21,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.nghiavuquansu.common.ErrorPageUtils;
 import com.nghiavuquansu.common.MessageUtils;
+import com.nghiavuquansu.configurate.CustomUserDetail;
 import com.nghiavuquansu.entity.Capdaotao;
 import com.nghiavuquansu.entity.Congdan;
 import com.nghiavuquansu.entity.Loainghiavu;
 import com.nghiavuquansu.entity.Lydo;
+import com.nghiavuquansu.entity.User;
 import com.nghiavuquansu.repository.LyDoRepoInterface;
 import com.nghiavuquansu.service.CapDaoTaoService;
 import com.nghiavuquansu.service.CongDanService;
@@ -49,7 +53,14 @@ public class QuanLyCongDanController {
 	@RequestMapping(value="/quanlycongdan/themcongdan", method=RequestMethod.POST)
 	public String doThemCongDan(@ModelAttribute Congdan congdan){
 		try {
-			System.out.println(congdan.getNgaysinh().toString());
+		    User userLogin = null;
+	        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	        if (principal instanceof CustomUserDetail) {
+	            CustomUserDetail customUserDetails = (CustomUserDetail) principal;
+	            userLogin = customUserDetails.getUser();
+	        }
+			congdan.setCreatedBy(userLogin.getUsername());
+			congdan.setCreatedDate(new Date());
 			congDanService.saveCongDan(congdan);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,7 +90,15 @@ public class QuanLyCongDanController {
 	@PostMapping(value="/quanlycongdan/suacongdan")
 	public String doSuaCongDan(@ModelAttribute Congdan congdan, HttpServletRequest request){
 		try {
-			System.out.println(congdan.getNgaysinh().toString());
+		    User userLogin = null;
+            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (principal instanceof CustomUserDetail) {
+                CustomUserDetail customUserDetails = (CustomUserDetail) principal;
+                userLogin = customUserDetails.getUser();
+            }
+            
+            congdan.setUpdatedBy(userLogin.getUsername());
+            congdan.setUpdatedDate(new Date());
 			congDanService.saveCongDan(congdan);
 			return "redirect:/quanlycongdan/suacongdan?id="+congdan.getIdcongdan();
 		} catch (Exception e) {

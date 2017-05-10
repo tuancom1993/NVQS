@@ -14,9 +14,9 @@
 		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
 		<div class="wrap-article">
 		<div class="flex-box-center">
-			<a href="#" class="btn btn-style"> Thêm Tài Khoản</a>
+			<a href="#" th:href="@{/quanlytaikhoan/themtaikhoan}" class="btn btn-style"> Thêm Tài Khoản</a>
 		</div>
-		<h3 class="title">Danh Sách Tài Khoản Người Dùng</h3>
+		<h2 class="title">Danh Sách Tài Khoản Người Dùng</h2>
 			<table class="table-datatable display compact" th:object="${users}">
 				<thead>
 					<tr>

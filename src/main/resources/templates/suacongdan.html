@@ -200,6 +200,11 @@
 					</tr>
 				</table>	
 			</form>
+			<div class="update-information">
+				<span>Cập nhập bởi: <span th:text="${congdan.updatedBy}"></span></span>
+				<span>- Ngày cập nhập: <span th:text="${#dates.format(congdan.updatedDate, 'dd-MM-yyyy HH:mm:ss')}"></span></span>	
+			</div>
+			
 			
 		</div> <!-- /wrap-article -->
 	</section>
