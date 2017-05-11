@@ -4,12 +4,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-import org.springframework.stereotype.Component;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 public class AgeUtils {
     
     private static final String STRING_FORMAT_DATE_DD_MM_YYYY = "dd/MM/yyyy";
+    private static final String STRING_FORMAT_DATETIME_DD_MM_YYYY_HH_MM_SS = "dd/MM/yyyy HH:mm:ss";
     
     private static Date dateCalculateAge = new Date();
 
@@ -87,6 +88,20 @@ public class AgeUtils {
         try {
             DateFormat dateFormat = new SimpleDateFormat(strFormat);
             return dateFormat.parse(strDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Date();
+        }
+    }
+    
+    public static Date getCurrentDateInVN(){
+        try {
+            Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
+
+            DateFormat formatter = new SimpleDateFormat(STRING_FORMAT_DATETIME_DD_MM_YYYY_HH_MM_SS);
+            formatter.setTimeZone(TimeZone.getTimeZone("GMT+7"));  
+            String newVNTime = formatter.format(calendar.getTime());
+            return getDateFromString(newVNTime, STRING_FORMAT_DATETIME_DD_MM_YYYY_HH_MM_SS);
         } catch (Exception e) {
             e.printStackTrace();
             return new Date();

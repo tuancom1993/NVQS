@@ -26,12 +26,17 @@
 					<tr>
 						<td> Quyền Hạn: </td>
 						<td> 
-							<select th:field=${user.quyen} sec:authorize="hasRole('ROLE_ADMIN')">
+				<!-- 			<select th:field=${user.quyen} sec:authorize="hasRole('ROLE_ADMIN')"> 
 								<option value="1"> Admin </option>
-								<option value="2"> User </option>
+								<option value="2"> Ủe </option>
 							</select>
-							<span sec:authorize="hasRole('ROLE_USER')" th:text="${user.quyen == 2 ? 'User' : 'Admin'}"></span>
+							<span sec:authorize="hasRole('ROLE_ỦE')" th:tẽt="${user.quyen == 2 ? 'Ủe' : 'Admin'Ư"></span> -->
+							<span th:text="${user.quyen == 1 ? 'Admin' : 'User'}"></span>
 						</td>
+					</tr>
+					<tr style="align-items: flex-start; margin-top: 20px">
+						<td>Ghi chú:</td>
+						<td><textarea style="margin-left: 4px;" name="" id="" cols="50" rows="10" th:field="${user.ghiChu}"></textarea></td>
 					</tr>
 				</table>
 				<div class="wrap-button">
@@ -50,7 +55,7 @@
 				<p> Bạn có chắc muốn sửa thông tin tài khoản? </p>
 			</div>
 		</div>
-		<p class="note" sec:authorize="hasRole('ROLE_ADMIN')"> Lưu ý: Hãy chắc chắn trong việc sửa quyền cho tài khoản </p>	
+<!-- 		<p class="note" sec:authorize="hasRole('ROLE_ADMIN')"> Lưu ý: Hãy chắc chắn trong việc sửa quyền cho tài khoản </p>	 -->
 		<p class="mess"></p>
 		<div class="modal-buttons">
 			<button class="btn btn-style bgWhite btn-huybo"> Hủy Bỏ </button>

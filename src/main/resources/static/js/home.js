@@ -31,7 +31,7 @@ $(document).ready(function() {
 		    }
     	},
         "columnDefs": [
-		    { "width": "100px", "targets": 1 }, {"width": "100px", "targets": 2}
+		    { "width": "150px", "targets": 1 }, {"width": "100px", "targets": 2}
 		],
 		});
 

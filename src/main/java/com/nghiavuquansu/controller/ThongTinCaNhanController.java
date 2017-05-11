@@ -48,15 +48,15 @@ public class ThongTinCaNhanController {
             CustomUserDetail customUserDetails = (CustomUserDetail) principal;
             userLogin = customUserDetails.getUser();
         }
-        User userUpdated = userService.editUser(user, userLogin);
+        User userUpdated = userService.editPersonalUserInformation(user, userLogin);
         
         Object newPricipal = new CustomUserDetail(userUpdated);
-        
-        List<GrantedAuthority> updatedAuthorities = new ArrayList<>();
+         
+        /*List<GrantedAuthority> updatedAuthorities = new ArrayList<>();
         String newRole = userUpdated.getQuyen() == 1 ? "ROLE_ADMIN" : "ROLE_USER";
-        updatedAuthorities.add(new SimpleGrantedAuthority(newRole));
+        updatedAuthorities.add(new SimpleGrantedAuthority(newRole));*/
         
-        Authentication newAuth = new UsernamePasswordAuthenticationToken(newPricipal, auth.getCredentials(), updatedAuthorities);
+        Authentication newAuth = new UsernamePasswordAuthenticationToken(newPricipal, auth.getCredentials(), auth.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(newAuth);
         
         model.addAttribute("user", userUpdated);

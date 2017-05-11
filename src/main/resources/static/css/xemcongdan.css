@@ -32,6 +32,7 @@ textarea{
 
 #p-lnv, #p-ld, #p-plld{
 	line-height: 150%;
+	margin-top: 10px;
 	width: 200px;
 }
 

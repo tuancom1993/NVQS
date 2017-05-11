@@ -39,7 +39,9 @@
 					<tbody>
 						<tr th:each="congdan, i : ${listCongDanQuaTuoiNghiaVu}">
 							<td th:text="${i.index + 1}"></td>
-							<td th:text="${congdan.hoten}"></td>
+							<td>
+								<a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congdan.idcongdan})}" th:text="${congdan.hoten}"></a>
+							</td>
 							<td th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
 							<td th:text="${congdan.hotencha}"></td>
 							<td th:text="${congdan.todanpho}"></td>

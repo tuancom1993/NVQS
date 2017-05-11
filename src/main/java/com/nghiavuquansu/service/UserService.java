@@ -1,6 +1,8 @@
 package com.nghiavuquansu.service;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,12 +24,14 @@ public class UserService {
         return userRepoInterface.findOne(username);
     }
     
-    public User editUser(User userUpdate, User userLogin){
+    public User editPersonalUserInformation(User userUpdate, User userLogin){
         userUpdate.setUsername(userLogin.getUsername());
-        if(userLogin.getQuyen() != 1) {
-            userUpdate.setQuyen(userLogin.getQuyen());
-        }
+//        if(userLogin.getQuyen() != 1) {
+//            userUpdate.setQuyen(userLogin.getQuyen());
+//        }
+        userUpdate.setQuyen(userLogin.getQuyen());
         userUpdate.setPassword(userLogin.getPassword());
+        userUpdate.setIsBlocked(userLogin.getIsBlocked());
         userRepoInterface.save(userUpdate);
         return userUpdate;
     }
@@ -63,6 +67,12 @@ public class UserService {
                     || StringUtils.isEmpty(user.getHoten()))
                 throw new UserException(MessageUtils.FIELDS_CANNOT_EMPTY);
             
+            if(user.getUsername().length() >= 25)
+                throw new UserException(MessageUtils.USERNAME_LENGHT_TOO_LAGER);
+            
+            if(haveSpecialCharacter(user.getUsername()))
+                throw new UserException(MessageUtils.USERNAME_HAVE_SPECIAL_CHARACTER);
+            
             if(userRepoInterface.exists(user.getUsername()))
                 throw new UserException(MessageUtils.EXIST_USERNAME + user.getUsername());
             
@@ -79,5 +89,11 @@ public class UserService {
             user.setErrorMessage(e.getMessage());
             return user;
         }
+    }
+    
+    private boolean haveSpecialCharacter(String str){
+        Pattern p = Pattern.compile("[^a-z0-9]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(str); 
+        return m.find();
     }
 }

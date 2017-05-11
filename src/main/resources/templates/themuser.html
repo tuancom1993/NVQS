@@ -35,9 +35,10 @@
 						<td> Quyền Hạn: </td>
 						<td> 
 							<select th:field=${user.quyen} sec:authorize="hasRole('ROLE_ADMIN')">
-								<option value="1"> Admin </option>
 								<option value="2"> User </option>
+								<option value="1"> Admin </option>
 							</select>
+							<span style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;(Lưu ý: Hãy chắc chắn trong việc thiết lập quyền hạn cho tài khoản)</span>
 						</td>
 					</tr>
 				</table>

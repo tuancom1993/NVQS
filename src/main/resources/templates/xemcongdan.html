@@ -3,11 +3,11 @@
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>Sửa Công Dân</title>
+	<title>Xem Thông Tin Công Dân</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans"/>
 	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}"/>
-	<link rel="stylesheet" href="../static/css/suacongdan.css" th:href="@{/css/suacongdan.css}"/>
+	<link rel="stylesheet" href="../static/css/xemcongdan.css" th:href="@{/css/xemcongdan.css}"/>
 
 	<link rel="stylesheet" href="../static/lib/datetimepicker/jquery.datetimepicker.css" th:href="@{/lib/datetimepicker/jquery.datetimepicker.css}"/>
 </head>
@@ -16,8 +16,8 @@
 	<section class="wrap-menu-article">
 		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
 		<div class="wrap-article">
-			<h2 class="title-page">Sửa Công Dân</h2>
-			<form class="form-them-cong-dan" th:action="@{/quanlycongdan/suacongdan}" method="post" th:object="${congdan}">
+			<h2 class="title-page">Thông Tin Công Dân</h2>
+
 				<input type="hidden" th:field="${congdan.idcongdan}">
 				<table>
 					<tr>
@@ -62,7 +62,7 @@
 						</td>
 						<td>
 							<div class="wrap-input-style" style="width:75px">
-								<input type="number" required="" th:field="${congdan.todanpho}"/>
+								<input type="text" required="" th:field="${congdan.todanpho}"/>
 								<span> Tổ Dân Phố </span>
 							</div>
 						</td>
@@ -85,13 +85,7 @@
 						</td>
 						<td>
 							<span> Cấp Đào Tạo: </span>
-							<select class="se-capdaotao" th:field="${congdan.capdaotao.idcapdaotao}">
-								<option th:each="capdaotao : ${listCapdaotao}" 
-										th:value="${capdaotao.idcapdaotao}" 
-										th:text="${capdaotao.mota}">Đại học
-								</option>
-								
-							</select>
+							<span th:text=${congdan.capdaotao.mota}></span>
 						</td>
 					</tr>
 					<tr>
@@ -136,39 +130,16 @@
 					</tr>
 					<tr class="row-nghia-vu">
 						<td>
-							<p>Loại Nghĩa Vụ</p>
-							<select id="se-lnv" name="">
-								<option th:each="loainghiavu : ${listLoainghiavu}"
-										th:value = "${loainghiavu.idloainghiavu}"
-										th:text="${loainghiavu.mota}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
-								</option>
-							</select>
-							<p id="p-lnv"></p>
+							<h4>Loại Nghĩa Vụ</h4>
+							<p id="p-lnv" th:text="${congdan.lydo.loainghiavu.mota}"></p>
 						</td>
 						<td>
-							<p> Lý Do </p>
-							<select id="se-ld" th:field="${congdan.lydo.idlydo}"
-									th:attr="data-idlydo=${congdan.lydo.idlydo},
-											 data-idloainghiavu=${congdan.lydo.loainghiavu.idloainghiavu}">
-								<option value="1"
-										th:each="lydo : ${congdan.lydo.loainghiavu.lydos}"
-										th:value = "${lydo.idlydo}"
-										th:text="${lydo.mota}"> Khác
-								</option>
-							</select>
-							<p id="p-ld"></p>
+							<h4> Lý Do </h4>
+							<p id="p-ld" th:text="${congdan.lydo.mota}"></p>
 						</td>
 						<td>
-							<p> Phân Loại Lý Do </p>
-							<select id="se-plld" name="idphanloailydo"
-									th:attr="data-idphanloailydo=${congdan.idphanloailydo}">
-								<option value="0"
-										th:each="phanloailydo : ${congdan.lydo.phanloailydos}"
-										th:value="${phanloailydo.idphanloailydo}"
-										th:text="${phanloailydo.mota}">
-								</option>
-							</select>
-							<p id="p-plld"></p>
+							<h4> Phân Loại Lý Do </h4>
+							<p id="p-plld" th:text="${phanloailydocongdan.mota}"></p>
 						</td>
 					</tr>
 					<tr>
@@ -177,29 +148,29 @@
 					<tr>
 						<td colspan="3">
 							<p class="title-input"> Ghi Chú - Biên Chế </p>
-							<textarea name="" id="" cols="90" rows="5" th:field="${congdan.ghichu}"></textarea>
+							<textarea name="" id="" cols="90" rows="5" th:field="${congdan.ghichu}" readonly="true"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
 							<p class="title-input"> Lý Do Cụ Thể </p>
-							<textarea name="" id="" cols="90" rows="5" th:field="${congdan.lydocuthe}"></textarea>
+							<textarea name="" id="" cols="90" rows="5" th:field="${congdan.lydocuthe}" readonly="true"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
 							<p class="title-input"> Ghi Chú Cá Nhân </p>
-							<textarea name="" id="" cols="90" rows="10" th:field="${congdan.ghichucanhan}"></textarea>
+							<textarea name="" id="" cols="90" rows="10" th:field="${congdan.ghichucanhan}" readonly="true"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
-							<button type="button" class="btn btn-style comfirm"> Xác Nhận Sửa </button>
+							<a href="#" th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}"><button type="button" class="btn btn-style comfirm"> Sửa Công Dân </button></a>
 							<a href="#"><button type="button" class="btn btn-style bgGreen back">Quay Lại Trang Trước</button></a>
 						</td>
 					</tr>
 				</table>	
-			</form>
+
 			<div class="update-information" th:if="${congdan.updatedDate != null}">
 				<span>Cập nhập bởi: <span th:text="${congdan.updatedBy}"></span></span>
 				<span>- Ngày cập nhập: <span th:text="${#dates.format(congdan.updatedDate, 'dd-MM-yyyy HH:mm:ss')}"></span></span>	
@@ -212,8 +183,18 @@
 <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
 <script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
 <script type="text/javascript" src="../static/lib/datetimepicker/jquery.datetimepicker.full.js" th:src="@{/lib/datetimepicker/jquery.datetimepicker.full.js}"></script> 
-<script type="text/javascript" src="../static/js/suacongdan.js" th:src="@{/js/suacongdan.js}"></script>
+<!-- <script type="text/javascript" src="../static/js/xemcongdan.js" th:src="@{/js/xemcongdan.js}"></script> -->
 <script type="text/javascript" th:inline="javascript">
-
+	$(document).ready(function(){
+		$(".wrap-article input").on("focus", function(e) {
+			$(this).blur();
+		});
+		$(".wrap-article input").on("keypress keydown keyup", function(e) {
+			return false;
+		});
+		$(".back").click(function(){
+			window.history.go(-1);
+		});
+	});
 </script>
 </html>

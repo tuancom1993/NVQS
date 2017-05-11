@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nghiavuquansu.entity.Congdan;
 import com.nghiavuquansu.entity.Lydo;
 import com.nghiavuquansu.repository.LyDoRepoInterface;
 

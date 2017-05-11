@@ -18,6 +18,7 @@ import com.nghiavuquansu.repository.CongDanRepoInterface;
 @Service
 public class CongDanService {
 	@Autowired CongDanRepoInterface congDanRepoInterface;
+	
 	public void saveCongDan(Congdan congdan) throws Exception{
 		congDanRepoInterface.save(congdan);
 	}

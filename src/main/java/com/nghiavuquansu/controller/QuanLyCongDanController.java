@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.nghiavuquansu.common.AgeUtils;
 import com.nghiavuquansu.common.ErrorPageUtils;
 import com.nghiavuquansu.common.MessageUtils;
 import com.nghiavuquansu.configurate.CustomUserDetail;
@@ -31,6 +32,7 @@ import com.nghiavuquansu.repository.LyDoRepoInterface;
 import com.nghiavuquansu.service.CapDaoTaoService;
 import com.nghiavuquansu.service.CongDanService;
 import com.nghiavuquansu.service.LoaiNghiaVuService;
+import com.nghiavuquansu.service.PhanLoaiLyDoService;
 
 @Controller
 public class QuanLyCongDanController {
@@ -38,6 +40,7 @@ public class QuanLyCongDanController {
 	@Autowired LoaiNghiaVuService loaiNghiaVuService;
 	@Autowired LyDoRepoInterface lyDoRepoInterface;
 	@Autowired CongDanService congDanService;
+	@Autowired PhanLoaiLyDoService phanLoaiLyDoService;
 	
 	@RequestMapping(value="/quanlycongdan/themcongdan", method=RequestMethod.GET)
 	public String showThemCongDan(Model model) throws JsonProcessingException{
@@ -60,7 +63,7 @@ public class QuanLyCongDanController {
 	            userLogin = customUserDetails.getUser();
 	        }
 			congdan.setCreatedBy(userLogin.getUsername());
-			congdan.setCreatedDate(new Date());
+			congdan.setCreatedDate(AgeUtils.getCurrentDateInVN());
 			congDanService.saveCongDan(congdan);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -98,7 +101,7 @@ public class QuanLyCongDanController {
             }
             
             congdan.setUpdatedBy(userLogin.getUsername());
-            congdan.setUpdatedDate(new Date());
+            congdan.setUpdatedDate(AgeUtils.getCurrentDateInVN());
 			congDanService.saveCongDan(congdan);
 			return "redirect:/quanlycongdan/suacongdan?id="+congdan.getIdcongdan();
 		} catch (Exception e) {
@@ -118,4 +121,23 @@ public class QuanLyCongDanController {
 			return "NOK";
 		}
 	}
+	
+	@GetMapping(value="/quanlycongdan/xemthongtincongdan")
+    public String showXemThongTinCongDan(@RequestParam("id") int idcongdan, Model model){
+        try {
+            Congdan congdan = congDanService.getCongDan(idcongdan);
+            if(congdan==null) return ErrorPageUtils.showErrorPage(model, MessageUtils.CANOT_LOAD_CONG_DAN_WITH_ID+idcongdan);
+            List<Capdaotao> listCapdaotao = capDaoTaoService.getListCapDaoTao();
+            List<Loainghiavu> loainghiavus = loaiNghiaVuService.getListLoaiNghiaVu();
+            
+            model.addAttribute("congdan", congdan);
+            model.addAttribute("listCapdaotao", listCapdaotao);
+            model.addAttribute("listLoainghiavu", loainghiavus);
+            model.addAttribute("phanloailydocongdan", phanLoaiLyDoService.getPhanLoaiLyDoCongDan(congdan));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ErrorPageUtils.showErrorPage(model, e.toString());
+        }
+        return "xemcongdan"; 
+    }
 }

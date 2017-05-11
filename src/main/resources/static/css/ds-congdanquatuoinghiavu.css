@@ -20,6 +20,15 @@
 	width: 100% !important;
 }
 
+.table-datatable .link-infor-congdan{
+	color: #03A9F4;
+	text-decoration: none;
+}
+
+.table-datatable .link-infor-congdan:hover{
+	text-decoration: underline;	
+}	
+
 table thead th{
 	text-align: left;
 }

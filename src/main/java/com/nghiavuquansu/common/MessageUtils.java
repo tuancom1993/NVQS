@@ -21,4 +21,6 @@ public class MessageUtils {
     public final static String PASSWORD_AND_REPASSWORD_NOT_CORRECT = "Mật khẩu và Mật khẩu nhập lại không khớp";
     public final static String FIELDS_CANNOT_EMPTY = "Các trường không được để trống";
     public final static String ADD_NEW_USER_SUCCESSFUL = "Thêm mới tài khoản thành công";
+    public final static String USERNAME_LENGHT_TOO_LAGER = "Mã tài khoản không được vượt quá 25 kí tự";
+    public final static String USERNAME_HAVE_SPECIAL_CHARACTER = "Mã tài khoản không được chứa kí tự đặc biệt hay khoảng trắng";
 }
