@@ -1,12 +1,12 @@
-.form-thongtincanhan{
+.form-suathongtinuser{
 	margin-top: 20px;
 }
 
-.table-thongtincanhan{
+.table-suathongtinuser{
 
 }
 
-.table-thongtincanhan tr{
+.table-suathongtinuser tr{
 	display: block;
 	margin: 10px 0;
 	display: -webkit-flex;
@@ -17,16 +17,16 @@
 	align-items: center;	
 }
 
-.table-thongtincanhan tr td{
+.table-suathongtinuser tr td{
 	display: block;
 	margin-left: 10px;
 }
 
-.table-thongtincanhan tr td:first-child{
-	width: 80px;
+.table-suathongtinuser tr td:first-child{
+	width: 130px;
 }
 
-.table-thongtincanhan tr td select, .table-thongtincanhan tr td span{
+.table-suathongtinuser tr td select, .table-suathongtinuser tr td span{
 	width: 100px;
 	margin-left: 5px;
 }
@@ -53,4 +53,15 @@
 	color: red;
 	font-size: 11px;
 	margin-top: 10px;
+}
+
+.message{
+	margin-left: 12px;
+}
+
+.error-message{
+	color: red;
+}
+.success-message{
+	color: green;
 }

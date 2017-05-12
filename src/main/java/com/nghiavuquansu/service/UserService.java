@@ -91,9 +91,44 @@ public class UserService {
         }
     }
     
+    public User editUser(User user){
+        try {
+            System.out.println("USERNAME EDIT: "+user.getUsername() + user.getHoten());
+            User userUpdate = userRepoInterface.findOne(user.getUsername());
+            if(user.getQuyen() == 1)
+                throw new Exception("Cannot edit ADMIN");
+            
+            userUpdate.setHoten(user.getHoten());
+            userUpdate.setGhiChu(user.getGhiChu());
+            userUpdate.setIsBlocked(user.getIsBlocked());
+            userRepoInterface.save(userUpdate);
+            user.setErrorMessage(MessageUtils.EDIT_USER_SUCCESSFUL);
+            
+            return user;
+        } catch (Exception e) {
+            e.printStackTrace();
+            user.setErrorMessage(MessageUtils.EDIT_USER_FAILL);
+            return user;
+        }
+    }
+    
     private boolean haveSpecialCharacter(String str){
         Pattern p = Pattern.compile("[^a-z0-9]", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(str); 
         return m.find();
+    }
+
+    public boolean restorePassword(String username) {
+        try {
+            User user = userRepoInterface.findOne(username);
+            if(user == null) 
+                throw new UserException(MessageUtils.CANOT_LOAD_USER_WITH_USERNAME + username);
+            user.setPassword(PasswordEncoderUtils.encode(PasswordEncoderUtils.PASSWORD_DEFAULT));
+            userRepoInterface.save(user);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

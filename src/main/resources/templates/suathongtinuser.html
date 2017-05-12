@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Sửa thôn tin tài khoản</title>
+	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}"/>
+	<link rel="stylesheet" href="../static/css/suathongtinuser.css" th:href="@{/css/suathongtinuser.css}"/>
+</head>
+<body>
+	<!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
+	<section class="wrap-menu-article">
+		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
+		<div class="wrap-article">
+			<h2 class="title-danhsachcongdan">Thông Tin Tài Khoản</h2>
+			<form class="form-suathongtinuser" action="#" th:action="@{/quanlytaikhoan/suathongtin(usn=${user.username})}" method="post" th:object="${user}">
+				<table class="table-suathongtinuser">
+					<tr>
+						<td> Họ và Tên	: </td>
+						<td> <input type="text" th:field="${user.hoten}"/> </td>
+					</tr>
+					<tr>
+						<td> Tài Khoản: </td>
+						<td> <input class="input-username" type="text" th:field="${user.username}" disabled="true" /> </td>
+					</tr>
+					<tr>
+						<td> Quyền Hạn: </td>
+						<td> 
+							<span th:text="${user.quyen == 1 ? 'Admin' : 'User'}"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Khóa Tài Khoản:</td>
+						<td>
+							<div class="toggle-button">
+								<input id="toggle" type="checkbox" th:value="1" 
+									name="isBlocked" th:checked="${user.isBlocked == 1}">
+								<label for="toggle"></label>
+							</div>
+						</td>
+					</tr>
+					<tr style="align-items: flex-start; margin-top: 20px">
+						<td>Ghi chú:</td>
+						<td><textarea style="margin-left: 4px;" name="" id="" cols="50" rows="10" th:field="${user.ghiChu}"></textarea></td>
+					</tr>
+				</table>
+				<p class="message error-message"></p>
+				<p class="message success-message"></p>
+				<div class="wrap-button">
+					<button type="button" class="btn btn-slyle bgGreen btn-edit-account"> Sửa Thông Tin </button>
+					<!-- <a href="#" th:href="@{/quanlytaikhoan/datlaimatkhau(usn=${user.username})}"><button type="button" class="btn bn-style btn-restore-password"> Đặt Lại Mật Khẩu </button></a> -->
+					<button type="button" class="btn bn-style btn-restore-password"> Đặt Lại Mật Khẩu </button>
+				</div>
+			</form>
+		</div> <!-- /wrap-article -->
+	</section>
+
+	<aside class="modal modal-edit-account">
+		<p class="title-modal">Sửa Thông Tin Tài Khoản</p>
+		<div class="modal-content flex-box-center">
+			<img src="../static/images/icons/alert.png" th:src="@{/images/icons/alert.png}">
+			<div>
+				<p class="arlet-content"> Bạn có chắc muốn sửa thông tin tài khoản? </p>
+			</div>
+		</div>
+<!-- 		<p class="note" sec:authorize="hasRole('ROLE_ADMIN')"> Lưu ý: Hãy chắc chắn trong việc sửa quyền cho tài khoản </p>	 -->
+		<p class="mess"></p>
+		<div class="modal-buttons">
+			<button class="btn btn-style bgWhite btn-huybo"> Hủy Bỏ </button>
+			<button class="btn btn-style btn-xacnhan"> Có </button>
+		</div>
+	</aside>
+	<div class="cover"></div>
+</body>
+<script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+<script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
+<script type="text/javascript" src="../static/js/suathongtinuser.js" th:src="@{/js/suathongtinuser.js}"></script>
+<script type="text/javascript">
+	
+</script>
+</html>

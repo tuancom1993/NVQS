@@ -38,11 +38,11 @@
 						<td th:text="${user.quyen == 1 ? 'Admin' : 'User'}"></td>
 						<td th:text="${user.isBlocked == 0 ? 'Hoạt Động' : 'Bị Khóa'}"></td>
 						<td th:text="${user.ghiChu}"></td>
-						<td><a class="sua-user tooltip-inline" 
+						<td><a th:if="${user.quyen != 1}" class="sua-user tooltip-inline" 
 									data-tooltip="Sửa Thông Tin Tài Khoản" 
 									href="#"
 									th:href="@{/quanlytaikhoan/suathongtin(usn=${user.username})}">
-								</a>
+							</a>
 						</td>
 						<td sec:authorize="hasRole('ROLE_ADMIN')">
 								<span class="xoa-user tooltip-inline" data-tooltip="Xóa"
