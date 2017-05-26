@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -86,6 +87,9 @@ public class Congdan implements Serializable {
 	
     @Column(name="updated_date")
     private Date updatedDate;
+    
+    @Transient
+    private int index;
 
 	public Congdan() {
 	}
@@ -280,6 +284,14 @@ public class Congdan implements Serializable {
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
 }

@@ -43,6 +43,7 @@
 			<div class="wrap-all-table">
 				<h2 class="title-loainghiavu"> Danh sách công dân <span th:text="${lydoOfCongdan.Loainghiavu.mota}" th:remove="tag"></span> </h2>
 				<h3 class="title-lydo" th:text="${lydoOfCongdan.mota}"></h3>
+				<h5 class="title-danh-sach" th:if="${#strings.isEmpty(lydoOfCongdan.danhsach)} == false">(Danh sách <span th:text="${lydoOfCongdan.danhsach}"></span>)</h5>
 
 				<div class="wrap-table-condition" th:if="${sizeOfListPhanloailydo} == 0">
 					<table class="table-all-congdan table-datatable display compact" th:objet="${listCongdan}">
@@ -58,7 +59,7 @@
 								<!-- <th>Loại Nghĩa Vụ</th>
 								<th>Lý Do</th> -->
 								<th>Ghi Chú</th>
-								<th>Ghi Chú Cá Nhân</th>
+								<th class="tooltip-inline fast" data-tooltip="Ghi Chú Cá Nhân">Ghi Chú CN</th>
 								<th>Sửa</th> 
 								<th sec:authorize="hasRole('ROLE_ADMIN')">Xóa</th>
 							</tr>
@@ -106,7 +107,7 @@
 					<table class="table-all-congdan table-datatable display compact" th:objet="${listCongdan}">
 						<thead>
 							<tr>
-								<th class="tooltip-inline fast" data-tooltip="Mã Công Dân">Mã CD</th>
+								<th>STT</th>
 								<th>Họ Tên</th>
 								<th>Ngày Sinh</th>
 								<th>Tên Cha</th>
@@ -114,7 +115,7 @@
 								<th class="tooltip-inline fast" data-tooltip="Trình Độ Học Vấn">TĐHV</th>
 								<th>Sức Khỏe</th>
 								<th>Ghi Chú</th>
-								<th>Ghi Chú Cá Nhân</th>
+								<th class="tooltip-inline fast" data-tooltip="Ghi Chú Cá Nhân">Ghi Chú CN</th>
 								<th>Sửa</th> 
 								<th sec:authorize="hasRole('ROLE_ADMIN')">Xóa</th>
 							</tr>
@@ -122,7 +123,7 @@
 						<tbody>
 							<tr th:each="congdan, i : ${listCongdan}"
 								th:if="${phanloailydo.idphanloailydo == congdan.idphanloailydo}">
-								<td th:text="${congdan.idcongdan}"></td>
+								<td th:text="${congdan.index}"></td>
 								<td>
 									<a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congdan.idcongdan})}" th:text="${congdan.hoten}"></a>
 								</td>

@@ -18,9 +18,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExportSchemaServiceService {
 
-
-    @EventListener
-    public void exportSchemaOnStartUp(ContextRefreshedEvent event){
+    
+    public void exportSchemaOnStartUp(){
         System.out.println("Run on start up....!");
 
     }

@@ -99,10 +99,8 @@ public class QuanLyCongDanController {
                 CustomUserDetail customUserDetails = (CustomUserDetail) principal;
                 userLogin = customUserDetails.getUser();
             }
-            
-            congdan.setUpdatedBy(userLogin.getUsername());
-            congdan.setUpdatedDate(AgeUtils.getCurrentDateInVN());
-			congDanService.saveCongDan(congdan);
+//			congDanService.saveCongDan(congdan);
+			congDanService.updateCongDan(congdan, userLogin);
 			return "redirect:/quanlycongdan/suacongdan?id="+congdan.getIdcongdan();
 		} catch (Exception e) {
 			e.printStackTrace();
