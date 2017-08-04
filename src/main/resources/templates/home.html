@@ -1,113 +1,113 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>Trang Chủ</title>
-	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}"/>
-	<link rel="stylesheet" href="../static/css/home.css" th:href="@{/css/home.css}"/>
-	<link rel="stylesheet" href="../static/lib/datatable/css/jquery.dataTables.min.css" th:href="@{/lib/datatable/css/jquery.dataTables.min.css}">
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trang Chủ</title>
+    <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" href="../static/css/home.css" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" href="../static/lib/datatable/css/jquery.dataTables.min.css" th:href="@{/lib/datatable/css/jquery.dataTables.min.css}">
 </head>
-<body>
-	<!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
-	<section class="wrap-menu-article">
-		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
-		<div class="wrap-article">
-			<div class="wrap-btn-add-people">
-				<a href="#" th:href="@{/quanlycongdan/themcongdan}"><button class="btn btn-style"> Thêm Công Dân </button></a>
-			</div>
-			<div class="select-danhsach flex-box-center">
-				<div class="wrap-se wrap-se-llv">
-					<p>Loại Nghĩa Vụ</p>
-					<select id="se-lnv" name="">
-						<option th:each="loainghiavu : ${listLoainghiavu}"
-								th:value = "${loainghiavu.idloainghiavu}"
-								th:text="${loainghiavu.mota}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
-						</option>
-					</select>
-				</div>
-				<div class="wrap-se wrap-se-ld">
-					<p> Lý Do </p>
-					<select id="se-ld" name="">
-						<option value="1"> Khác </option>
-					</select>
-				</div>
-				<div class="wrap-se"> <button class="btn-xemds btn btn-style bgGreen"> Xem </button> </div>
-			</div>
-			<div class="wrap-table-all-congdan">
-				<h2 class="title-danhsachcongdan">Danh Sách Toàn Bộ Công Dân</h2>
-				<table class="table-all-congdan table-datatable display compact" th:objet="${listCongdan}">
-					<thead>
-						<tr>
-							<th>STT</th>
-							<th>Họ Tên</th>
-							<th>Ngày Sinh</th>
-							<th>Tên Cha</th>
-							<th class="tooltip-inline fast" data-tooltip="Tổ Dân Phố">TDP</th>
-							<th class="tooltip-inline fast" data-tooltip="Trình Độ Học Vấn">TĐHV</th>
-							<th>Sức Khỏe</th>
-							<th class="tooltip-inline fast" data-tooltip="Loại Nghĩa Vụ">LNV</th>
-							<th>Lý Do</th>
-							<th>Ghi Chú</th>
-							<th class="tooltip-inline fast" data-tooltip="Ghi Chú Cá Nhân">Ghi Chú CN</th>
-							<th>Sửa</th> 
-							<th sec:authorize="hasRole('ROLE_ADMIN')">Xóa</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="congdan, i : ${listCongdan}">
-							<td th:text="${i.index + 1}"></td>
-							<td>
-								<a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congdan.idcongdan})}" th:text="${congdan.hoten}"></a>
-							</td>
-							<td th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
-							<td th:text="${congdan.hotencha}"></td>
-							<td th:text="${congdan.todanpho}"></td>
-							<td th:text="${congdan.trinhdohocvan}"></td>
-							<td th:text="${congdan.tinhtrangsuckhoe}"></td>
-							<td th:text="${congdan.lydo.loainghiavu.mota}"></td>
-							<td th:text="${congdan.lydo.mota}"></td>
-							<td th:text="${congdan.ghichu}"></td>
-							<td th:text="${congdan.ghichucanhan}"></td>
-							<td><a class="sua-congdan tooltip-inline" 
-									data-tooltip="Sửa Thông Tin Công Dân" 
-									href="#"
-									th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}">
+
+<body class="html-loading">
+    <!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
+    <section class="wrap-menu-article">
+        <!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
+        <div class="wrap-article">
+            <div class="wrap-btn-add-people">
+                <a href="#" th:href="@{/quanlycongdan/themcongdan}">
+                    <button class="btn btn-style"> Thêm Công Dân </button>
+                </a>
+            </div>
+            <div class="select-danhsach flex-box-center">
+                <div class="wrap-se wrap-se-llv">
+                    <p>Loại Nghĩa Vụ</p>
+                    <select id="se-lnv" name="">
+                        <option th:each="loainghiavu : ${listLoainghiavu}" th:value="${loainghiavu.idloainghiavu}" th:text="${loainghiavu.mota}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
+                        </option>
+                    </select>
+                </div>
+                <div class="wrap-se wrap-se-ld">
+                    <p> Lý Do </p>
+                    <select id="se-ld" name="">
+                        <option value="1"> Khác </option>
+                    </select>
+                </div>
+                <div class="wrap-se">
+                    <button class="btn-xemds btn btn-style bgGreen"> Xem </button>
+                </div>
+            </div>
+            <div class="wrap-table-all-congdan">
+                <h2 class="title-danhsachcongdan">Danh Sách Toàn Bộ Công Dân</h2>
+                <table class="table-all-congdan table-datatable display compact" th:objet="${listCongdan}">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Họ Tên</th>
+                            <th>Ngày Sinh</th>
+                            <th>Tên Cha</th>
+                            <th class="tooltip-inline fast" data-tooltip="Tổ Dân Phố">TDP</th>
+                            <th class="tooltip-inline fast" data-tooltip="Trình Độ Học Vấn">TĐHV</th>
+                            <th>Sức Khỏe</th>
+                            <th class="tooltip-inline fast" data-tooltip="Loại Nghĩa Vụ">LNV</th>
+                            <th>Lý Do</th>
+                            <th>Ghi Chú</th>
+                            <th class="tooltip-inline fast" data-tooltip="Ghi Chú Cá Nhân">Ghi Chú CN</th>
+                            <th>Sửa</th>
+                            <th sec:authorize="hasRole('ROLE_ADMIN')">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="congdan, i : ${listCongdan}">
+                            <td th:text="${i.index + 1}"></td>
+                            <td>
+                                <a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congdan.idcongdan})}" th:text="${congdan.hoten}"></a>
+                            </td>
+                            <td th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
+                            <td th:text="${congdan.hotencha}"></td>
+                            <td th:text="${congdan.todanpho}"></td>
+                            <td th:text="${congdan.trinhdohocvan}"></td>
+                            <td th:text="${congdan.tinhtrangsuckhoe}"></td>
+                            <td th:text="${congdan.lydo.loainghiavu.mota}"></td>
+                            <td th:text="${congdan.lydo.mota}"></td>
+                            <td th:text="${congdan.ghichu}"></td>
+                            <td th:text="${congdan.ghichucanhan}"></td>
+                            <td><a class="sua-congdan tooltip-inline" data-tooltip="Sửa Thông Tin Công Dân" href="#" th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}">
 								</a>
-							</td>
-							<td sec:authorize="hasRole('ROLE_ADMIN')">
-								<span class="xoa-congdan tooltip-inline" data-tooltip="Xóa"
-										th:attr="data-idcongdan=${congdan.idcongdan},
+                            </td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                <span class="xoa-congdan tooltip-inline" data-tooltip="Xóa" th:attr="data-idcongdan=${congdan.idcongdan},
 												 data-hoten=${congdan.hoten}">
 								</span>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div> <!-- /wrap-article -->
-	</section>
-
-	<aside class="modal modal-remove-congdan">
-		<p class="title-modal">Xóa Công Dân</p>
-		<div class="modal-content flex-box-center">
-			<img src="../static/images/icons/alert.png" th:src="@{/images/icons/alert.png}">
-			<div>
-				<p> Bạn có chắc muốn xóa công dân </p>
-				<p class="modal-hoten"> Vu Xuan Tuan Anh </p>	
-			</div>
-		</div>
-		<p class="mess"></p>
-		<div class="modal-buttons">
-			<button class="btn btn-style bgWhite btn-huybo"> Hủy Bỏ </button>
-			<button class="btn btn-style btn-xacnhanxoa"> Có </button>
-		</div>
-	</aside>
-	<div class="cover"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /wrap-article -->
+    </section>
+    <aside class="modal modal-remove-congdan">
+        <p class="title-modal">Xóa Công Dân</p>
+        <div class="modal-content flex-box-center">
+            <img src="../static/images/icons/alert.png" th:src="@{/images/icons/alert.png}">
+            <div>
+                <p> Bạn có chắc muốn xóa công dân </p>
+                <p class="modal-hoten"> Vu Xuan Tuan Anh </p>
+            </div>
+        </div>
+        <p class="mess"></p>
+        <div class="modal-buttons">
+            <button class="btn btn-style bgWhite btn-huybo"> Hủy Bỏ </button>
+            <button class="btn btn-style btn-xacnhanxoa"> Có </button>
+        </div>
+    </aside>
+    <div class="cover"></div>
 </body>
 <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
 <script type="text/javascript" src="../static/lib/datatable/js/jquery.dataTables.min.js" th:src="@{/lib/datatable/js/jquery.dataTables.min.js}"></script>
 <script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
 <script type="text/javascript" src="../static/js/home.js" th:src="@{/js/home.js}"></script>
+
 </html>
