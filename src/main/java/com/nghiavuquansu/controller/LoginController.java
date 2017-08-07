@@ -38,9 +38,9 @@ public class LoginController {
 			CustomUserDetail customUserDetails = (CustomUserDetail) principal;
 			userLogin = customUserDetails.getUser();
 		}
-		System.out.println("hoten: " + userLogin.getHoten());
-		model.addAttribute("listCongdan", congDanService.getAllCongDan());
-		model.addAttribute("listLoainghiavu", loaiNghiaVuService.getListLoaiNghiaVu());
+		System.out.println("hoten: " + userLogin.getHoTen());
+		model.addAttribute("listCongDan", congDanService.getAllCongDan());
+		model.addAttribute("listLoaiNghiaVu", loaiNghiaVuService.getListLoaiNghiaVu());
 		return "home";
 	}
 }

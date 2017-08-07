@@ -1,5 +1,6 @@
 var listLoaiNghiaVu;
 var listLyDo_Current;
+var rowCongDanClickedXoa_Current;
 
 $(document).ready(function() {
     clearClassMenuActive();
@@ -36,41 +37,34 @@ $(document).ready(function() {
     });
 
     // $('.table-datatable').dataTable( {
-    //   	"autoWidth": false
+    //      "autoWidth": false
     // } );
 
     // $(window).on('resize', function () {
-    //  			 dttable.columns.adjust().draw(); 
-    // 		});
+    //               dttable.columns.adjust().draw(); 
+    //      });
 
     // $(".wrap-article").on('resize', function () {
-    //  			 dttable.columns.adjust().draw(); 
-    // 		});
+    //               dttable.columns.adjust().draw(); 
+    //      });
 
 
     // $(".icon-hidden").click(function myLoop(){
-    // 	setTimeout(
+    //  setTimeout(
     //  function() 
     //  {
-    //  	if( $(".wrap-menu ").width() == 0 || $(".wrap-menu ").width() == 230 ){
-    // 			dttable.columns.adjust().draw(); 
-    // 			return;
-    // 		} else {
-    // 			myLoop();
-    // 		}
+    //      if( $(".wrap-menu ").width() == 0 || $(".wrap-menu ").width() == 230 ){
+    //          dttable.columns.adjust().draw(); 
+    //          return;
+    //      } else {
+    //          myLoop();
+    //      }
     //    //dttable.columns.adjust().draw(); 
     //  }, 100);
     // });
 
-    var rowCongDanClickedXoa_Current;
-    $(".xoa-congdan").click(function(event) {
-        var idcongdan = $(this).attr('data-idcongdan');
-        var hoten = $(this).attr('data-hoten');
-        $(".modal .modal-hoten").text(hoten);
-        $(".modal .btn-xacnhanxoa").attr('data-idcongdan', idcongdan);
-        showModal();
-        rowCongDanClickedXoa_Current = $(this).closest('tr');
-    });
+
+
 
     $(".btn-huybo").click(function(event) {
         hideModal(1);
@@ -79,7 +73,7 @@ $(document).ready(function() {
 
     $(".btn-xacnhanxoa").click(function(event) {
         var Congdan = new Object();
-        Congdan["idcongdan"] = parseInt($(this).attr('data-idcongdan'));
+        Congdan["idCongDan"] = parseInt($(this).attr('data-idcongdan'));
         var jsonCongDan = JSON.stringify(Congdan);
         $.ajax({
             contentType: 'application/json; charset=utf-8',
@@ -108,6 +102,15 @@ $(document).ready(function() {
         var idLydo = $("#se-ld").val();
         window.location.href = "/danhsachcongdan/danhsach?id=" + idLydo;
     });
+});
+
+$(".xoa-congdan").on('click', function(event) {
+    var idcongdan = $(this).attr('data-idcongdan');
+    var hoten = $(this).attr('data-hoten');
+    $(".modal .modal-hoten").text(hoten);
+    $(".modal .btn-xacnhanxoa").attr('data-idcongdan', idcongdan);
+    showModal();
+    rowCongDanClickedXoa_Current = $(this).closest('tr');
 });
 
 function removeRow(datatable, el) {

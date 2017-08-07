@@ -64,7 +64,7 @@ public class UserService {
     public User addNewUser(User user){
         try {
             if(StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword()) 
-                    || StringUtils.isEmpty(user.getHoten()))
+                    || StringUtils.isEmpty(user.getHoTen()))
                 throw new UserException(MessageUtils.FIELDS_CANNOT_EMPTY);
             
             if(user.getUsername().length() >= 25)
@@ -93,12 +93,12 @@ public class UserService {
     
     public User editUser(User user){
         try {
-            System.out.println("USERNAME EDIT: "+user.getUsername() + user.getHoten());
+            System.out.println("USERNAME EDIT: "+user.getUsername() + user.getHoTen());
             User userUpdate = userRepoInterface.findOne(user.getUsername());
             if(user.getQuyen() == 1)
                 throw new Exception("Cannot edit ADMIN");
             
-            userUpdate.setHoten(user.getHoten());
+            userUpdate.setHoTen(user.getHoTen());
             userUpdate.setGhiChu(user.getGhiChu());
             userUpdate.setIsBlocked(user.getIsBlocked());
             userRepoInterface.save(userUpdate);

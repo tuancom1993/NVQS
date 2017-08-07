@@ -9,32 +9,36 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name="quyen")
 @NamedQuery(name="Quyen.findAll", query="SELECT q FROM Quyen q")
 public class Quyen implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int idquyen;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_quyen")
+	private int idQuyen;
 
-	private String mota;
+	@Column(name="mo_ta")
+	private String moTa;
 
 	public Quyen() {
 	}
 
-	public int getIdquyen() {
-		return this.idquyen;
+	public int getIdQuyen() {
+		return this.idQuyen;
 	}
 
-	public void setIdquyen(int idquyen) {
-		this.idquyen = idquyen;
+	public void setIdQuyen(int idQuyen) {
+		this.idQuyen = idQuyen;
 	}
 
-	public String getMota() {
-		return this.mota;
+	public String getMoTa() {
+		return this.moTa;
 	}
 
-	public void setMota(String mota) {
-		this.mota = mota;
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
 	}
 
 }

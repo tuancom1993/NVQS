@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.nghiavuquansu.common.AgeUtils;
 import com.nghiavuquansu.common.ErrorPageUtils;
 import com.nghiavuquansu.common.MessageUtils;
-import com.nghiavuquansu.entity.Congdan;
+import com.nghiavuquansu.entity.CongDan;
 import com.nghiavuquansu.service.CongDanService;
 import com.nghiavuquansu.service.LoaiNghiaVuService;
 import com.nghiavuquansu.service.LyDoService;
@@ -23,16 +23,19 @@ import com.nghiavuquansu.service.PhanLoaiLyDoService;
 public class DanhSachCongDanController {
     @Autowired
     CongDanService congDanService;
+    
     @Autowired
     LoaiNghiaVuService loaiNghiaVuService;
+    
     @Autowired
     LyDoService lyDoService;
+    
     @Autowired
     PhanLoaiLyDoService phanLoaiLyDoService;
 
     @GetMapping("/danhsachcongdan/danhsachquatuoinghiavu")
     public String showDanhSachCongDanQuaTuoiNghiaVu(Model model) {
-        List<Congdan> listCongDanQuaTuoiNghiaVu = new ArrayList<>();
+        List<CongDan> listCongDanQuaTuoiNghiaVu = new ArrayList<>();
         try {
             listCongDanQuaTuoiNghiaVu = congDanService.getListCongDanQuaTuoiNghiaVu(AgeUtils.getDateCalculateAge());
         } catch (ParseException e) {
@@ -46,17 +49,17 @@ public class DanhSachCongDanController {
     }
 
     @GetMapping("/danhsachcongdan/danhsach")
-    public String showDanhSachCongDanTheoLyDo(@RequestParam("id") int idlydo, Model model) {
+    public String showDanhSachCongDanTheoLyDo(@RequestParam("id") int idLyDo, Model model) {
         try {
-            if (!lyDoService.isExists(idlydo)) {
+            if (!lyDoService.isExists(idLyDo)) {
                 return ErrorPageUtils.showErrorPage(model,
-                        MessageUtils.CANOT_LOAD_DSCD_WITH_ID + idlydo);
+                        MessageUtils.CANOT_LOAD_DSCD_WITH_ID + idLyDo);
             }
-            List<Congdan> listCongDan = congDanService.getListCongDanTheoLyDo(idlydo);
+            List<CongDan> listCongDan = congDanService.getListCongDanTheoLyDo(idLyDo);
             model.addAttribute("listCongdan", listCongDan);
             model.addAttribute("listLoainghiavu", loaiNghiaVuService.getListLoaiNghiaVu());
-            model.addAttribute("lydoOfCongdan", lyDoService.findLyDo(idlydo));
-            model.addAttribute("sizeOfListPhanloailydo", phanLoaiLyDoService.countPhanLoaiLyDoByIdLydo(idlydo));
+            model.addAttribute("lydoOfCongdan", lyDoService.findLyDo(idLyDo));
+            model.addAttribute("sizeOfListPhanloailydo", phanLoaiLyDoService.countPhanLoaiLyDoByIdLydo(idLyDo));
 
             return "danhsachnghiavu";
         } catch (Exception e) {

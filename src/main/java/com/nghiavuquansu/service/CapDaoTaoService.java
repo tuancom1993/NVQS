@@ -6,14 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nghiavuquansu.entity.Capdaotao;
+import com.nghiavuquansu.entity.CapDaoTao;
 import com.nghiavuquansu.repository.CapDaoTaoRepoInterface;
 
 @Service
 public class CapDaoTaoService {
 	@Autowired CapDaoTaoRepoInterface capDaoTaoRepoInterface;
-	public List<Capdaotao> getListCapDaoTao(){
-		ArrayList<Capdaotao> capdaotaos = (ArrayList<Capdaotao>) capDaoTaoRepoInterface.findAll();
-		return capdaotaos;
+	public List<CapDaoTao> getListCapDaoTao(){
+		ArrayList<CapDaoTao> capDaoTaos = (ArrayList<CapDaoTao>) capDaoTaoRepoInterface.findAll();
+		return capDaoTaos;
 	}
 }

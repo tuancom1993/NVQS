@@ -17,7 +17,7 @@
 		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
 		<div class="wrap-article">
 			<h2 class="title-page">Thêm Công Dân</h2>
-			<form class="form-them-cong-dan" thLaction="@{/themcongdan}" method="post" th:object="${congdan}" >
+			<form class="form-them-cong-dan" thLaction="@{/themcongdan}" method="post" th:object="${congDan}" >
 				<table>
 					<tr>
 						<td><h3 class="group-infor">Thông tin cá nhân</h3></td>
@@ -25,7 +25,7 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input type="text" required="" placeholder="Trần Văn A" th:field="${congdan.hoten}" />
+								<input type="text" required="" placeholder="Trần Văn A" th:field="${congDan.hoTen}" />
 								<span class="mandatory-text"> Họ và Tên Công Dân</span>
 							</div>
 						</td>
@@ -33,7 +33,7 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input class="date-picker" type="text" required="" placeholder="Vd: 21/12/1993" th:field="${congdan.ngaysinh}"/>
+								<input class="date-picker" type="text" required="" placeholder="Vd: 21/12/1993" th:field="${congDan.ngaySinh}"/>
 								<span class="mandatory-text"> Ngày tháng năm sinh</span>
 							</div>
 						</td>
@@ -41,13 +41,13 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input type="text" required="" th:field="${congdan.hotencha}"/>
+								<input type="text" required="" th:field="${congDan.hoTenCha}"/>
 								<span> Tên Cha </span>
 							</div>
 						</td>
 						<td>
 							<div class="wrap-input-style">
-								<input type="text" required="" th:field="${congdan.hotenme}"/>
+								<input type="text" required="" th:field="${congDan.hoTenMe}"/>
 								<span> Tên Mẹ </span>
 							</div>
 						</td>
@@ -55,13 +55,13 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input type="text" required="" placeholder="199 Đống Đa" th:field="${congdan.diachi}"/>
+								<input type="text" required="" placeholder="199 Đống Đa" th:field="${congDan.diaChi}"/>
 								<span> Địa Chỉ </span>
 							</div>
 						</td>
 						<td>
 							<div class="wrap-input-style" style="width:75px">
-								<input type="number" required="" th:field="${congdan.todanpho}"/>
+								<input type="number" required="" th:field="${congDan.toDanPho}"/>
 								<span> Tổ Dân Phố </span>
 							</div>
 						</td>
@@ -78,16 +78,16 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input type="text" required="" th:field="${congdan.trinhdohocvan}"/>
+								<input type="text" required="" th:field="${congDan.trinhDoHocVan}"/>
 								<span> Trình Độ Học Vấn </span>
 							</div>
 						</td>
 						<td>
 							<span> Cấp Đào Tạo: </span>
-							<select class="se-capdaotao" th:field="${congdan.capdaotao.idcapdaotao}">
-								<option th:each="capdaotao : ${listCapdaotao}" 
-										th:value="${capdaotao.idcapdaotao}" 
-										th:text="${capdaotao.mota}">Đại học
+							<select class="se-capdaotao" th:field="${congDan.capDaoTao.idCapDaoTao}">
+								<option th:each="capDaoTao : ${listCapDaoTao}" 
+										th:value="${capDaoTao.idCapDaoTao}" 
+										th:text="${capDaoTao.moTa}">Đại học
 								</option>
 								
 							</select>
@@ -96,19 +96,19 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congdan.tentruong}"/>
+								<input  type="text" required="" th:field="${congDan.tenTruong}"/>
 								<span> Tên Trường </span>
 							</div>
 						</td>
 						<td>
 							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congdan.nganhhoc}"/>
+								<input  type="text" required="" th:field="${congDan.nganhHoc}"/>
 								<span> Ngành Học </span>
 							</div>
 						</td>
 						<td>
 							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congdan.nienkhoa}"/>
+								<input  type="text" required="" th:field="${congDan.nienKhoa}"/>
 								<span> Niên Khóa </span>
 							</div>
 						</td>
@@ -119,13 +119,13 @@
 					<tr>
 						<td>
 							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congdan.phanloaisuckhoe}"/>
+								<input  type="text" required="" th:field="${congDan.phanLoaiSucKhoe}"/>
 								<span> Phân Loại Sức Khỏe </span>
 							</div>
 						</td>
 						<td>
 							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congdan.tinhtrangsuckhoe}"/>
+								<input  type="text" required="" th:field="${congDan.tinhTrangSucKhoe}"/>
 								<span> Tình trạng sức khỏe </span>
 							</div>
 						</td>
@@ -137,23 +137,23 @@
 						<td>
 							<p>Loại Nghĩa Vụ</p>
 							<select id="se-lnv" name="">
-								<option th:each="loainghiavu : ${listLoainghiavu}"
-										th:value = "${loainghiavu.idloainghiavu}"
-										th:text="${loainghiavu.mota}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
+								<option th:each="loaiNghiaVu : ${listLoaiNghiaVu}"
+										th:value = "${loaiNghiaVu.idLoaiNghiaVu}"
+										th:text="${loaiNghiaVu.moTa}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
 								</option>
 							</select>
 							<p id="p-lnv"></p>
 						</td>
 						<td>
 							<p> Lý Do </p>
-							<select id="se-ld" name="lydo.idlydo">
+							<select id="se-ld" name="lyDo.idLyDo">
 								<option value="1"> Khác </option>
 							</select>
 							<p id="p-ld"></p>
 						</td>
 						<td>
 							<p> Phân Loại Lý Do </p>
-							<select id="se-plld" name="idphanloailydo">
+							<select id="se-plld" name="idPhanLoaiLydo">
 								
 							</select>
 							<p id="p-plld"></p>
@@ -165,19 +165,19 @@
 					<tr>
 						<td colspan="3">
 							<p class="title-input"> Ghi Chú - Biên Chế </p>
-							<textarea name="" id="" cols="90" rows="5" th:field="${congdan.ghichu}"></textarea>
+							<textarea name="" id="" cols="90" rows="5" th:field="${congDan.ghiChu}"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
 							<p class="title-input"> Lý Do Cụ Thể </p>
-							<textarea name="" id="" cols="90" rows="5" th:field="${congdan.lydocuthe}"></textarea>
+							<textarea name="" id="" cols="90" rows="5" th:field="${congDan.lyDoCuThe}"></textarea>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="3">
 							<p class="title-input"> Ghi Chú Cá Nhân </p>
-							<textarea name="" id="" cols="90" rows="10" th:field="${congdan.ghichucanhan}"></textarea>
+							<textarea name="" id="" cols="90" rows="10" th:field="${congDan.ghiChuCaNhan}"></textarea>
 						</td>
 					</tr>
 					<tr>

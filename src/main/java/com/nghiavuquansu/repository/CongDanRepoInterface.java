@@ -2,13 +2,12 @@ package com.nghiavuquansu.repository;
 
 import java.util.ArrayList;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.nghiavuquansu.entity.Congdan;
-import com.nghiavuquansu.entity.Lydo;
+import com.nghiavuquansu.entity.CongDan;
+import com.nghiavuquansu.entity.LyDo;
 
-public interface CongDanRepoInterface extends CrudRepository<Congdan, Integer> {
-	public ArrayList<Congdan> findByLydo(Lydo lydo);
-	public ArrayList<Congdan> findByIdphanloailydo(int idphanloailydo);
+public interface CongDanRepoInterface extends CrudRepository<CongDan, Integer> {
+	public ArrayList<CongDan> findByLyDo(LyDo lydo);
+	public ArrayList<CongDan> findByIdPhanLoaiLyDo(int idPhanLoaiLyDo);
 }

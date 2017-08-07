@@ -1,3 +1,4 @@
+var rowCongDanClickedXoa_Current;
 $(document).ready(function() {
     clearClassMenuActive();
     $(".menu li a.quatuoi").addClass('menu-active');
@@ -42,15 +43,8 @@ $(document).ready(function() {
         ],
     });
 
-    var rowCongDanClickedXoa_Current;
-    $(".xoa-congdan").click(function(event) {
-        var idcongdan = $(this).attr('data-idcongdan');
-        var hoten = $(this).attr('data-hoten');
-        $(".modal .modal-hoten").text(hoten);
-        $(".modal .btn-xacnhanxoa").attr('data-idcongdan', idcongdan);
-        showModal();
-        rowCongDanClickedXoa_Current = $(this).closest('tr');
-    });
+
+
 
     $(".btn-huybo").click(function(event) {
         hideModal(1);
@@ -102,6 +96,15 @@ $(document).ready(function() {
             }
         });
     });
+});
+
+$(".xoa-congdan").on('click', function(event) {
+    var idcongdan = $(this).attr('data-idcongdan');
+    var hoten = $(this).attr('data-hoten');
+    $(".modal .modal-hoten").text(hoten);
+    $(".modal .btn-xacnhanxoa").attr('data-idcongdan', idcongdan);
+    showModal();
+    rowCongDanClickedXoa_Current = $(this).closest('tr');
 });
 
 function removeRow(datatable, el) {

@@ -26,7 +26,7 @@
 				<div class="account-login">
 					<img sec:authorize="hasRole('ROLE_ADMIN')" class="avatar" src="../static/images/icons/admin.png" th:src="@{/images/icons/admin.png}" alt=""/>
 					<img sec:authorize="hasRole('ROLE_USER')" class="avatar" src="../static/images/icons/user.png" th:src="@{/images/icons/user.png}" alt=""/>
-					<span class="information" sec:authentication="principal.user.hoten"> Vu Xuan Tuan Anh </span>
+					<span class="information" sec:authentication="principal.user.hoTen"> Vu Xuan Tuan Anh </span>
 
 					<ul class="menu-acount">
 						<li><a href="#" th:href="@{/thongtincanhan}">Thông tin cá nhân</a></li>

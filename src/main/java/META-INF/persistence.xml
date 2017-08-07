@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="NghiaVuQuanSu">
-		<class>com.nghiavuquansu.entity.Congdan</class>
-		<class>com.nghiavuquansu.entity.Loainghiavu</class>
-		<class>com.nghiavuquansu.entity.Lydo</class>
-		<class>com.nghiavuquansu.entity.Phanloailydo</class>
+		<class>com.nghiavuquansu.entity.CapDaoTao</class>
+		<class>com.nghiavuquansu.entity.CongDan</class>
+		<class>com.nghiavuquansu.entity.LoaiNghiaVu</class>
+		<class>com.nghiavuquansu.entity.LyDo</class>
+		<class>com.nghiavuquansu.entity.PhanLoaiLyDo</class>
 		<class>com.nghiavuquansu.entity.Quyen</class>
 		<class>com.nghiavuquansu.entity.User</class>
-		<class>com.nghiavuquansu.entity.Capdaotao</class>
 	</persistence-unit>
 </persistence>
