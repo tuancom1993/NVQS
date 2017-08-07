@@ -21,7 +21,7 @@ $(document).ready(function(){
 		 window.history.go(-1);
 	});
 
-	listLoaiNghiaVu = JSON.parse(loadAjaxLoaiNghiaVu());
+	listLoaiNghiaVu = loadAjaxLoaiNghiaVu();
 
 	setLoaiNghiaVuDefault();
 	setLyDoDefault();

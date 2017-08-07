@@ -16,7 +16,7 @@ $(document).ready(function(){
 		$(".form-them-cong-dan").submit();
 	});
 
-	listLoaiNghiaVu = JSON.parse(loadAjaxLoaiNghiaVu());
+	listLoaiNghiaVu = loadAjaxLoaiNghiaVu();
 /*	var listLyDo_Current;
 	$("#se-lnv").change(function(){
 		$("#se-ld").html("");

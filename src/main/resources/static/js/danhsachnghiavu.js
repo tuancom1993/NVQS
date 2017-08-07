@@ -80,7 +80,7 @@ $(document).ready(function() {
 	});
 
 	/************************************LIST LOAI NGHIA VU*************************************/
-	listLoaiNghiaVu = JSON.parse(loadAjaxLoaiNghiaVu());
+	listLoaiNghiaVu = loadAjaxLoaiNghiaVu();
 
 	$(".btn-xemds").click(function(event) {
 		var idLydo = $("#se-ld").val();

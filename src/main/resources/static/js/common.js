@@ -1,5 +1,5 @@
 $(window).on('load', function(){
-	$(".pre-loading").fadeOut(1000, function(){
+	$(".pre-loading").fadeOut(200, function(){
 		this.remove();
 	});
 	$("body").removeClass("html-loading");
