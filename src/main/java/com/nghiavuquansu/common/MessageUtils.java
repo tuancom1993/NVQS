@@ -9,11 +9,13 @@ public class MessageUtils {
     public final static String CHANGE_PASSWORD_SUCCESSFUL = "Đổi mật khẩu thành công";
     
     //Message Danh Sach Cong Dan
-    public final static String CANOT_LOAD_DSCD_WITH_DATE = "Không thể tải danh sách với ngày: ";
-    public final static String CANOT_LOAD_DSCD_WITH_ID = "Chúng tôi không tìm thấy danh sách công dân với mã là ";
+    public final static String CANNOT_LOAD_DSCD_WITH_DATE = "Không thể tải danh sách với ngày: ";
+    public final static String CANNOT_LOAD_DSCD_WITH_ID = "Chúng tôi không tìm thấy danh sách công dân với mã là ";
     
     //Message CongDan
-    public final static String CANOT_LOAD_CONG_DAN_WITH_ID = "Xin lỗi chúng tôi không tìm thấy công dân với mã công dân là ";
+    public final static String CANNOT_LOAD_CONG_DAN_WITH_ID = "Xin lỗi chúng tôi không tìm thấy công dân với mã công dân là ";
+    public final static String CANNOT_CREATE_CONG_DAN = "Không thể tạo công dân";
+    public final static String CANNOT_UPDATE_CONG_DAN = "Không sửa thông tin công dân với mã là ";
     
     //Message User
     public final static String CANOT_LOAD_USER_WITH_USERNAME = "Chúng tôi không tìm thấy tài khoản với mã là ";

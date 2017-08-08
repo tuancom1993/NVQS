@@ -1,219 +1,219 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>Sửa Công Dân</title>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"/>
-	<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans"/>
-	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}"/>
-	<link rel="stylesheet" href="../static/css/suacongdan.css" th:href="@{/css/suacongdan.css}"/>
 
-	<link rel="stylesheet" href="../static/lib/datetimepicker/jquery.datetimepicker.css" th:href="@{/lib/datetimepicker/jquery.datetimepicker.css}"/>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sửa Công Dân</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans" />
+    <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" href="../static/css/suacongdan.css" th:href="@{/css/suacongdan.css}" />
+    <link rel="stylesheet" href="../static/lib/datetimepicker/jquery.datetimepicker.css" th:href="@{/lib/datetimepicker/jquery.datetimepicker.css}" />
 </head>
+
 <body>
-	<!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
-	<section class="wrap-menu-article">
-		<!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
-		<div class="wrap-article">
-			<h2 class="title-page">Sửa Công Dân</h2>
-			<form class="form-them-cong-dan" th:action="@{/quanlycongdan/suacongdan}" method="post" th:object="${congDan}">
-				<input type="hidden" th:field="${congDan.idCongDan}">
-				<table>
-					<tr>
-						<td><h3 class="group-infor">Thông tin cá nhân</h3></td>
-					</tr>
-					<tr>
-						<td>
-							<div class="wrap-input-style">
-								<input type="text" required="" placeholder="Trần Văn A" th:field="${congDan.hoTen}" />
-								<span class="mandatory-text"> Họ và Tên Công Dân</span>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="wrap-input-style">
-								<input class="date-picker" type="text" required="" placeholder="Vd: 21/12/1993" th:field="${congDan.ngaySinh}"/>
-								<span class="mandatory-text"> Ngày tháng năm sinh</span>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="wrap-input-style">
-								<input type="text" required="" th:field="${congDan.hoTenCha}"/>
-								<span> Tên Cha </span>
-							</div>
-						</td>
-						<td>
-							<div class="wrap-input-style">
-								<input type="text" required="" th:field="${congDan.hoTenMe}"/>
-								<span> Tên Mẹ </span>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="wrap-input-style">
-								<input type="text" required="" placeholder="199 Đống Đa" th:field="${congDan.diaChi}"/>
-								<span> Địa Chỉ </span>
-							</div>
-						</td>
-						<td>
-							<div class="wrap-input-style" style="width:75px">
-								<input type="number" required="" th:field="${congDan.toDanPho}"/>
-								<span> Tổ Dân Phố </span>
-							</div>
-						</td>
-						<td>
-							<div class="wrap-input-style">
-								<input class="text-disable" type="text" name="phuong" required="" value="Thạch Thang"/>
-								<span> Phường </span>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td><h3 class="group-infor">Học Vấn</h3></td>
-					</tr>
-					<tr>
-						<td>
-							<div class="wrap-input-style">
-								<input type="text" required="" th:field="${congDan.trinhDoHocVan}"/>
-								<span> Trình Độ Học Vấn </span>
-							</div>
-						</td>
-						<td>
-							<span> Cấp Đào Tạo: </span>
-							<select class="se-capdaotao" th:field="${congDan.capDaoTao.idCapDaoTao}">
-								<option th:each="capDaoTao : ${listCapDaoTao}" 
-										th:value="${capDaoTao.idCapDaoTao}" 
-										th:text="${capDaoTao.moTa}">Đại học
-								</option>
-								
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congDan.TenTruong}"/>
-								<span> Tên Trường </span>
-							</div>
-						</td>
-						<td>
-							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congDan.nganhHoc}"/>
-								<span> Ngành Học </span>
-							</div>
-						</td>
-						<td>
-							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congDan.nienKhoa}"/>
-								<span> Niên Khóa </span>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td><h3 class="group-infor">Sức Khỏe</h3></td>
-					</tr>
-					<tr>
-						<td>
-							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congDan.phanLoaiSucKhoe}"/>
-								<span> Phân Loại Sức Khỏe </span>
-							</div>
-						</td>
-						<td>
-							<div class="wrap-input-style">
-								<input  type="text" required="" th:field="${congDan.tinhTrangSucKhoe}"/>
-								<span> Tình trạng sức khỏe </span>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td><h3 class="group-infor">Thông Tin Nghĩa Vụ Cá Nhân</h3></td>
-					</tr>
-					<tr class="row-nghia-vu">
-						<td>
-							<p>Loại Nghĩa Vụ</p>
-							<select id="se-lnv" name="">
-								<option th:each="loaiNghiaVu : ${listLoaiNghiaVu}"
-										th:value = "${loaiNghiaVu.idLoaiNghiaVu}"
-										th:text="${loaiNghiaVu.moTa}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
-								</option>
-							</select>
-							<p id="p-lnv"></p>
-						</td>
-						<td>
-							<p> Lý Do </p>
-							<select id="se-ld" th:field="${congDan.lyDo.idLyDo}"
-									th:attr="data-idlydo=${congDan.lyDo.idLyDo},
+    <!--/*/ <th:block th:include="/header-html :: fra-header"></th:block> /*/-->
+    <section class="wrap-menu-article">
+        <!--/*/ <th:block th:include="/left-menu-html :: fra-left-menu"></th:block> /*/-->
+        <div class="wrap-article">
+            <h2 class="title-page">Sửa Công Dân</h2>
+            <form class="form-them-cong-dan" th:action="@{/quanlycongdan/suacongdan}" method="post" th:object="${congDan}">
+                <input type="hidden" th:field="${congDan.idCongDan}">
+                <table>
+                    <tr>
+                        <td>
+                            <h3 class="group-infor">Thông tin cá nhân</h3></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" placeholder="Trần Văn A" th:field="${congDan.hoTen}" />
+                                <span class="mandatory-text"> Họ và Tên Công Dân</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input class="date-picker" type="text" required="" placeholder="Vd: 21/12/1993" th:field="${congDan.ngaySinh}" />
+                                <span class="mandatory-text"> Ngày tháng năm sinh</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" th:field="${congDan.hoTenCha}" />
+                                <span> Tên Cha </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" th:field="${congDan.hoTenMe}" />
+                                <span> Tên Mẹ </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" placeholder="199 Đống Đa" th:field="${congDan.diaChi}" />
+                                <span> Địa Chỉ </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="wrap-input-style" style="width:75px">
+                                <input type="number" required="" th:field="${congDan.toDanPho}" />
+                                <span> Tổ Dân Phố </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input class="text-disable" type="text" name="phuong" required="" value="Thạch Thang" />
+                                <span> Phường </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3 class="group-infor">Học Vấn</h3></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" th:field="${congDan.trinhDoHocVan}" />
+                                <span> Trình Độ Học Vấn </span>
+                            </div>
+                        </td>
+                        <td>
+                            <span> Cấp Đào Tạo: </span>
+                            <select class="se-capdaotao" th:field="${congDan.capDaoTao.idCapDaoTao}">
+                                <option th:each="capDaoTao : ${listCapDaoTao}" th:value="${capDaoTao.idCapDaoTao}" th:text="${capDaoTao.moTa}">Đại học
+                                </option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" th:field="${congDan.TenTruong}" />
+                                <span> Tên Trường </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" th:field="${congDan.nganhHoc}" />
+                                <span> Ngành Học </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" th:field="${congDan.nienKhoa}" />
+                                <span> Niên Khóa </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3 class="group-infor">Sức Khỏe</h3></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" th:field="${congDan.phanLoaiSucKhoe}" />
+                                <span> Phân Loại Sức Khỏe </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="wrap-input-style">
+                                <input type="text" required="" th:field="${congDan.tinhTrangSucKhoe}" />
+                                <span> Tình trạng sức khỏe </span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3 class="group-infor">Thông Tin Nghĩa Vụ Cá Nhân</h3></td>
+                    </tr>
+                    <tr class="row-nghia-vu">
+                        <td>
+                            <p>Loại Nghĩa Vụ</p>
+                            <select id="se-lnv" name="">
+                                <option th:each="loaiNghiaVu : ${listLoaiNghiaVu}" th:value="${loaiNghiaVu.idLoaiNghiaVu}" th:text="${loaiNghiaVu.moTa}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
+                                </option>
+                            </select>
+                            <p id="p-lnv"></p>
+                        </td>
+                        <td>
+                            <p> Lý Do </p>
+                            <select id="se-ld" th:field="${congDan.lyDo.idLyDo}" th:attr="data-idlydo=${congDan.lyDo.idLyDo},
 											 data-idloainghiavu=${congDan.lyDo.loaiNghiaVu.idLoaiNghiaVu}">
-								<option value="1"
-										th:each="lyDo : ${congDan.lyDo.loaiNghiaVu.lyDos}"
-										th:value = "${lyDo.idLyDo}"
-										th:text="${lyDo.moTa}"> Khác
-								</option>
-							</select>
-							<p id="p-ld"></p>
-						</td>
-						<td>
-							<p> Phân Loại Lý Do </p>
-							<select id="se-plld" name="idPhanLoaiLyDo"
-									th:attr="data-idphanloailydo=${congDan.idPhanLoaiLyDo}">
-								<option value="0"
-										th:each="phanLoaiLyDo : ${congDan.lyDo.phanLoaiLyDos}"
-										th:value="${phanLoaiLyDo.idPhanLoaiLyDo}"
-										th:text="${phanLoaiLyDo.moTa}">
-								</option>
-							</select>
-							<p id="p-plld"></p>
-						</td>
-					</tr>
-					<tr>
-						<td><h3 class="group-infor">Thông Tin Ghi Chú</h3></td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<p class="title-input"> Ghi Chú - Biên Chế </p>
-							<textarea name="" id="" cols="90" rows="5" th:field="${congDan.ghiChu}"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<p class="title-input"> Lý Do Cụ Thể </p>
-							<textarea name="" id="" cols="90" rows="5" th:field="${congDan.lyDoCuThe}"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<p class="title-input"> Ghi Chú Cá Nhân </p>
-							<textarea name="" id="" cols="90" rows="10" th:field="${congDan.ghiChuCaNhan}"></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3">
-							<button type="button" class="btn btn-style comfirm"> Xác Nhận Sửa </button>
-							<a href="#"><button type="button" class="btn btn-style bgGreen back">Quay Lại Trang Trước</button></a>
-						</td>
-					</tr>
-				</table>	
-			</form>
-			<div class="update-information" th:if="${congDan.updatedDate != null}">
-				<span>Cập nhập bởi: <span th:text="${congDan.updatedBy}"></span></span>
-				<span>- Ngày cập nhập: <span th:text="${#dates.format(congDan.updatedDate, 'dd-MM-yyyy HH:mm:ss')}"></span></span>	
-			</div>
-			
-			
-		</div> <!-- /wrap-article -->
-	</section>
+                                <option value="1" th:each="lyDo : ${congDan.lyDo.loaiNghiaVu.lyDos}" th:value="${lyDo.idLyDo}" th:text="${lyDo.moTa}"> Khác
+                                </option>
+                            </select>
+                            <p id="p-ld"></p>
+                        </td>
+                        <td>
+                            <p> Phân Loại Lý Do </p>
+                            <select id="se-plld" name="idPhanLoaiLyDo" th:attr="data-idphanloailydo=${congDan.idPhanLoaiLyDo}">
+                                <option value="0" th:each="phanLoaiLyDo : ${congDan.lyDo.phanLoaiLyDos}" th:value="${phanLoaiLyDo.idPhanLoaiLyDo}" th:text="${phanLoaiLyDo.moTa}">
+                                </option>
+                            </select>
+                            <p id="p-plld"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3 class="group-infor">Thông Tin Ghi Chú</h3></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <p class="title-input"> Ghi Chú - Biên Chế </p>
+                            <textarea name="" id="" cols="90" rows="5" th:field="${congDan.ghiChu}"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <p class="title-input"> Lý Do Cụ Thể </p>
+                            <textarea name="" id="" cols="90" rows="5" th:field="${congDan.lyDoCuThe}"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <p class="title-input"> Ghi Chú Cá Nhân </p>
+                            <textarea name="" id="" cols="90" rows="10" th:field="${congDan.ghiChuCaNhan}"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <button type="button" class="btn btn-style comfirm"> Xác Nhận Sửa </button>
+                            <a href="#">
+                                <button type="button" class="btn btn-style bgGreen back">Quay Lại Trang Trước</button>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div class="wrap-update-information">
+                <div class="update-information" th:if="${congDan.createdDate != null}">
+                    <span>Tạo bởi: <span th:text="${congDan.createdBy}"></span></span>
+                    <span>- Ngày khởi tạo: <span th:text="${#dates.format(congDan.createdDate, 'dd-MM-yyyy HH:mm:ss')}"></span></span>
+                </div>
+                <div class="update-information" th:if="${congDan.updatedDate != null}">
+                    <span>Cập nhập bởi: <span th:text="${congDan.updatedBy}"></span></span>
+                    <span>- Ngày cập nhập: <span th:text="${#dates.format(congDan.updatedDate, 'dd-MM-yyyy HH:mm:ss')}"></span></span>
+                </div>
+            </div>
+        </div>
+        <!-- /wrap-article -->
+    </section>
 </body>
 <script type="text/javascript" src="../static/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
 <script type="text/javascript" src="../static/js/common.js" th:src="@{/js/common.js}"></script>
-<script type="text/javascript" src="../static/lib/datetimepicker/jquery.datetimepicker.full.js" th:src="@{/lib/datetimepicker/jquery.datetimepicker.full.js}"></script> 
+<script type="text/javascript" src="../static/lib/datetimepicker/jquery.datetimepicker.full.js" th:src="@{/lib/datetimepicker/jquery.datetimepicker.full.js}"></script>
 <script type="text/javascript" src="../static/js/suacongdan.js" th:src="@{/js/suacongdan.js}"></script>
 <script type="text/javascript" th:inline="javascript">
-
 </script>
+
 </html>

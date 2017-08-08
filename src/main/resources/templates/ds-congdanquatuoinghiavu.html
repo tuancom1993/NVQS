@@ -39,22 +39,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="congdan, i : ${listCongDanQuaTuoiNghiaVu}">
+                        <tr th:each="congDan, i : ${listCongDanQuaTuoiNghiaVu}">
                             <td th:text="${i.index + 1}"></td>
                             <td>
-                                <a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congdan.idcongdan})}" th:text="${congdan.hoten}"></a>
+                                <a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congDan.idCongDan})}" th:text="${congDan.hoTen}"></a>
                             </td>
-                            <td th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
-                            <td th:text="${congdan.hotencha}"></td>
-                            <td th:text="${congdan.todanpho}"></td>
-                            <td th:text="${congdan.lydo.loainghiavu.mota}"></td>
-                            <td th:text="${congdan.lydo.mota}"></td>
-                            <td><a class="sua-congdan tooltip-inline" data-tooltip="Sửa Thông Tin Công Dân" href="#" th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}">
+                            <td th:text="${#dates.format(congDan.ngaySinh, 'dd-MM-yyyy')}"></td>
+                            <td th:text="${congDan.hoTenCha}"></td>
+                            <td th:text="${congDan.toDanPho}"></td>
+                            <td th:text="${congDan.lyDo.loaiNghiaVu.moTa}"></td>
+                            <td th:text="${congDan.lyDo.moTa}"></td>
+                            <td><a class="sua-congdan tooltip-inline" data-tooltip="Sửa Thông Tin Công Dân" href="#" th:href="@{/quanlycongdan/suacongdan(id=${congDan.idCongDan})}">
 								</a>
                             </td>
                             <td sec:authorize="hasRole('ROLE_ADMIN')">
-                                <span class="xoa-congdan tooltip-inline" data-tooltip="Xóa" th:attr="data-idcongdan=${congdan.idcongdan},
-												 data-hoten=${congdan.hoten}">
+                                <span class="xoa-congdan tooltip-inline" data-tooltip="Xóa" th:attr="data-idcongdan=${congDan.idCongDan},
+												 data-hoten=${congDan.hoTen}">
 								</span>
                             </td>
                         </tr>

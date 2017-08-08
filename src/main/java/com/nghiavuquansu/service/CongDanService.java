@@ -110,14 +110,14 @@ public class CongDanService {
             return false;
     }
 
-    public void updateCongDan(CongDan congdan, User userLogin) {
-        congdan.setUpdatedBy(userLogin.getUsername());
-        congdan.setUpdatedDate(AgeUtils.getCurrentDateInVN());
+    public void updateCongDan(CongDan congDan, User userLogin) {
+        congDan.setUpdatedBy(userLogin.getUsername());
+        congDan.setUpdatedDate(AgeUtils.getCurrentDateInVN());
 
-        CongDan congDanDB = congDanRepoInterface.findOne(congdan.getIdCongDan());
-        congdan.setCreatedBy(congDanDB.getCreatedBy());
-        congdan.setCreatedDate(congDanDB.getCreatedDate());
+        CongDan congDanDB = congDanRepoInterface.findOne(congDan.getIdCongDan());
+        congDan.setCreatedBy(congDanDB.getCreatedBy());
+        congDan.setCreatedDate(congDanDB.getCreatedDate());
 
-        congDanRepoInterface.save(congdan);
+        congDanRepoInterface.save(congDan);
     }
 }

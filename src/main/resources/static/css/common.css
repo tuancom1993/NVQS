@@ -36,8 +36,6 @@ a {
 
 
 
-
-
 /***********************************SPINER LOADING********************************/
 
 .html-loading {
@@ -66,6 +64,7 @@ a {
     top: 50%;
     left: 50%;
     margin-left: -50px;
+    margin-top: -50px;
     content: '';
     box-sizing: border-box;
     position: absolute;
@@ -77,6 +76,8 @@ a {
     border-left-color: #558B2F;
     animation: spinner 1s linear infinite;
 }
+
+/**********************************Header***************************************/
 
 header.header {
     width: 100%;
@@ -343,6 +344,8 @@ section.wrap-menu-article div.wrap-menu ul.menu>li>a:hover {
 
 
 
+
+
 /*.menu-active{
     background-color: #03A9F4;
     color: white !important;
@@ -401,6 +404,8 @@ section.wrap-menu-article div.wrap-menu ul.menu li ul.sub-menu li a:hover {
 
 
 
+
+
 /*section.wrap-menu-article div.wrap-menu ul.menu > li > a:hover ~ ul.sub-menu{
     max-height: 500px;
 }*/
@@ -430,6 +435,8 @@ section.wrap-menu-article div.wrap-article {
 section.wrap-menu-article div.wrap-article p {
     line-height: 30px;
 }
+
+
 
 
 
@@ -479,6 +486,8 @@ section.wrap-menu-article div.wrap-article p {
     -o-flex-wrap: wrap;
     flex-wrap: wrap;
 }
+
+
 
 
 
@@ -542,6 +551,8 @@ section.wrap-menu-article div.wrap-article p {
 .tooltip-inline.fast:hover:after {
     transition-delay: 100ms;
 }
+
+
 
 
 
@@ -773,6 +784,8 @@ section.wrap-menu-article div.wrap-article p {
 
 
 
+
+
 /**********************************************************************************************/
 
 .wrap-input-rc-style {
@@ -817,6 +830,8 @@ section.wrap-menu-article div.wrap-article p {
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
+
+
 
 
 
@@ -1047,6 +1062,8 @@ section.wrap-menu-article div.wrap-article p {
 
 
 
+
+
 /***********************************INPUT TEXT********************************************/
 
 input {
@@ -1164,6 +1181,8 @@ div.wrap-input-style input:focus:-moz-placeholder {
     -o-transition: opacity 1s;
     transition: opacity 1s;
 }
+
+
 
 
 
@@ -1315,6 +1334,8 @@ div.toggle-button>input[type='checkbox']:checked~label:after {
 
 
 
+
+
 /*********************************************Range Radio***************************/
 
 div.wrap-range-radio {
@@ -1444,6 +1465,8 @@ div.wrap-range-radio>div.wrap-input-rc-style>label:hover~span.content-radio {
 
 
 
+
+
 /*****************************************SELEC INPUT*************************************************/
 
 select {
@@ -1489,6 +1512,8 @@ sup {
 
 
 
+
+
 /********************************DATA TABLE***************************************/
 
 .dataTables_length select {
@@ -1498,6 +1523,8 @@ sup {
 .dataTables_filter input[type="search"] {
     padding: 5px;
 }
+
+
 
 
 
@@ -1515,6 +1542,8 @@ sup {
     z-index: 999;
     background-color: rgba(0, 0, 0, 0.4);
 }
+
+
 
 
 
@@ -1558,6 +1587,8 @@ sup {
     text-align: center;
     color: green;
 }
+
+
 
 
 

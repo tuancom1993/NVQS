@@ -58,7 +58,7 @@ public class QuanLyCongDanController {
     }
 
     @RequestMapping(value = "/quanlycongdan/themcongdan", method = RequestMethod.POST)
-    public String doThemCongDan(@ModelAttribute CongDan congDan) {
+    public String doThemCongDan(@ModelAttribute CongDan congDan, Model model) {
         try {
             User userLogin = null;
             Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -69,10 +69,12 @@ public class QuanLyCongDanController {
             congDan.setCreatedBy(userLogin.getUsername());
             congDan.setCreatedDate(AgeUtils.getCurrentDateInVN());
             congDanService.saveCongDan(congDan);
+            return "redirect:/quanlycongdan/xemthongtincongdan?id=" + congDan.getIdCongDan();
         } catch (Exception e) {
             e.printStackTrace();
+            return ErrorPageUtils.showErrorPage(model, MessageUtils.CANNOT_CREATE_CONG_DAN);
         }
-        return "redirect:/trangchu";
+
     }
 
     @GetMapping(value = "/quanlycongdan/suacongdan")
@@ -80,9 +82,8 @@ public class QuanLyCongDanController {
         try {
             CongDan congDan = congDanService.getCongDan(idCongDan);
             if (congDan == null)
-                return ErrorPageUtils.showErrorPage(model, MessageUtils.CANOT_LOAD_CONG_DAN_WITH_ID + idCongDan);
+                return ErrorPageUtils.showErrorPage(model, MessageUtils.CANNOT_LOAD_CONG_DAN_WITH_ID + idCongDan);
             List<CapDaoTao> listCapdaotao = capDaoTaoService.getListCapDaoTao();
-            List<LyDo> listLydo = congDan.getLyDo().getLoaiNghiaVu().getLyDos();
             List<LoaiNghiaVu> loaiNghiaVus = loaiNghiaVuService.getListLoaiNghiaVu();
 
             model.addAttribute("congDan", congDan);
@@ -96,7 +97,7 @@ public class QuanLyCongDanController {
     }
 
     @PostMapping(value = "/quanlycongdan/suacongdan")
-    public String doSuaCongDan(@ModelAttribute CongDan congDan, HttpServletRequest request) {
+    public String doSuaCongDan(@ModelAttribute CongDan congDan, Model model) {
         try {
             User userLogin = null;
             Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -104,12 +105,11 @@ public class QuanLyCongDanController {
                 CustomUserDetail customUserDetails = (CustomUserDetail) principal;
                 userLogin = customUserDetails.getUser();
             }
-            // congDanService.saveCongDan(congdan);
             congDanService.updateCongDan(congDan, userLogin);
             return "redirect:/quanlycongdan/suacongdan?id=" + congDan.getIdCongDan();
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/trangchu";
+            return ErrorPageUtils.showErrorPage(model, MessageUtils.CANNOT_UPDATE_CONG_DAN + congDan.getIdCongDan());
         }
 
     }
@@ -130,18 +130,14 @@ public class QuanLyCongDanController {
         try {
             CongDan congDan = congDanService.getCongDan(idCongDan);
             if (congDan == null)
-                return ErrorPageUtils.showErrorPage(model, MessageUtils.CANOT_LOAD_CONG_DAN_WITH_ID + idCongDan);
-            List<CapDaoTao> listCapdaotao = capDaoTaoService.getListCapDaoTao();
-            List<LoaiNghiaVu> loaiNghiaVus = loaiNghiaVuService.getListLoaiNghiaVu();
+                return ErrorPageUtils.showErrorPage(model, MessageUtils.CANNOT_LOAD_CONG_DAN_WITH_ID + idCongDan);
 
             model.addAttribute("congDan", congDan);
-//            model.addAttribute("listCapDaoTao", listCapdaotao);
-//            model.addAttribute("listLoaiNghiaVu", loaiNghiaVus);
             model.addAttribute("phanLoaiLyDoCongDan", phanLoaiLyDoService.getPhanLoaiLyDoCongDan(congDan));
+            return "xemcongdan";
         } catch (Exception e) {
             e.printStackTrace();
-            return ErrorPageUtils.showErrorPage(model, e.toString());
+            return ErrorPageUtils.showErrorPage(model, MessageUtils.CANNOT_LOAD_CONG_DAN_WITH_ID + idCongDan);
         }
-        return "xemcongdan";
     }
 }

@@ -40,8 +40,12 @@ textarea{
 	margin-bottom: 8px;
 }
 
+.wrap-update-information{
+	margin-top: 20px;
+}
+
 .update-information{
-	margin: 20px 30px;
+	margin: 5px 30px;
 	font-size: 11px;
 	font-style: italic;
 }

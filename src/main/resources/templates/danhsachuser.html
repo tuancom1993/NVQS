@@ -34,7 +34,7 @@
 					<tr th:each="user, i : ${users}">
 						<td th:text="${i.index + 1}"></td>
 						<td th:text="${user.username}"></td>
-						<td th:text="${user.hoten}"></td>
+						<td th:text="${user.hoTen}"></td>
 						<td th:text="${user.quyen == 1 ? 'Admin' : 'User'}"></td>
 						<td th:text="${user.isBlocked == 0 ? 'Hoạt Động' : 'Bị Khóa'}"></td>
 						<td th:text="${user.ghiChu}"></td>
@@ -47,7 +47,7 @@
 						<td sec:authorize="hasRole('ROLE_ADMIN')">
 								<span class="xoa-user tooltip-inline" data-tooltip="Xóa"
 										th:attr="data-username=${user.username},
-												 data-hoten=${user.hoten}">
+												 data-hoten=${user.hoTen}">
 								</span>
 						</td>
 					</tr>

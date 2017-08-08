@@ -21,32 +21,32 @@
 				<div class="wrap-se wrap-se-llv">
 					<p>Loại Nghĩa Vụ</p>
 					<select id="se-lnv" name="">
-						<option th:each="loainghiavu : ${listLoainghiavu}"
-								th:value = "${loainghiavu.idloainghiavu}"
-								th:text="${loainghiavu.mota}"
-								th:selected="${loainghiavu.idloainghiavu ==  lydoOfCongdan.Loainghiavu.idloainghiavu}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
+						<option th:each="loaiNghiaVu : ${listLoaiNghiaVu}"
+								th:value = "${loaiNghiaVu.idLoaiNghiaVu}"
+								th:text="${loaiNghiaVu.moTa}"
+								th:selected="${loaiNghiaVu.idLoaiNghiaVu ==  lyDoOfCongDan.loaiNghiaVu.idLoaiNghiaVu}">Đề Nghị Tạm Hoãn Gọi Nhập Ngũ
 						</option>
 					</select>
 				</div>
 				<div class="wrap-se wrap-se-ld">
 					<p> Lý Do </p>
 					<select id="se-ld" name="">
-						<option th:each="lydo : ${lydoOfCongdan.Loainghiavu.lydos}"
-								th:value="${lydo.idlydo}"
-								th:text="${lydo.mota}"
-								th:selected="${lydoOfCongdan.idlydo == lydo.idlydo}"> 
+						<option th:each="lyDo : ${lyDoOfCongDan.loaiNghiaVu.lyDos}"
+								th:value="${lyDo.idLyDo}"
+								th:text="${lyDo.moTa}"
+								th:selected="${lyDoOfCongDan.idLyDo == lyDo.idLyDo}"> 
 						</option>
 					</select>
 				</div>
 				<div class="wrap-se"> <button class="btn-xemds btn btn-style bgGreen"> Xem </button> </div>
 			</div>
 			<div class="wrap-all-table">
-				<h2 class="title-loainghiavu"> Danh sách công dân <span th:text="${lydoOfCongdan.Loainghiavu.mota}" th:remove="tag"></span> </h2>
-				<h3 class="title-lydo" th:text="${lydoOfCongdan.mota}"></h3>
-				<h5 class="title-danh-sach" th:if="${#strings.isEmpty(lydoOfCongdan.danhsach)} == false">(Danh sách <span th:text="${lydoOfCongdan.danhsach}"></span>)</h5>
+				<h2 class="title-loainghiavu"> Danh sách công dân <span th:text="${lyDoOfCongDan.loaiNghiaVu.moTa}" th:remove="tag"></span> </h2>
+				<h3 class="title-lydo" th:text="${lyDoOfCongDan.moTa}"></h3>
+				<h5 class="title-danh-sach" th:if="${#strings.isEmpty(lyDoOfCongDan.danhSach)} == false">(Danh sách <span th:text="${lyDoOfCongDan.danhSach}"></span>)</h5>
 
-				<div class="wrap-table-condition" th:if="${sizeOfListPhanloailydo} == 0">
-					<table class="table-all-congdan table-datatable display compact" th:objet="${listCongdan}">
+				<div class="wrap-table-condition" th:if="${sizeOfListPhanLoaiLyDo} == 0">
+					<table class="table-all-congdan table-datatable display compact" th:objet="${listCongDan}">
 						<thead>
 							<tr>
 								<th>STT</th>
@@ -65,30 +65,28 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="congdan, i : ${listCongdan}">
+							<tr th:each="congDan, i : ${listCongDan}">
 								<td th:text="${i.index + 1}"></td>
 								<td>
-									<a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congdan.idcongdan})}" th:text="${congdan.hoten}"></a>
+									<a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congDan.idCongDan})}" th:text="${congDan.hoTen}"></a>
 								</td>
-								<td style="white-space: nowrap;" th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
-								<td th:text="${congdan.hotencha}"></td>
-								<td th:text="${congdan.todanpho}"></td>
-								<td th:text="${congdan.trinhdohocvan}"></td>
-								<td th:text="${congdan.tinhtrangsuckhoe}"></td>
-								<!-- <td th:text="${congdan.lydo.loainghiavu.mota}"></td>
-								<td th:text="${congdan.lydo.mota}"></td> -->
-								<td th:text="${congdan.ghichu}"></td>
-								<td th:text="${congdan.ghichucanhan}"></td>
+								<td style="white-space: nowrap;" th:text="${#dates.format(congDan.ngaySinh, 'dd-MM-yyyy')}"></td>
+								<td th:text="${congDan.hoTenCha}"></td>
+								<td th:text="${congDan.toDanPho}"></td>
+								<td th:text="${congDan.trinhDoHocVan}"></td>
+								<td th:text="${congDan.tinhTrangSucKhoe}"></td>
+								<td th:text="${congDan.ghiChu}"></td>
+								<td th:text="${congDan.ghiChuCaNhan}"></td>
 								<td><a class="sua-congdan tooltip-inline" 
 										data-tooltip="Sửa Thông Tin Công Dân" 
 										href="#"
-										th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}">
+										th:href="@{/quanlycongdan/suacongdan(id=${congDan.idCongDan})}">
 									</a>
 								</td>
 								<td sec:authorize="hasRole('ROLE_ADMIN')">
 									<span class="xoa-congdan tooltip-inline" data-tooltip="Xóa"
-											th:attr="data-idcongdan=${congdan.idcongdan},
-													 data-hoten=${congdan.hoten}">
+											th:attr="data-idcongdan=${congDan.idCongDan},
+													 data-hoten=${congDan.hoTen}">
 									</span>
 								</td>
 							</tr>
@@ -96,15 +94,15 @@
 					</table>
 				</div> <!-- /wrap-table-condition -->
 				
-				<div class="search-all" th:if="${sizeOfListPhanloailydo} > 0">
+				<div class="search-all" th:if="${sizeOfListPhanLoaiLyDo} > 0">
 					<span>Tìm kiếm tất cả</span>
 					<input type="text" class="input-search-all">
 				</div>
 				<div class="wrap-table-condition" 
-					 th:if="${sizeOfListPhanloailydo} > 0"
-					 th:each="phanloailydo : ${lydoOfCongdan.phanloailydos}">
-					<h4 class="title-phanloailydo" th:text="${phanloailydo.mota}"></h4>
-					<table class="table-all-congdan table-datatable display compact" th:objet="${listCongdan}">
+					 th:if="${sizeOfListPhanLoaiLyDo} > 0"
+					 th:each="phanLoaiLyDo : ${lyDoOfCongDan.phanLoaiLyDos}">
+					<h4 class="title-phanloailydo" th:text="${phanLoaiLyDo.moTa}"></h4>
+					<table class="table-all-congdan table-datatable display compact" th:objet="${listCongDan}">
 						<thead>
 							<tr>
 								<th>STT</th>
@@ -121,29 +119,29 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="congdan, i : ${listCongdan}"
-								th:if="${phanloailydo.idphanloailydo == congdan.idphanloailydo}">
-								<td th:text="${congdan.index}"></td>
+							<tr th:each="congDan, i : ${listCongDan}"
+								th:if="${phanLoaiLyDo.idPhanLoaiLyDo == congDan.idPhanLoaiLyDo}">
+								<td th:text="${congDan.index}"></td>
 								<td>
-									<a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congdan.idcongdan})}" th:text="${congdan.hoten}"></a>
+									<a class="link-infor-congdan" href="#" th:href="@{/quanlycongdan/xemthongtincongdan(id=${congDan.idCongDan})}" th:text="${congDan.hoTen}"></a>
 								</td>
-								<td th:text="${#dates.format(congdan.ngaysinh, 'dd-MM-yyyy')}"></td>
-								<td th:text="${congdan.hotencha}"></td>
-								<td th:text="${congdan.todanpho}"></td>
-								<td th:text="${congdan.trinhdohocvan}"></td>
-								<td th:text="${congdan.tinhtrangsuckhoe}"></td>
-								<td th:text="${congdan.ghichu}"></td>
-								<td th:text="${congdan.ghichucanhan}"></td>
+								<td th:text="${#dates.format(congDan.ngaySinh, 'dd-MM-yyyy')}"></td>
+								<td th:text="${congDan.hoTenCha}"></td>
+								<td th:text="${congDan.toDanPho}"></td>
+								<td th:text="${congDan.trinhDoHocVan}"></td>
+								<td th:text="${congDan.tinhTrangSucKhoe}"></td>
+								<td th:text="${congDan.ghiChu}"></td>
+								<td th:text="${congDan.ghiChuCaNhan}"></td>
 								<td><a class="sua-congdan tooltip-inline" 
 										data-tooltip="Sửa Thông Tin Công Dân" 
 										href="#"
-										th:href="@{/quanlycongdan/suacongdan(id=${congdan.idcongdan})}">
+										th:href="@{/quanlycongdan/suacongdan(id=${congDan.idCongDan})}">
 									</a>
 								</td>
 								<td sec:authorize="hasRole('ROLE_ADMIN')">
 									<span class="xoa-congdan tooltip-inline" data-tooltip="Xóa"
-											th:attr="data-idcongdan=${congdan.idcongdan},
-													 data-hoten=${congdan.hoten}">
+											th:attr="data-idcongdan=${congDan.idCongDan},
+													 data-hoten=${congDan.hoTen}">
 									</span>
 								</td>
 							</tr>
@@ -151,7 +149,7 @@
 					</table>
 				</div> <!-- /wrap-table-condition -->
 			</div>  <!-- /wrap-all-table -->
-			<a href="#" th:href="@{/danhsachcongdan/export(id=${lydoOfCongdan.idlydo})}" target="_blank" class="btn btn-style bgGreen"> Xuất danh sách </a>
+			<a href="#" th:href="@{/danhsachcongdan/export(id=${lyDoOfCongDan.idLyDo})}" target="_blank" class="btn btn-style bgGreen"> Xuất danh sách </a>
 		</div> <!-- /wrap-article -->
 	</section>
 

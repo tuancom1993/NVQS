@@ -24,6 +24,7 @@
 
 .table-suathongtinuser tr td:first-child{
 	width: 130px;
+	line-height: 30px;
 }
 
 .table-suathongtinuser tr td select, .table-suathongtinuser tr td span{

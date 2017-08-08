@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nghiavuquansu.common.AgeUtils;
@@ -20,6 +21,7 @@ import com.nghiavuquansu.service.LyDoService;
 import com.nghiavuquansu.service.PhanLoaiLyDoService;
 
 @Controller
+@RequestMapping("/danhsachcongdan")
 public class DanhSachCongDanController {
     @Autowired
     CongDanService congDanService;
@@ -33,7 +35,7 @@ public class DanhSachCongDanController {
     @Autowired
     PhanLoaiLyDoService phanLoaiLyDoService;
 
-    @GetMapping("/danhsachcongdan/danhsachquatuoinghiavu")
+    @GetMapping("/quatuoinghiavu")
     public String showDanhSachCongDanQuaTuoiNghiaVu(Model model) {
         List<CongDan> listCongDanQuaTuoiNghiaVu = new ArrayList<>();
         try {
@@ -41,25 +43,25 @@ public class DanhSachCongDanController {
         } catch (ParseException e) {
             e.printStackTrace();
             return ErrorPageUtils.showErrorPage(model,
-                    MessageUtils.CANOT_LOAD_DSCD_WITH_DATE + AgeUtils.getDateCalculateAge().toString());
+                    MessageUtils.CANNOT_LOAD_DSCD_WITH_DATE + AgeUtils.getDateCalculateAge().toString());
         }
         model.addAttribute("listCongDanQuaTuoiNghiaVu", listCongDanQuaTuoiNghiaVu);
         model.addAttribute("dateFrom", AgeUtils.getStringFromDate(AgeUtils.getDateCalculateAge()));
         return "ds-congdanquatuoinghiavu";
     }
 
-    @GetMapping("/danhsachcongdan/danhsach")
+    @GetMapping("/danhsach")
     public String showDanhSachCongDanTheoLyDo(@RequestParam("id") int idLyDo, Model model) {
         try {
             if (!lyDoService.isExists(idLyDo)) {
                 return ErrorPageUtils.showErrorPage(model,
-                        MessageUtils.CANOT_LOAD_DSCD_WITH_ID + idLyDo);
+                        MessageUtils.CANNOT_LOAD_DSCD_WITH_ID + idLyDo);
             }
             List<CongDan> listCongDan = congDanService.getListCongDanTheoLyDo(idLyDo);
-            model.addAttribute("listCongdan", listCongDan);
-            model.addAttribute("listLoainghiavu", loaiNghiaVuService.getListLoaiNghiaVu());
-            model.addAttribute("lydoOfCongdan", lyDoService.findLyDo(idLyDo));
-            model.addAttribute("sizeOfListPhanloailydo", phanLoaiLyDoService.countPhanLoaiLyDoByIdLydo(idLyDo));
+            model.addAttribute("listCongDan", listCongDan);
+            model.addAttribute("listLoaiNghiaVu", loaiNghiaVuService.getListLoaiNghiaVu());
+            model.addAttribute("lyDoOfCongDan", lyDoService.findLyDo(idLyDo));
+            model.addAttribute("sizeOfListPhanLoaiLyDo", phanLoaiLyDoService.countPhanLoaiLyDoByIdLydo(idLyDo));
 
             return "danhsachnghiavu";
         } catch (Exception e) {

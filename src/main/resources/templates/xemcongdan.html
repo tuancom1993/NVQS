@@ -179,9 +179,15 @@
                     </td>
                 </tr>
             </table>
-            <div class="update-information" th:if="${congDan.updatedDate != null}">
-                <span>Cập nhập bởi: <span th:text="${congDan.updatedBy}"></span></span>
-                <span>- Ngày cập nhập: <span th:text="${#dates.format(congDan.updatedDate, 'dd-MM-yyyy HH:mm:ss')}"></span></span>
+            <div class="wrap-update-information">
+                <div class="update-information" th:if="${congDan.createdDate != null}">
+                    <span>Tạo bởi: <span th:text="${congDan.createdBy}"></span></span>
+                    <span>- Ngày khởi tạo: <span th:text="${#dates.format(congDan.createdDate, 'dd-MM-yyyy HH:mm:ss')}"></span></span>
+                </div>
+                <div class="update-information" th:if="${congDan.updatedDate != null}">
+                    <span>Cập nhập bởi: <span th:text="${congDan.updatedBy}"></span></span>
+                    <span>- Ngày cập nhập: <span th:text="${#dates.format(congDan.updatedDate, 'dd-MM-yyyy HH:mm:ss')}"></span></span>
+                </div>
             </div>
         </div>
         <!-- /wrap-article -->

@@ -17,7 +17,7 @@
 				<table class="table-suathongtinuser">
 					<tr>
 						<td> Họ và Tên	: </td>
-						<td> <input type="text" th:field="${user.hoten}"/> </td>
+						<td> <input type="text" th:field="${user.hoTen}"/> </td>
 					</tr>
 					<tr>
 						<td> Tài Khoản: </td>
@@ -32,7 +32,7 @@
 					<tr>
 						<td>Khóa Tài Khoản:</td>
 						<td>
-							<div class="toggle-button">
+							<div class="toggle-button" style="margin: 0 6px;" >
 								<input id="toggle" type="checkbox" th:value="1" 
 									name="isBlocked" th:checked="${user.isBlocked == 1}">
 								<label for="toggle"></label>
