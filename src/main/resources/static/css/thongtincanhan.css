@@ -24,6 +24,7 @@
 
 .table-thongtincanhan tr td:first-child{
 	width: 80px;
+	line-height: 30px;
 }
 
 .table-thongtincanhan tr td select, .table-thongtincanhan tr td span{

@@ -7,9 +7,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.nghiavuquansu.common.AgeUtils;
+import com.nghiavuquansu.common.Utils;
+import com.nghiavuquansu.configurate.CustomUserDetail;
 import com.nghiavuquansu.entity.CongDan;
 import com.nghiavuquansu.entity.LyDo;
 import com.nghiavuquansu.entity.PhanLoaiLyDo;
@@ -26,8 +29,11 @@ public class CongDanService {
     @Autowired
     LyDoRepoInterface lyDoRepoInterface;
 
-    public void saveCongDan(CongDan congdan) throws Exception {
-        congDanRepoInterface.save(congdan);
+    public void saveCongDan(CongDan congDan) throws Exception {
+        User userLogin = Utils.getUserLoging();
+        congDan.setCreatedBy(userLogin.getUsername());
+        congDan.setCreatedDate(AgeUtils.getCurrentDateInVN());
+        congDanRepoInterface.save(congDan);
     }
 
     public ArrayList<CongDan> getAllCongDan() {
@@ -110,7 +116,9 @@ public class CongDanService {
             return false;
     }
 
-    public void updateCongDan(CongDan congDan, User userLogin) {
+    public void updateCongDan(CongDan congDan) {
+        User userLogin = Utils.getUserLoging();
+        
         congDan.setUpdatedBy(userLogin.getUsername());
         congDan.setUpdatedDate(AgeUtils.getCurrentDateInVN());
 

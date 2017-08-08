@@ -2,8 +2,6 @@ package com.nghiavuquansu.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -25,7 +23,6 @@ import com.nghiavuquansu.configurate.CustomUserDetail;
 import com.nghiavuquansu.entity.CapDaoTao;
 import com.nghiavuquansu.entity.CongDan;
 import com.nghiavuquansu.entity.LoaiNghiaVu;
-import com.nghiavuquansu.entity.LyDo;
 import com.nghiavuquansu.entity.User;
 import com.nghiavuquansu.repository.LyDoRepoInterface;
 import com.nghiavuquansu.service.CapDaoTaoService;
@@ -60,14 +57,6 @@ public class QuanLyCongDanController {
     @RequestMapping(value = "/quanlycongdan/themcongdan", method = RequestMethod.POST)
     public String doThemCongDan(@ModelAttribute CongDan congDan, Model model) {
         try {
-            User userLogin = null;
-            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            if (principal instanceof CustomUserDetail) {
-                CustomUserDetail customUserDetails = (CustomUserDetail) principal;
-                userLogin = customUserDetails.getUser();
-            }
-            congDan.setCreatedBy(userLogin.getUsername());
-            congDan.setCreatedDate(AgeUtils.getCurrentDateInVN());
             congDanService.saveCongDan(congDan);
             return "redirect:/quanlycongdan/xemthongtincongdan?id=" + congDan.getIdCongDan();
         } catch (Exception e) {
@@ -99,13 +88,7 @@ public class QuanLyCongDanController {
     @PostMapping(value = "/quanlycongdan/suacongdan")
     public String doSuaCongDan(@ModelAttribute CongDan congDan, Model model) {
         try {
-            User userLogin = null;
-            Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            if (principal instanceof CustomUserDetail) {
-                CustomUserDetail customUserDetails = (CustomUserDetail) principal;
-                userLogin = customUserDetails.getUser();
-            }
-            congDanService.updateCongDan(congDan, userLogin);
+            congDanService.updateCongDan(congDan);
             return "redirect:/quanlycongdan/suacongdan?id=" + congDan.getIdCongDan();
         } catch (Exception e) {
             e.printStackTrace();
