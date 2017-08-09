@@ -39,8 +39,8 @@ public class ConJobService {
         }
     }
 
-    @Scheduled(cron = "0 0/1 * * * ?")
-    // @Scheduled(cron = "0 0 15 * * ?")
+    //@Scheduled(cron = "0 0/1 * * * ?")
+    @Scheduled(cron = "0 0 16 * * ?")
     public void executeCronJobBackupDB() {
         StringBuffer output = new StringBuffer();
         Process p;
