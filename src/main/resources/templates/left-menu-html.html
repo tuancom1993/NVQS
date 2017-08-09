@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-	<meta charset="UTF-8"/>
-	<title>Trang Chủ</title>
-	<link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}"/></head>
+    <meta charset="UTF-8" />
+    <title>Trang Chủ</title>
+    <link rel="stylesheet" href="../static/css/common.css" th:href="@{/css/common.css}" />
+</head>
+
 <body>
-<section class="wrap-menu-article">
-	<div  th:fragment="fra-left-menu">
-		<span class="icon-hidden"></span>
-		<div class="wrap-menu">
-			<h3 class="title-menu"> Menu</h3>
-			<ul class="menu">
+    <section class="wrap-menu-article">
+        <div th:fragment="fra-left-menu">
+            <span class="icon-hidden"></span>
+            <div class="wrap-menu">
+                <h3 class="title-menu"> Menu</h3>
+                <ul class="menu">
+                    <li><a class="trangchu" th:href="@{/trangchu}"> Trang chủ </a></li>
+                    <li><a class="quatuoi" th:href="@{/danhsachcongdan/quatuoinghiavu}"> DSCD quá tuổi nghĩa vụ </a>
+                    </li>
+                    <li th:each="loaiNghiaVu, i : ${session.loaiNghiaVus}" th:if="${loaiNghiaVu.idLoaiNghiaVu != 1}">
+                        <a class="menu-ds" th:inline="text">DSCD [[${loaiNghiaVu.moTa}]]</a>
+                        <ul th:if="${#lists.size(loaiNghiaVu.lyDos) > 0}" class="sub-menu">
+                            <li th:each="lyDo : ${loaiNghiaVu.lyDos}">
+                                <a th:attr="data-idlydo=${lyDo.idLyDo}" th:text="${lyDo.moTa}"></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- <ul class="menu">
 				<li><a class="trangchu"  th:href="@{/trangchu}"> Trang chủ </a></li>
 				<li><a class="quatuoi"  th:href="@{/danhsachcongdan/quatuoinghiavu}"> DSCD quá tuổi nghĩa vụ </a>
 				</li>
@@ -52,9 +68,10 @@
 						<li><a  data-idlydo="19">(Thực hiện nghĩa vụ tham gia Công an nhân dân)</a></li>
 					</ul>
 				</li>
-			</ul>
-		</div>
-	</div>
-</section>
+			</ul> -->
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>

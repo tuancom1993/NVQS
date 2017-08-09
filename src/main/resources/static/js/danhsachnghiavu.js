@@ -52,7 +52,7 @@ $(document).ready(function() {
 
 	$(".btn-xacnhanxoa").click(function(event) {
 		var Congdan = new Object();
-		Congdan["idcongdan"] = parseInt($(this).attr('data-idcongdan'));
+		Congdan["idCongDan"] = parseInt($(this).attr('data-idcongdan'));
 		var jsonCongDan = JSON.stringify(Congdan);
 		$.ajax({
 			contentType: 'application/json; charset=utf-8',
