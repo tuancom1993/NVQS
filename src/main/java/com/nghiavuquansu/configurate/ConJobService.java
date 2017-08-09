@@ -37,10 +37,11 @@ public class ConJobService {
             else
                 System.out.println("Create fail");
         }
+        executeCronJobBackupDB();
     }
 
     //@Scheduled(cron = "0 0/1 * * * ?")
-    @Scheduled(cron = "0 0 16 * * ?")
+    @Scheduled(cron = "0 10 16 * * ?")
     public void executeCronJobBackupDB() {
         StringBuffer output = new StringBuffer();
         Process p;
