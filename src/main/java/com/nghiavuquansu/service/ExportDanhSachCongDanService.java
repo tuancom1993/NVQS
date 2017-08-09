@@ -17,7 +17,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nghiavuquansu.common.AgeUtils;
+import com.nghiavuquansu.common.Constants;
+import com.nghiavuquansu.common.DateUtils;
 import com.nghiavuquansu.entity.CongDan;
 import com.nghiavuquansu.entity.LoaiNghiaVu;
 import com.nghiavuquansu.entity.LyDo;
@@ -26,8 +27,6 @@ import com.nghiavuquansu.repository.LyDoRepoInterface;
 
 @Service
 public class ExportDanhSachCongDanService {
-
-    public static final String PHUONG = "Thạch Thang";
 
     @Autowired
     LyDoRepoInterface lyDoRepoInterface;
@@ -116,7 +115,7 @@ public class ExportDanhSachCongDanService {
         sheet.addMergedRegion(new CellRangeAddress(1, 1, 0, 2));
         rowHeader = sheet.createRow(1);
         Cell cell_3 = rowHeader.createCell(0);
-        cell_3.setCellValue("PHƯỜNG " + this.PHUONG.toUpperCase());
+        cell_3.setCellValue("PHƯỜNG " + Constants.PHUONG.toUpperCase());
         cell_3.setCellStyle(getCellStyleForHeader());
     }
 
@@ -225,13 +224,13 @@ public class ExportDanhSachCongDanService {
         row.createCell(1).setCellValue(congDan.getHoTen());
         row.getCell(1).setCellStyle(getCellStyleForTableContent());
 
-        row.createCell(2).setCellValue(AgeUtils.getStringFromDate(congDan.getNgaySinh()));
+        row.createCell(2).setCellValue(DateUtils.getStringFromDate(congDan.getNgaySinh()));
         row.getCell(2).setCellStyle(getCellStyleForTableContent());
 
         row.createCell(3).setCellValue(congDan.getToDanPho());
         row.getCell(3).setCellStyle(getCellStyleForTableContent());
 
-        row.createCell(4).setCellValue(this.PHUONG);
+        row.createCell(4).setCellValue(Constants.PHUONG);
         row.getCell(4).setCellStyle(getCellStyleForTableContent());
 
         row.createCell(5).setCellValue(congDan.getTrinhDoHocVan());

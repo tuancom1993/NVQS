@@ -18,7 +18,7 @@
                     <li><a class="quatuoi" th:href="@{/danhsachcongdan/quatuoinghiavu}"> DSCD quá tuổi nghĩa vụ </a>
                     </li>
                     <li th:each="loaiNghiaVu, i : ${session.loaiNghiaVus}" th:if="${loaiNghiaVu.idLoaiNghiaVu != 1}">
-                        <a class="menu-ds" th:inline="text">DSCD [[${loaiNghiaVu.moTa}]]</a>
+                        <a class="menu-ds" th:inline="text">DSCD 	[[${loaiNghiaVu.moTa}]]</a>
                         <ul th:if="${#lists.size(loaiNghiaVu.lyDos) > 0}" class="sub-menu">
                             <li th:each="lyDo : ${loaiNghiaVu.lyDos}">
                                 <a th:attr="data-idlydo=${lyDo.idLyDo}" th:text="${lyDo.moTa}"></a>

@@ -3,7 +3,6 @@ package com.nghiavuquansu.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.nghiavuquansu.common.AgeUtils;
+import com.nghiavuquansu.common.Constants;
 import com.nghiavuquansu.common.ErrorPageUtils;
 import com.nghiavuquansu.common.MessageUtils;
-import com.nghiavuquansu.configurate.CustomUserDetail;
 import com.nghiavuquansu.entity.CapDaoTao;
 import com.nghiavuquansu.entity.CongDan;
 import com.nghiavuquansu.entity.LoaiNghiaVu;
-import com.nghiavuquansu.entity.User;
 import com.nghiavuquansu.repository.LyDoRepoInterface;
 import com.nghiavuquansu.service.CapDaoTaoService;
 import com.nghiavuquansu.service.CongDanService;
@@ -45,9 +42,11 @@ public class QuanLyCongDanController {
 
     @RequestMapping(value = "/quanlycongdan/themcongdan", method = RequestMethod.GET)
     public String showThemCongDan(Model model) throws JsonProcessingException {
+        CongDan congDan = new CongDan();
+        congDan.setPhuong(Constants.PHUONG);
         List<CapDaoTao> listCapdaotao = capDaoTaoService.getListCapDaoTao();
         List<LoaiNghiaVu> loaiNghiaVus = loaiNghiaVuService.getListLoaiNghiaVu();
-        model.addAttribute("congDan", new CongDan());
+        model.addAttribute("congDan", congDan);
         model.addAttribute("listCapDaoTao", listCapdaotao);
         model.addAttribute("listLoaiNghiaVu", loaiNghiaVus);
 
@@ -117,7 +116,7 @@ public class QuanLyCongDanController {
 
             model.addAttribute("congDan", congDan);
             model.addAttribute("phanLoaiLyDoCongDan", phanLoaiLyDoService.getPhanLoaiLyDoCongDan(congDan));
-            return "xemcongdan";
+            return "thongtincongdan";
         } catch (Exception e) {
             e.printStackTrace();
             return ErrorPageUtils.showErrorPage(model, MessageUtils.CANNOT_LOAD_CONG_DAN_WITH_ID + idCongDan);

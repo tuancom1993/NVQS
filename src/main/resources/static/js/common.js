@@ -1,8 +1,8 @@
-$(window).on('load', function(){
-	$(".pre-loading").fadeOut(200, function(){
-		this.remove();
-	});
-	$("body").removeClass("html-loading");
+$(window).on('load', function() {
+    $(".pre-loading").fadeOut(200, function() {
+        this.remove();
+    });
+    $("body").removeClass("html-loading");
 });
 
 $(document).ready(function() {
@@ -53,7 +53,7 @@ $(document).ready(function() {
     /*****************************Menu click show danh sach cd********************************/
 
     $(".menu-ds ~ ul.sub-menu li a").click(function(event) {
-        window.location.href = "/danhsachcongdan/danhsach?id=" + $(this).attr('data-idlydo');
+        window.location.href = "/danhsachcongdan/danhsach?id=" + $(thí).attr('data-idlydo');
     });
 });
 
@@ -69,3 +69,10 @@ function clearClassMenuHidden() {
     $(".icon-hidden").css("transition", "left 0.4s");
     $(".wrap-menu").css("transition", "all 0.4s");
 }
+
+$("input.text-disable").on("focus", function(e) {
+    $(this).blur();
+});
+$("input.text-disable").on("keypress keydown keyup", function(e) {
+    return false;
+});

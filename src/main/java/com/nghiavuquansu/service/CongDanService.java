@@ -7,12 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.nghiavuquansu.common.AgeUtils;
+import com.nghiavuquansu.common.Constants;
+import com.nghiavuquansu.common.DateUtils;
 import com.nghiavuquansu.common.Utils;
-import com.nghiavuquansu.configurate.CustomUserDetail;
 import com.nghiavuquansu.entity.CongDan;
 import com.nghiavuquansu.entity.LyDo;
 import com.nghiavuquansu.entity.PhanLoaiLyDo;
@@ -32,7 +31,8 @@ public class CongDanService {
     public void saveCongDan(CongDan congDan) throws Exception {
         User userLogin = Utils.getUserLoging();
         congDan.setCreatedBy(userLogin.getUsername());
-        congDan.setCreatedDate(AgeUtils.getCurrentDateInVN());
+        congDan.setCreatedDate(DateUtils.getCurrentDateInVN());
+        congDan.setPhuong(Constants.PHUONG);
         congDanRepoInterface.save(congDan);
     }
 
@@ -48,25 +48,6 @@ public class CongDanService {
         ArrayList<CongDan> congDans = (ArrayList<CongDan>) congDanRepoInterface.findAll();
         ArrayList<CongDan> congDanQuaTuoiNghiaVus = new ArrayList<>();
         for (CongDan congDan : congDans) {
-            int idCapDaoTao = congDan.getCapDaoTao().getIdCapDaoTao();
-            Date ngaySinh = congDan.getNgaySinh();
-            int age = 0;
-            // if ("0".equals(date) && "0".equals(month) && "0".equals(year)){
-            // age = AgeUtil.getAge(ngaysinh);
-            // } else {
-            // String dateString = date+"/"+month+"/"+year;
-            // DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            // Date dateFrom = dateFormat.parse(dateString);
-            // age = AgeUtil.getAge(dateFrom, ngaysinh);
-            // }
-
-            age = AgeUtils.getAge(dateFrom, ngaySinh);
-
-            // if((idCapDaoTao == 3 || idCapDaoTao == 4) && age > 27){
-            // congDanQuaTuoiNghiaVus.add(congdan);
-            // } else if ((idCapDaoTao != 4 && idCapDaoTao != 3) && age > 25 ){
-            // congDanQuaTuoiNghiaVus.add(congdan);
-            // }
             if (isQuaTuoiNghiaVu(congDan, dateFrom))
                 congDanQuaTuoiNghiaVus.add(congDan);
         }
@@ -84,7 +65,7 @@ public class CongDanService {
         Iterator<CongDan> it = list.iterator();
         while (it.hasNext()) {
             CongDan congDan = it.next();
-            if (isQuaTuoiNghiaVu(congDan, AgeUtils.getDateCalculateAge()))
+            if (isQuaTuoiNghiaVu(congDan, DateUtils.getDateCalculateAge()))
                 it.remove();
         }
         List<PhanLoaiLyDo> phanLoaiLyDos = lyDo.getPhanLoaiLyDos(); 
@@ -105,7 +86,7 @@ public class CongDanService {
     }
 
     private boolean isQuaTuoiNghiaVu(CongDan congDan, Date dateFrom) {
-        int age = AgeUtils.getAge(dateFrom, congDan.getNgaySinh());
+        int age = DateUtils.getAge(dateFrom, congDan.getNgaySinh());
         int idCapDaoTao = congDan.getCapDaoTao().getIdCapDaoTao();
 
         if ((idCapDaoTao == 3 || idCapDaoTao == 4) && age > 27) {
@@ -120,7 +101,7 @@ public class CongDanService {
         User userLogin = Utils.getUserLoging();
         
         congDan.setUpdatedBy(userLogin.getUsername());
-        congDan.setUpdatedDate(AgeUtils.getCurrentDateInVN());
+        congDan.setUpdatedDate(DateUtils.getCurrentDateInVN());
 
         CongDan congDanDB = congDanRepoInterface.findOne(congDan.getIdCongDan());
         congDan.setCreatedBy(congDanDB.getCreatedBy());

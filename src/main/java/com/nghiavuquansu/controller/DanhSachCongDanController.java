@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.nghiavuquansu.common.AgeUtils;
+import com.nghiavuquansu.common.DateUtils;
 import com.nghiavuquansu.common.ErrorPageUtils;
 import com.nghiavuquansu.common.MessageUtils;
 import com.nghiavuquansu.entity.CongDan;
@@ -39,14 +39,14 @@ public class DanhSachCongDanController {
     public String showDanhSachCongDanQuaTuoiNghiaVu(Model model) {
         List<CongDan> listCongDanQuaTuoiNghiaVu = new ArrayList<>();
         try {
-            listCongDanQuaTuoiNghiaVu = congDanService.getListCongDanQuaTuoiNghiaVu(AgeUtils.getDateCalculateAge());
+            listCongDanQuaTuoiNghiaVu = congDanService.getListCongDanQuaTuoiNghiaVu(DateUtils.getDateCalculateAge());
         } catch (ParseException e) {
             e.printStackTrace();
             return ErrorPageUtils.showErrorPage(model,
-                    MessageUtils.CANNOT_LOAD_DSCD_WITH_DATE + AgeUtils.getDateCalculateAge().toString());
+                    MessageUtils.CANNOT_LOAD_DSCD_WITH_DATE + DateUtils.getDateCalculateAge().toString());
         }
         model.addAttribute("listCongDanQuaTuoiNghiaVu", listCongDanQuaTuoiNghiaVu);
-        model.addAttribute("dateFrom", AgeUtils.getStringFromDate(AgeUtils.getDateCalculateAge()));
+        model.addAttribute("dateFrom", DateUtils.getStringFromDate(DateUtils.getDateCalculateAge()));
         return "ds-congdanquatuoinghiavu";
     }
 

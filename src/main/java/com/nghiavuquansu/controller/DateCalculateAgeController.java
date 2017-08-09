@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.nghiavuquansu.common.AgeUtils;
+import com.nghiavuquansu.common.DateUtils;
 
 @Controller
 public class DateCalculateAgeController {
@@ -13,7 +13,7 @@ public class DateCalculateAgeController {
     @PostMapping(value ="/setdatecalculate")
     public @ResponseBody String setDateToCalculateAge(@RequestBody String strDate){
         try {
-            AgeUtils.setDateCalculateAge(AgeUtils.getDateFromString(strDate));
+            DateUtils.setDateCalculateAge(DateUtils.getDateFromString(strDate));
             return "OK";
         } catch (Exception e) {
             e.printStackTrace();
