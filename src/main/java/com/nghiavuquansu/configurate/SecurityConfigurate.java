@@ -28,6 +28,7 @@ public class SecurityConfigurate extends WebSecurityConfigurerAdapter {
                 // "USER")
                 .anyRequest().authenticated().and().logout().logoutUrl("/thoat").deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/dangnhap");
+        http.rememberMe().key("uniqueAndSecret");
     }
 
     @Override

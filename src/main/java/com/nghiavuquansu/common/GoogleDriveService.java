@@ -6,12 +6,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
 
-
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver.Builder;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.FileContent;
 import com.google.api.client.http.HttpTransport;
@@ -23,7 +24,7 @@ import com.google.api.services.drive.DriveScopes;
 
 public class GoogleDriveService {
     /** Application name. */
-    private static final String APPLICATION_NAME = "Drive API Java Amway";
+    private static final String APPLICATION_NAME = "Drive API Java NVQS";
 
     /** Directory to store user credentials for this application. */
     private static final java.io.File DATA_STORE_DIR = new java.io.File(System.getProperty("user.home"),
@@ -69,13 +70,21 @@ public class GoogleDriveService {
         // Load client secrets.
 
         InputStream in = GoogleDriveService.class.getResourceAsStream("/client_secret_nvqs.json");
+//        InputStream in = GoogleDriveService.class.getResourceAsStream("/My_Project_EC2_ThachThang.json");
+        
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
         // Build flow and trigger user authorization request.
-        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,
-                clientSecrets, SCOPES).setDataStoreFactory(DATA_STORE_FACTORY).setAccessType("offline").build();
-        Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,clientSecrets, SCOPES).setDataStoreFactory(DATA_STORE_FACTORY).setAccessType("offline").build();
+        
+        Builder builder = new LocalServerReceiver.Builder();
+        builder.setHost("34.213.141.135");
+        builder.setPort(-1);
+        Credential credential = new AuthorizationCodeInstalledApp(flow, builder.build()).authorize("user");
         System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
+        
+        /*InputStream in = GoogleDriveService.class.getResourceAsStream("/My_Project_EC2_ThachThang.json");
+        GoogleCredential credential = GoogleCredential.fromStream(in).createScoped(SCOPES);*/
         return credential;
     }
 
@@ -104,7 +113,7 @@ public class GoogleDriveService {
 
             com.google.api.services.drive.model.File fileUploaded = getDriveService().files()
                     .create(fileMetadata, mediaContent).setFields("id").execute();
-            System.out.println("File ID: " + fileUploaded.getId());
+            System.out.println("File ID: " + fileUploaded.getId()+ " | "+fileUploaded.getWebViewLink());
         } catch (Exception e) {
             e.printStackTrace();
         }
