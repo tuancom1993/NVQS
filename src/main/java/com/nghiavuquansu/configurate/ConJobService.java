@@ -38,7 +38,7 @@ public class ConJobService {
             else
                 System.out.println("Create fail");
         }
-        executeCronJobBackupDB();
+        //executeCronJobBackupDB();
     }
 
     //@Scheduled(cron = "0 0/1 * * * ?")

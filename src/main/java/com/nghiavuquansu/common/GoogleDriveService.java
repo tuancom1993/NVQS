@@ -127,9 +127,9 @@ public class GoogleDriveService {
                     + fileUploaded.getWebViewLink() + " | Permission: " + fileUploaded.getPermissions());
 
             Permission newPermission = new Permission();
-            newPermission.setType("anyone");
+            newPermission.setType("user");
             newPermission.setRole("reader");
-            //newPermission.setEmailAddress("phuong.thachthang.backup@gmail.com");
+            newPermission.setEmailAddress("phuong.thachthang.backup@gmail.com");
 
             getDriveService(service).permissions().create(fileUploaded.getId(), newPermission).execute();
 
