@@ -19,6 +19,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.nghiavuquansu.common.Constants;
+import com.nghiavuquansu.common.Enums.GoogleAPIAccount;
 import com.nghiavuquansu.common.GoogleDriveService;
 import com.nghiavuquansu.common.Utils;
 
@@ -76,11 +77,6 @@ public class ConJobService {
                     return Long.compare(f1.lastModified(), f2.lastModified());
                 }
             });
-            /*
-             * for (int i = 0; i < files.size(); i++) { System.out.println(
-             * "File in root after filterFileName: " + (i + 1) + ": " +
-             * files.get(i).getName()); }
-             */
 
             Iterator<File> it = files.iterator();
             while (it.hasNext()) {
@@ -92,15 +88,11 @@ public class ConJobService {
                 } else
                     break;
             }
-            /*
-             * for (int i = 0; i < files.size(); i++) { System.out.println(
-             * "File in root after filter to remove: " + (i + 1) + ": " +
-             * files.get(i).getName()); }
-             */
 
             File backupFile = files.get(files.size() - 1);
 
-            GoogleDriveService.upfileToDrive(backupFile, backupFile.getName(), /*Constants.FOLDER_ID_PARENT*/null, null);
+            GoogleDriveService.upfileToDrive(backupFile, backupFile.getName(), null, null, GoogleAPIAccount.SERVICE_ACCOUNTS.getValue());
+            //GoogleDriveService.deleteAllFile(GoogleAPIAccount.SERVICE_ACCOUNTS.getValue());
         } catch (Exception e) {
             e.printStackTrace();
         }
