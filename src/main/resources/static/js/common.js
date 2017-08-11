@@ -53,7 +53,7 @@ $(document).ready(function() {
     /*****************************Menu click show danh sach cd********************************/
 
     $(".menu-ds ~ ul.sub-menu li a").click(function(event) {
-        window.location.href = "/danhsachcongdan/danhsach?id=" + $(thí).attr('data-idlydo');
+        window.location.href = "/danhsachcongdan/danhsach?id=" + $(this).attr('data-idlydo');
     });
 });
 
