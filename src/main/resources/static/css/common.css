@@ -56,6 +56,9 @@ html{
     height: 100vh;
     z-index: 999;
     background-color: #eee;
+    text-align: center;
+    line-height: 100vh;
+    color: rgba(0,0,0,0.7);
 }
 
 @keyframes spinner {
@@ -93,10 +96,10 @@ html{
     content: '';
     box-sizing: border-box;
     position: absolute;
-    width: 94px;
-    height: 94px;
-    margin-left: -47px;
-    margin-top: -47px;
+    width: 90px;
+    height: 90px;
+    margin-left: -45px;
+    margin-top: -45px;
     border-radius: 100%;
     border: 2px solid rgba(0, 0, 0, 0);
     border-top-color: red;
