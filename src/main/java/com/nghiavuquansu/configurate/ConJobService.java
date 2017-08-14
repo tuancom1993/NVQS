@@ -58,37 +58,33 @@ public class ConJobService {
             while ((line = reader.readLine()) != null) {
                 output.append(line + "\n");
             }
-            System.out.println("Command print out");
+            System.out.println("Command print out:");
             System.out.println(output.toString());
-            uploadBackupFileToGoogleDrive();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void uploadBackupFileToGoogleDrive() {
-        try {
-            File folderContainBackupBD = new File(
-                    Constants.PATH_FOLDER_EXTERNAL + "/" + Constants.PATH_FOLDER_DATABASE_BACKUP);
-            File[] backupDBFiles = folderContainBackupBD.listFiles(getFilterByFileName());
-            List<File> files = new ArrayList<File>(Arrays.asList(backupDBFiles));
-            Collections.sort(files, new Comparator<File>() {
-                public int compare(File f1, File f2) {
-                    return Long.compare(f1.lastModified(), f2.lastModified());
-                }
-            });
+            
+            System.out.println("Scan and remove olds file if number larger "+Constants.NUMBER_DATABASE_BACKUP_FILE + " files.");
+            List<File> files = getBackupFilesInLocalDisk();
 
             Iterator<File> it = files.iterator();
             while (it.hasNext()) {
                 if (files.size() > Constants.NUMBER_DATABASE_BACKUP_FILE) {
                     File fileRemove = it.next();
                     if (fileRemove.delete()) {
+                        System.out.println("---> Backupfile has been removed: "+fileRemove.getName());
                         it.remove();
                     }
                 } else
                     break;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    @Scheduled(cron = "0 10 17 0/5 * ?")
+    private void executeCronJobUploadBackupFileToGoogleDrive() {
+        try {
+            System.out.println("Start upload DB backup file to Google Drive...");
+            List<File> files = getBackupFilesInLocalDisk();
             File backupFile = files.get(files.size() - 1);
 
             GoogleDriveService.upfileToDrive(backupFile, backupFile.getName(), null, null, GoogleAPIAccount.SERVICE_ACCOUNTS.getValue());
@@ -96,6 +92,19 @@ public class ConJobService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    private List<File> getBackupFilesInLocalDisk(){
+        File folderContainBackupBD = new File(
+                Constants.PATH_FOLDER_EXTERNAL + "/" + Constants.PATH_FOLDER_DATABASE_BACKUP);
+        File[] backupDBFiles = folderContainBackupBD.listFiles(getFilterByFileName());
+        List<File> files = new ArrayList<File>(Arrays.asList(backupDBFiles));
+        Collections.sort(files, new Comparator<File>() {
+            public int compare(File f1, File f2) {
+                return Long.compare(f1.lastModified(), f2.lastModified());
+            }
+        });
+        return files;
     }
 
     private FilenameFilter getFilterByFileName() {
